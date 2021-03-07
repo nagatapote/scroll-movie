@@ -1,80 +1,82 @@
 import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import Slider from "@material-ui/core/Slider";
+import data from "./data";
 import "./style.css";
-import "./@types/global.d.ts";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: 300,
+    },
+    margin: {
+      height: theme.spacing(3),
+    },
+  })
+);
 
 const ImagesChangeScroll = () => {
-  const [count, setCount] = useState(0);
+  const classes = useStyles();
+  const [value, setValue] = useState(0);
+
+  const maxImageLength = data.images.length * 380;
+  const maxScrollLength = data.images.length * 500;
+
+  const handleSliderChange = (event, newValue) => {
+    setValue(newValue);
+    scrollTo(0, newValue);
+  };
 
   let i = 0;
 
-  const goImage = () => {
-    const scrollY: number = window.scrollY;
-    if (scrollY < 2000) {
-      i += 500;
-      scrollBy(0, i);
-    }
-  };
-
-  const backImage = () => {
-    const scrollY: number = window.scrollY;
-    if (scrollY <= 2500 && scrollY > 0) {
-      i -= 500;
-      scrollBy(0, i);
-    }
-  };
-
-  const onScroll = () => {
-    const scrollY: number = window.scrollY;
-    setCount(scrollY);
-    const images = [
-      "images/sample_image_1.png",
-      "images/sample_image_2.png",
-      "images/sample_image_3.png",
-      "images/sample_image_4.png",
-      "images/sample_image_5.png",
-    ];
-
-    let num = 0;
-    document.getElementById("text").innerText = "sample_text_1";
-
-    if (scrollY >= 500 && scrollY < 1000) {
-      num = 1;
-      document.getElementById("text").innerText = "sample_text_2";
-    } else if (scrollY >= 1000 && scrollY < 1500) {
-      num = 2;
-      document.getElementById("text").innerText = "sample_text_3";
-    } else if (scrollY >= 1500 && scrollY < 2000) {
-      num = 3;
-      document.getElementById("text").innerText = "sample_text_4";
-    } else if (scrollY >= 2000 && scrollY <= 2500) {
-      num = 4;
-      document.getElementById("text").innerText = "sample_text_5";
-    }
-    (document.getElementById("images") as HTMLImageElement).src = images[num];
-  };
-
   useEffect(() => {
+    const onScroll = () => {
+      setValue(scrollY);
+
+      let num = 0;
+
+      if (scrollY >= 500 && scrollY < 1000) {
+        num = 1;
+      } else if (scrollY >= 1000 && scrollY < 1500) {
+        num = 2;
+      } else if (scrollY >= 1500 && scrollY < 2000) {
+        num = 3;
+      } else if (scrollY >= 2000 && scrollY <= 2500) {
+        num = 4;
+      }
+      (document.getElementById("images") as HTMLImageElement).src =
+        data.images[num];
+      (document.getElementById("text") as HTMLInputElement).innerText =
+        data.tracks[num];
+    };
+
     document.addEventListener("scroll", onScroll);
+
     return () => document.removeEventListener("scroll", onScroll);
-  });
+  }, []);
   return (
     <div id="home">
       <div className="image">
         <img
-          border="1"
-          src="images/sample_image_1.png"
+          src="https://ct.st.keio.ac.jp/wordpress/wp-content/themes/ko-campus/assets/movie_images/movie0001.jpg"
           id="images"
-          height="400"
-          width="500"
+          height="100%"
+          width="100%"
         />
-        <p id="text">sample_text_1</p>
+        <span id="text">リアルキャンパスツアーへようこそ。</span>
       </div>
 
-      <div>
-        <p>スクロール量：{count}</p>
-        <input type="button" id="back" value="戻る" onClick={backImage} />
-        <input type="button" id="go" value="進む" onClick={goImage} />
+      <div className={classes.root}>
+        <Slider
+          value={value}
+          defaultValue={0}
+          aria-labelledby="discrete-slider-custom"
+          step={1}
+          valueLabelDisplay="auto"
+          max={maxImageLength}
+          onChange={handleSliderChange}
+        />
       </div>
     </div>
   );
