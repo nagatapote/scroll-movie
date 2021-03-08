@@ -27,7 +27,7 @@ const ImagesChangeScroll: React.FC<Props> = ({ images, tracks }) => {
     document.addEventListener("scroll", onScroll);
 
     return () => document.removeEventListener("scroll", onScroll);
-  }, [images, tracks]);
+  }, [image, track]);
   return (
     <div id="home">
       <div className="image">
