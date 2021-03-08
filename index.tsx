@@ -20,35 +20,27 @@ const ImagesChangeScroll = () => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
 
-  const maxImageLength = data.images.length * 380;
-  const maxScrollLength = data.images.length * 500;
+  const maxImageLength = data.images.length * 150;
+
+  const valuetext = (value) => {
+    return `${value}`;
+  };
 
   const handleSliderChange = (event, newValue) => {
     setValue(newValue);
     scrollTo(0, newValue);
   };
 
-  let i = 0;
-
   useEffect(() => {
     const onScroll = () => {
       setValue(scrollY);
+      let imageNum = Math.floor(scrollY / 150);
+      let textNum = Math.floor(scrollY / 2000);
 
-      let num = 0;
-
-      if (scrollY >= 500 && scrollY < 1000) {
-        num = 1;
-      } else if (scrollY >= 1000 && scrollY < 1500) {
-        num = 2;
-      } else if (scrollY >= 1500 && scrollY < 2000) {
-        num = 3;
-      } else if (scrollY >= 2000 && scrollY <= 2500) {
-        num = 4;
-      }
       (document.getElementById("images") as HTMLImageElement).src =
-        data.images[num];
+        data.images[imageNum];
       (document.getElementById("text") as HTMLInputElement).innerText =
-        data.tracks[num];
+        data.tracks[textNum];
     };
 
     document.addEventListener("scroll", onScroll);
@@ -71,11 +63,12 @@ const ImagesChangeScroll = () => {
         <Slider
           value={value}
           defaultValue={0}
+          getAriaValueText={valuetext}
           aria-labelledby="discrete-slider-custom"
-          step={1}
-          valueLabelDisplay="auto"
+          step={2000}
           max={maxImageLength}
           onChange={handleSliderChange}
+          marks={data.marks}
         />
       </div>
     </div>
