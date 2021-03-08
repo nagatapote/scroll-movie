@@ -11,11 +11,18 @@ type Props = {
 const ImagesChangeScroll: React.FC<Props> = ({ images, tracks }) => {
   const [image, setImage] = useState("");
   const [track, setTrack] = useState("");
+  const [value, setValue] = useState(0);
 
   const maxImageLength = images.length * 150;
 
+  const handleSliderChange = (e) => {
+    setValue(e.target.value);
+    scrollTo(0, e.target.value);
+  };
+
   useEffect(() => {
     const onScroll = () => {
+      setValue(scrollY);
       let imageNum = Math.floor(scrollY / 150);
       let trackNum = Math.floor(scrollY / 2000);
       const imageData = images[imageNum];
@@ -29,10 +36,18 @@ const ImagesChangeScroll: React.FC<Props> = ({ images, tracks }) => {
     return () => document.removeEventListener("scroll", onScroll);
   }, [image, track]);
   return (
-    <div id="home">
+    <div className="home">
       <div className="image">
         <ImageView image={image} />
         <TextView track={track} />
+        <input
+          type="range"
+          name="sliderBar"
+          min="0"
+          max={maxImageLength}
+          value={value}
+          onChange={handleSliderChange}
+        />
       </div>
     </div>
   );

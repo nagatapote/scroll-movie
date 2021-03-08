@@ -3,7 +3,7 @@ body {
   height: 168500px;
 }
 
-#home {
+.home {
   position: fixed;
 }
 
@@ -23,4 +23,26 @@ body {
   font-weight: bold;
   font-size: 2em;
   color: white;
+}
+
+.image input {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  height: 6px;
+  background: #8acdff;
+  border-radius: 10px;
+  border: solid 2px #dff1ff;
+  width: 60%;
 }
