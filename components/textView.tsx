@@ -3,7 +3,7 @@ import React from "react";
 const textView = (props) => {
   return (
     <div>
-      <span>{props.text}</span>
+      <span>{props.track}</span>
     </div>
   );
 };
