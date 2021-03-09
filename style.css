@@ -41,8 +41,7 @@ input[type="range"] {
   outline: none;
   cursor: pointer;
   height: 6px;
-  background: #8acdff;
+  background: white;
   border-radius: 10px;
-  border: solid 2px #dff1ff;
   width: 60%;
 }
