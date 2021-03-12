@@ -1,10 +1,17 @@
 import React from "react";
 
 const textView = (props) => {
+  const scrollValue = (props.maxImageLength / (props.length - 1)) * props.index;
+
+  const scrollButton = () => {
+    return scrollTo({ top: scrollValue, left: 0, behavior: "smooth" });
+  };
   return (
-    <div>
-      <span id="track" dangerouslySetInnerHTML={{ __html: props.track }} />
-    </div>
+    <input
+      type="button"
+      value={props.buttonText}
+      onClick={() => scrollButton()}
+    />
   );
 };
 

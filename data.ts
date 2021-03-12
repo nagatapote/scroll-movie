@@ -1216,37 +1216,14 @@ const data = {
     "テストデータ81",
     "テストデータ82",
     "テストデータ83",
-    "",
   ],
-  marks: [
-    {
-      value: 0,
-      label: "0",
-    },
-    {
-      value: 28000,
-      label: "1",
-    },
-    {
-      value: 56000,
-      label: "2",
-    },
-    {
-      value: 84000,
-      label: "3",
-    },
-    {
-      value: 112000,
-      label: "4",
-    },
-    {
-      value: 140000,
-      label: "5",
-    },
-    {
-      value: 168000,
-      label: "6",
-    },
+  buttonTexts: [
+    "sample1",
+    "sample2",
+    "sample3",
+    "sample4",
+    "sample5",
+    "sample6",
   ],
 };
 
