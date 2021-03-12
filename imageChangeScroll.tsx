@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import smoothscroll from "smoothscroll-polyfill";
-import ImageView from "./components/imageView";
-import TrackView from "./components/trackView";
-import TextView from "./components/textView";
+import { ImageView, SliderBar, TrackView, TextView } from "./components/index";
 import "./style.css";
 
 type Props = {
@@ -102,19 +100,17 @@ const ImagesChangeScroll: React.FC<Props> = ({
     document.addEventListener("scroll", onScroll);
 
     return () => document.removeEventListener("scroll", onScroll);
-  }, [image, track, tracksSpeed, trackDisplay, trackTop, trackBottom]);
+  }, [image, track]);
   return (
     <div className="home">
       <div className="image">
         <ImageView image={image} />
         <TrackView track={track} />
-        <input
-          type="range"
-          id="sliderBar"
+        <SliderBar
           min="0"
-          max={maxImageLength}
+          maxImageLength={maxImageLength}
           value={value}
-          onChange={handleSliderChange}
+          handleSliderChange={handleSliderChange}
         />
         <div className="button">
           {buttonTexts.length > 0 &&

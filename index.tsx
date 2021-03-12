@@ -27,10 +27,10 @@ const Index = () => {
   //trackのスライドイン、スライドアウトする場所（縦）
   const trackDisappear = 600;
 
-  //※以下、変更非推奨(表示が不安定になる。)
-  //trackTopTiming => 0.1〜0.9(0.9) ・・・　表示trackが上に消えるタイミング(下にスクロール時)
+  //※以下、変更非推奨(表示が不安定になる。 trackTopTiming < trackBottomTiming)
+  //trackTopTiming => 0.1〜0.8 ・・・　表示trackが上に消えるタイミング(下にスクロール時)
 
-  //trackBottomTiming => 0.1〜0.9(0.9)　・・・　表示trackが下に消えるタイミング(上にスクロール時)
+  //trackBottomTiming => 0.2〜0.9　・・・　表示trackが下に消えるタイミング(上にスクロール時)
 
   return (
     <div>
@@ -44,8 +44,8 @@ const Index = () => {
         trackDisplayX={trackDisplayX}
         trackDisplayY={trackDisplayY}
         trackDisappear={trackDisappear}
-        trackTopTiming={0.3}
-        trackBottomTiming={0.7}
+        trackTopTiming={0.4}
+        trackBottomTiming={0.6}
       />
     </div>
   );

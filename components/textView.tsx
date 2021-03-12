@@ -1,6 +1,6 @@
 import React from "react";
 
-const textView = (props) => {
+const TextView = (props) => {
   const scrollValue = (props.maxImageLength / (props.length - 1)) * props.index;
 
   const scrollButton = () => {
@@ -15,4 +15,4 @@ const textView = (props) => {
   );
 };
 
-export default textView;
+export default TextView;
