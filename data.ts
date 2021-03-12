@@ -1133,8 +1133,8 @@ const data = {
     "https://ct.st.keio.ac.jp/wordpress/wp-content/themes/ko-campus/assets/movie_images/movie1126.jpg",
   ],
   tracks: [
-    "リアルキャンパスツアーへようこそ。",
-    "画面を下にスクロールすることで、ツアーが進行します。",
+    "<h1>リアルキャンパスツアーへようこそ。<h1>",
+    "<br /><br />画面を下にスクロールすることで、ツアーが進行します。",
     "テストデータ3",
     "テストデータ4",
     "テストデータ5",
