@@ -1,125 +1,73 @@
-import React, { useState, useEffect } from "react";
-import smoothscroll from "smoothscroll-polyfill";
-import { ImageView, SliderBar, TrackView, TextView } from "./components/index";
+import React, { useState, useEffect, useCallback, useRef } from "react";
+import { ImageView, SliderBar, TrackView, LabelView } from "./components/index";
 import "./style.css";
 
 type Props = {
-  images: string[];
-  tracks: string[];
-  buttonTexts: string[];
-  imageTiming: number;
-  trackTiming: number;
-  slide: number;
-  trackDisplayX: number;
-  trackDisplayY: number;
-  trackDisappear: number;
-  trackTopTiming: number;
-  trackBottomTiming: number;
+  imageSize: number;
+  getImage: (index: number) => string;
+  tracks: any[];
+  scrollsPerImage: number;
+  classNames: any;
 };
 
-const ImagesChangeScroll: React.FC<Props> = ({
-  images,
+export const ImageChangeScroll: React.FC<Props> = ({
+  getImage,
+  imageSize,
   tracks,
-  buttonTexts,
-  imageTiming,
-  trackTiming,
-  slide,
-  trackDisplayX,
-  trackDisplayY,
-  trackDisappear,
-  trackTopTiming,
-  trackBottomTiming,
+  scrollsPerImage,
+  classNames,
 }) => {
+  const rootRef = useRef<HTMLDivElement>();
   const [image, setImage] = useState("");
-  const [track, setTrack] = useState("");
   const [value, setValue] = useState(0);
-  const [trackDisplay, setTrackDisplay] = useState(0);
-  const [trackTop, setTrackTop] = useState(0);
-  const [trackBottom, setTrackBottom] = useState(0);
+  const maxImageLength = imageSize * scrollsPerImage;
 
-  smoothscroll.polyfill();
-
-  const maxImageLength = images.length * imageTiming;
-  const tracksSpeed = images.length * trackTiming;
-
-  const handleSliderChange = (e) => {
-    setValue(e.target.value);
-    scrollTo({ top: e.target.value, left: 0, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    (document.getElementById("track") as HTMLStyleElement).style.opacity = "0";
-    (document.getElementById(
-      "track"
-    ) as HTMLStyleElement).style.transform = `translate(${trackDisplayX}px, ${trackDisappear}px)`;
-    (document.getElementById(
-      "track"
-    ) as HTMLStyleElement).style.transition = `all ${slide}s`;
-  }, [trackBottom]);
-
-  useEffect(() => {
-    (document.getElementById("track") as HTMLStyleElement).style.opacity = "1";
-    (document.getElementById(
-      "track"
-    ) as HTMLStyleElement).style.transform = `translate(${trackDisplayX}px, ${trackDisplayY}px)`;
-    (document.getElementById(
-      "track"
-    ) as HTMLStyleElement).style.transition = `all ${slide}s`;
-  }, [trackDisplay]);
-
-  useEffect(() => {
-    (document.getElementById("track") as HTMLStyleElement).style.opacity = "0";
-    (document.getElementById(
-      "track"
-    ) as HTMLStyleElement).style.transform = `translate(${trackDisplayX}px, -${trackDisappear}px)`;
-    (document.getElementById(
-      "track"
-    ) as HTMLStyleElement).style.transition = `all ${slide}s`;
-  }, [trackTop]);
+  const handleSliderChange = useCallback(
+    (e: React.ChangeEvent<{ value: number }>) => {
+      setValue(e.target.value);
+      scrollTo({ top: e.target.value, left: 0, behavior: "smooth" });
+    },
+    []
+  );
 
   useEffect(() => {
     const onScroll = () => {
       setValue(scrollY);
-      const imageNum = Math.floor(scrollY / imageTiming);
-      const trackNum = Math.floor(scrollY / tracksSpeed);
-      const trackNumBottom = Math.floor(
-        (scrollY - tracksSpeed * trackBottomTiming) / tracksSpeed
-      );
-      const trackNumTop = Math.floor(
-        (scrollY - tracksSpeed * trackTopTiming) / tracksSpeed
-      );
-      const imageData = images[imageNum];
-      const trackData = tracks[trackNum];
+      const imageNum = Math.floor(scrollY / scrollsPerImage);
+      const imageData = getImage(imageNum);
       setImage(imageData);
-      setTrack(trackData);
-      setTrackBottom(trackNumBottom);
-      setTrackDisplay(trackNum);
-      setTrackTop(trackNumTop);
     };
 
     document.addEventListener("scroll", onScroll);
 
     return () => document.removeEventListener("scroll", onScroll);
-  }, [image, track]);
+  }, [image]);
   return (
-    <div className="home">
+    <div className="home" ref={rootRef}>
       <div className="image">
         <ImageView image={image} />
-        <TrackView track={track} />
+        {tracks.length > 0 &&
+          tracks.map((track) => (
+            <TrackView
+              className={classNames.trackView}
+              track={track.html}
+              timing={track.timing}
+              display={track.display}
+            />
+          ))}
         <SliderBar
-          min="0"
-          maxImageLength={maxImageLength}
+          className={classNames.sliderBar}
+          max={maxImageLength}
           value={value}
           handleSliderChange={handleSliderChange}
         />
         <div className="button">
-          {buttonTexts.length > 0 &&
-            buttonTexts.map((buttonText, index) => (
-              <TextView
-                buttonText={buttonText}
-                length={buttonTexts.length}
-                maxImageLength={maxImageLength}
-                index={index}
+          {tracks.length > 0 &&
+            tracks.map((track) => (
+              <LabelView
+                className={classNames.labelView}
+                buttonLabel={track.buttonLabels}
+                timing={track.timing}
               />
             ))}
         </div>
@@ -127,5 +75,3 @@ const ImagesChangeScroll: React.FC<Props> = ({
     </div>
   );
 };
-
-export default ImagesChangeScroll;

@@ -1,16 +1,27 @@
 import React from "react";
 
-const SliderBar = (props) => {
+type Props = {
+  max: number;
+  value: number;
+  handleSliderChange: any;
+  className?: any;
+};
+
+export const SliderBar: React.FC<Props> = ({
+  max,
+  value,
+  handleSliderChange,
+  className,
+}) => {
   return (
     <input
       type="range"
-      id="sliderBar"
-      min="0"
-      max={props.maxImageLength}
-      value={props.value}
-      onChange={props.handleSliderChange}
+      disabled={true}
+      className={className}
+      min={0}
+      max={max}
+      value={value}
+      onChange={handleSliderChange}
     />
   );
 };
-
-export default SliderBar;

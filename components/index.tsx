@@ -1,4 +1,4 @@
-export { default as ImageView } from "./imageView";
-export { default as SliderBar } from "./sliderBar";
-export { default as TextView } from "./textView";
-export { default as TrackView } from "./trackView";
+export * from "./ImageView";
+export * from "./SliderBar";
+export * from "./LabelView";
+export * from "./TrackView";
