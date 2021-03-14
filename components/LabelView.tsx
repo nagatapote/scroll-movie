@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 type Props = {
   buttonLabel?: string;
-  timing: number;
+  start: number;
   className?: string;
 };
 
 export const LabelView: React.FC<Props> = ({
   buttonLabel,
   className,
-  timing,
+  start,
 }) => {
-  const handleClick = () => {
-    return scrollTo({ top: timing, left: 0, behavior: "smooth" });
-  };
+  const handleClick = useCallback(() => {
+    return scrollTo({ top: start, left: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <>

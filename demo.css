@@ -11,7 +11,7 @@ body {
   position: relative;
 }
 
-.image .track-view {
+.track-view {
   position: absolute;
   top: 30%;
   left: 50%;
@@ -37,7 +37,7 @@ body {
   }
 }
 
-.image .slider-bar {
+.slider-bar {
   position: absolute;
   top: 80%;
   left: 50%;
@@ -68,6 +68,6 @@ body {
   text-align: center;
 }
 
-.button .label-view {
+.label-view {
   width: 200px;
 }

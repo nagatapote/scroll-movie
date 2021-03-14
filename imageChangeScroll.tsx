@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ImageView, SliderBar, TrackView, LabelView } from "./components/index";
-import "./style.css";
 
 type Props = {
   imageSize: number;
   getImage: (index: number) => string;
   tracks: {
     html: string;
-    timing: number;
-    displayRange: number;
+    start: number;
+    end: number;
     buttonLabel: string;
   }[];
   scrollsPerImage: number;
@@ -48,8 +47,8 @@ export const ImageChangeScroll: React.FC<Props> = ({
             <TrackView
               className={classNames.trackView}
               track={track.html}
-              timing={track.timing}
-              displayRange={track.displayRange}
+              start={track.start}
+              end={track.end}
             />
           ))}
         <SliderBar
@@ -63,7 +62,7 @@ export const ImageChangeScroll: React.FC<Props> = ({
               <LabelView
                 className={classNames.labelView}
                 buttonLabel={track.buttonLabel}
-                timing={track.timing}
+                start={track.start}
               />
             ))}
         </div>
