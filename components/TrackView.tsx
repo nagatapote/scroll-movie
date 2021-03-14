@@ -10,8 +10,8 @@ type Props = {
 export const TrackView: React.FC<Props> = ({
   track,
   start,
-  className,
   end,
+  className = 'scroll-movie__track-view',
 }) => {
   return (
     <>

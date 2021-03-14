@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import smoothscroll from "smoothscroll-polyfill";
-import { ImageChangeScroll } from "./imageChangeScroll";
+import { ScrollMovie } from "./ScrolMovie";
 import "./demo.css";
 
 smoothscroll.polyfill();
@@ -12,7 +12,7 @@ export const Demo = () => {
 
   return (
     <div>
-      <ImageChangeScroll
+      <ScrollMovie
         getImage={(index) => {
           const pad = `${index}`.padStart(4, "0");
           return `https://ct.st.keio.ac.jp/wordpress/wp-content/themes/ko-campus/assets/movie_images/movie${pad}.jpg`;

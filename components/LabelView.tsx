@@ -8,7 +8,7 @@ type Props = {
 
 export const LabelView: React.FC<Props> = ({
   buttonLabel,
-  className,
+  className = 'scroll-moview__label_view',
   start,
 }) => {
   const handleClick = useCallback(() => {

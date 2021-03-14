@@ -6,7 +6,11 @@ type Props = {
   className?: string;
 };
 
-export const SliderBar: React.FC<Props> = ({ max, value, className }) => {
+export const SliderBar: React.FC<Props> = ({ 
+  max, 
+  value, 
+  className = 'scroll-movie__slider-bar'
+}) => {
   return (
     <input
       type="range"
