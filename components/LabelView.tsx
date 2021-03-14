@@ -3,12 +3,12 @@ import React, { useCallback } from "react";
 type Props = {
   buttonLabel?: string;
   start: number;
-  className?: string;
+  className;
 };
 
 export const LabelView: React.FC<Props> = ({
   buttonLabel,
-  className = 'scroll-moview__label_view',
+  className,
   start,
 }) => {
   const handleClick = useCallback(() => {

@@ -4,14 +4,14 @@ type Props = {
   track: string;
   start: number;
   end: number;
-  className?: string;
+  className: string;
 };
 
 export const TrackView: React.FC<Props> = ({
   track,
   start,
   end,
-  className = 'scroll-movie__track-view',
+  className,
 }) => {
   return (
     <>

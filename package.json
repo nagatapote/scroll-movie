@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild ./demo.tsx --platform=browser --target=chrome58,firefox57,safari11,edge16 --outdir=dist --minify --bundle '--define:process.env.NODE_ENV=\"production\"'"
+    "build": "esbuild ./demo.tsx --platform=browser --target=chrome58,firefox57,safari11,edge16 --outdir=dist --minify --bundle '--define:process.env.NODE_ENV=\"production\"'",
+    "build:lib": "tsc"
   },
   "keywords": [],
   "author": "",
