@@ -6,8 +6,7 @@ type Props = {
   getImage: (index: number) => string;
   tracks: {
     html: string;
-    start: number;
-    end: number;
+    timing: { start: number; end: number };
     buttonLabel: string;
   }[];
   scrollsPerImage: number;
@@ -47,8 +46,8 @@ export const ImageChangeScroll: React.FC<Props> = ({
             <TrackView
               className={classNames.trackView}
               track={track.html}
-              start={track.start}
-              end={track.end}
+              start={track.timing.start}
+              end={track.timing.end}
             />
           ))}
         <SliderBar
@@ -62,7 +61,7 @@ export const ImageChangeScroll: React.FC<Props> = ({
               <LabelView
                 className={classNames.labelView}
                 buttonLabel={track.buttonLabel}
-                start={track.start}
+                start={track.timing.start}
               />
             ))}
         </div>
