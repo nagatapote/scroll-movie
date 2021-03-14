@@ -1,8 +1,5 @@
 html,
-body {
-  height: 168500px;
-}
-
+body,
 .scroll-movie {
   position: fixed;
 }
