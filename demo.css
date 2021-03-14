@@ -1,9 +1,11 @@
 html,
-body,
+body {
+  height: 168500px;
+}
 .scroll-movie {
   position: fixed;
 }
 
-.image {
+.scroll-movie__inner {
   position: relative;
 }
