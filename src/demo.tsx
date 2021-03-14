@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import smoothscroll from "smoothscroll-polyfill";
-import { ScrollMovie } from "./ScrolMovie";
+import { ScrollMovie } from "./ScrollMovie";
 import "./demo.css";
 
 smoothscroll.polyfill();
@@ -49,11 +49,6 @@ export const Demo = () => {
           },
         ]}
         scrollsPerImage={scrollsPerImage}
-        classNames={{
-          trackView: "track-view",
-          labelView: "label-view",
-          sliderBar: "slider-bar",
-        }}
       />
     </div>
   );

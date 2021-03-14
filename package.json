@@ -2,11 +2,12 @@
   "name": "images-change-scroll",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild ./demo.tsx --platform=browser --target=chrome58,firefox57,safari11,edge16 --outdir=dist --minify --bundle '--define:process.env.NODE_ENV=\"production\"'",
-    "build:lib": "tsc"
+    "build": "esbuild ./src/demo.tsx --platform=browser --target=chrome58,firefox57,safari11,edge16 --outdir=dist --minify --bundle '--define:process.env.NODE_ENV=\"production\"'",
+    "build:lib": "rm -rf ./lib && tsc"
   },
   "keywords": [],
   "author": "",

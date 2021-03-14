@@ -6,6 +6,7 @@ const defaultClassNames = {
   inner: 'scroll-movie__inner',
   trackView: 'scroll-movie__track-view',
   labelView: 'scroll-movie__label-view',
+  imageView: 'scroll-movie__image-view',
   sliderBar: 'scroll-movie__slider-bar',
   navigation: 'scroll-movie__navigation',
 }
@@ -13,6 +14,7 @@ const defaultClassNames = {
 type ClassNames = {
   trackView: string
   labelView: string
+  imageView: string
   sliderBar: string
   root: string
   inner: string
@@ -58,7 +60,7 @@ export const ScrollMovie: React.FC<Props> = ({
   return (
     <div className={classNames.root} ref={rootRef}>
       <div className={classNames.inner}>
-        <ImageView image={image} />
+        <ImageView image={image} className={classNames.imageView} />
         {tracks.length > 0 &&
           tracks.map((track) => (
             <TrackView
