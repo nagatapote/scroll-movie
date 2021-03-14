@@ -16,6 +16,7 @@ type ClassNames = {
   sliderBar: string
   root: string
   inner: string
+  navigation: string
 }
 
 type Props = {
