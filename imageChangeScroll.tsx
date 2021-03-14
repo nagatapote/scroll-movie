@@ -12,7 +12,7 @@ type Props = {
     buttonLabel: string;
   }[];
   scrollsPerImage: number;
-  classNames?: any;
+  classNames?: { trackView: string; labelView: string; sliderBar: string };
 };
 
 export const ImageChangeScroll: React.FC<Props> = ({
