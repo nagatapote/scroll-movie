@@ -1,13 +1,10 @@
 import React from "react";
 
 type Props = {
-  image: string
-  className: string
-}
+  image: string;
+  className: string;
+};
 
-export const ImageView: React.FC<Props> = ({
-  image,
-  className,
-}) => {
-  return <img src={image} className={className} height="100%" width="100%" />;
+export const ImageView: React.FC<Props> = ({ image, className }) => {
+  return <img src={image} className={className} />;
 };

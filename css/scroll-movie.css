@@ -1,3 +1,7 @@
+.scroll-movie__image-view {
+  height: 100vh;
+  width: auto;
+}
 .scroll-movie__track-view {
   position: absolute;
   top: 30%;
