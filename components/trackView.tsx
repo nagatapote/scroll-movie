@@ -3,7 +3,7 @@ import React from "react";
 type Props = {
   track: string;
   timing: number;
-  display: number;
+  displayRange: number;
   className?: string;
 };
 
@@ -11,11 +11,11 @@ export const TrackView: React.FC<Props> = ({
   track,
   timing,
   className,
-  display,
+  displayRange,
 }) => {
   return (
     <>
-      {timing <= scrollY && scrollY <= timing + display && (
+      {timing <= scrollY && scrollY <= timing + displayRange && (
         <span
           className={className}
           dangerouslySetInnerHTML={{ __html: track }}

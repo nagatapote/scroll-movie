@@ -3,7 +3,7 @@ import React from "react";
 type Props = {
   buttonLabel?: string;
   timing: number;
-  className?: any;
+  className?: string;
 };
 
 export const LabelView: React.FC<Props> = ({

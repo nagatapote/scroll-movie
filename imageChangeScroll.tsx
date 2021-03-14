@@ -1,13 +1,18 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { ImageView, SliderBar, TrackView, LabelView } from "./components/index";
 import "./style.css";
 
 type Props = {
   imageSize: number;
   getImage: (index: number) => string;
-  tracks: any[];
+  tracks: {
+    html: string;
+    timing: number;
+    displayRange: number;
+    buttonLabel: string;
+  }[];
   scrollsPerImage: number;
-  classNames: any;
+  classNames?: any;
 };
 
 export const ImageChangeScroll: React.FC<Props> = ({
@@ -21,14 +26,6 @@ export const ImageChangeScroll: React.FC<Props> = ({
   const [image, setImage] = useState("");
   const [value, setValue] = useState(0);
   const maxImageLength = imageSize * scrollsPerImage;
-
-  const handleSliderChange = useCallback(
-    (e: React.ChangeEvent<{ value: number }>) => {
-      setValue(e.target.value);
-      scrollTo({ top: e.target.value, left: 0, behavior: "smooth" });
-    },
-    []
-  );
 
   useEffect(() => {
     const onScroll = () => {
@@ -52,21 +49,20 @@ export const ImageChangeScroll: React.FC<Props> = ({
               className={classNames.trackView}
               track={track.html}
               timing={track.timing}
-              display={track.display}
+              displayRange={track.displayRange}
             />
           ))}
         <SliderBar
           className={classNames.sliderBar}
           max={maxImageLength}
           value={value}
-          handleSliderChange={handleSliderChange}
         />
         <div className="button">
           {tracks.length > 0 &&
             tracks.map((track) => (
               <LabelView
                 className={classNames.labelView}
-                buttonLabel={track.buttonLabels}
+                buttonLabel={track.buttonLabel}
                 timing={track.timing}
               />
             ))}

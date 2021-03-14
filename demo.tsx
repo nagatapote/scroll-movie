@@ -21,28 +21,28 @@ export const Demo = () => {
           {
             html: "<h1>リアルキャンパスツアーへようこそ！！</h1>",
             timing: 100,
-            display: 1000,
-            buttonLabels: "キャンパスツアートップ",
+            displayRange: 1000,
+            buttonLabel: "キャンパスツアートップ",
           },
           {
             html:
               "理工学部では、第3学年から学生生活の拠点が矢上キャンパスへと移ります。学科専門科目の履修が始まるとともに、第4学年からは研究室に所属して教員の指導のもと、研究活動に取り組みます。",
             timing: 10000,
-            display: 3000,
-            buttonLabels: "学習",
+            displayRange: 3000,
+            buttonLabel: "学習",
           },
           {
             html:
               "<h1>IBM Q Network Hub @ Keio University</h1><br /><small>量子コンピュータは、最適化問題や材料探索などの実社会問題を現行器をはるかに超えるスピードで解けると期待される夢の技術です。慶應義塾大学では、20量子ビットの量子コンピュータIBM Qを利用できるアジア地区唯一の量子コンピューティングネットワークのハブとして、量子コンピューティングの研究を推進しています。</small>",
             timing: 30000,
-            display: 2000,
-            buttonLabels: "研究",
+            displayRange: 2000,
+            buttonLabel: "研究",
           },
           {
             html: "これでリアルキャンパスツアーは終了です。",
             timing: 165000,
-            display: 3000,
-            buttonLabels: "より詳しく知りたい方は",
+            displayRange: 3000,
+            buttonLabel: "より詳しく知りたい方は",
           },
         ]}
         scrollsPerImage={scrollsPerImage}
