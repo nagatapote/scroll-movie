@@ -45,6 +45,10 @@ export const ScrollMovie: React.FC<Props> = ({
   const maxImageLength = imageSize * scrollsPerImage;
 
   useEffect(() => {
+    document.body.style.height = `${maxImageLength}px`;
+  }, []);
+
+  useEffect(() => {
     const onScroll = () => {
       setValue(scrollY);
       const imageNum = Math.floor(scrollY / scrollsPerImage);
