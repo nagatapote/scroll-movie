@@ -1,11 +1,13 @@
 import React from "react";
 
-const imageView = (props) => {
-  return (
-    <div>
-      <img src={props.image} height="100%" width="100%" />
-    </div>
-  );
-};
+type Props = {
+  image: string
+  className?: string
+}
 
-export default imageView;
+export const ImageView: React.FC<Props> = ({
+  image,
+  className,
+}) => {
+  return <img src={image} className={className} height="100%" width="100%" />;
+};

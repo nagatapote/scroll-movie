@@ -1,135 +1,71 @@
-import React, { useState, useEffect } from "react";
-import smoothscroll from "smoothscroll-polyfill";
-import ImageView from "./components/imageView";
-import TextView from "./components/textView";
-import "./style.css";
+import React, { useState, useEffect, useRef } from "react";
+import { ImageView, SliderBar, TrackView, LabelView } from "./components/index";
 
 type Props = {
-  images: string[];
-  tracks: string[];
+  imageSize: number;
+  getImage: (index: number) => string;
+  tracks: {
+    html: string;
+    timing: { start: number; end: number };
+    buttonLabel: string;
+  }[];
+  scrollsPerImage: number;
+  classNames?: { trackView: string; labelView: string; sliderBar: string };
 };
 
-const ImagesChangeScroll: React.FC<Props> = ({ images, tracks }) => {
+export const ImageChangeScroll: React.FC<Props> = ({
+  getImage,
+  imageSize,
+  tracks,
+  scrollsPerImage,
+  classNames,
+}) => {
+  const rootRef = useRef<HTMLDivElement>();
   const [image, setImage] = useState("");
-  const [track, setTrack] = useState("");
   const [value, setValue] = useState(0);
-  const [trackDisplay, setTrackDisplay] = useState(0);
-  const [trackDisplayS, setTrackDisplayS] = useState(0);
-  const [trackTop, setTrackTop] = useState(0);
-  const [trackBottom, setTrackBottom] = useState(0);
-
-  const maxImageLength = images.length * 150;
-
-  const scrollButtonNumB = maxImageLength / 5;
-  const scrollButtonNumC = (maxImageLength / 5) * 2;
-  const scrollButtonNumD = maxImageLength - (maxImageLength / 5) * 2;
-  const scrollButtonNumE = maxImageLength - maxImageLength / 5;
-
-  smoothscroll.polyfill();
-
-  const scrollButtonA = () => {
-    return scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  };
-  const scrollButtonB = () => {
-    return scrollTo({ top: scrollButtonNumB, left: 0, behavior: "smooth" });
-  };
-  const scrollButtonC = () => {
-    return scrollTo({ top: scrollButtonNumC, left: 0, behavior: "smooth" });
-  };
-  const scrollButtonD = () => {
-    return scrollTo({ top: scrollButtonNumD, left: 0, behavior: "smooth" });
-  };
-  const scrollButtonE = () => {
-    return scrollTo({ top: scrollButtonNumE, left: 0, behavior: "smooth" });
-  };
-  const scrollButtonF = () => {
-    return scrollTo({ top: maxImageLength, left: 0, behavior: "smooth" });
-  };
-
-  const handleSliderChange = (e) => {
-    setValue(e.target.value);
-    scrollTo({ top: e.target.value, left: 0, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    (document.getElementById("track") as HTMLStyleElement).style.opacity = "0";
-    (document.getElementById("track") as HTMLStyleElement).style.transform =
-      "translate(-200px, 600px)";
-    (document.getElementById("track") as HTMLStyleElement).style.transition =
-      "all 0.5s";
-  }, [trackBottom]);
-
-  useEffect(() => {
-    (document.getElementById("track") as HTMLStyleElement).style.opacity = "1";
-    (document.getElementById("track") as HTMLStyleElement).style.transform =
-      "translate(-200px, -250px)";
-    (document.getElementById("track") as HTMLStyleElement).style.transition =
-      "all 0.5s";
-  }, [trackDisplay]);
-
-  useEffect(() => {
-    (document.getElementById("track") as HTMLStyleElement).style.opacity = "1";
-    (document.getElementById("track") as HTMLStyleElement).style.transform =
-      "translate(-200px, -250px)";
-    (document.getElementById("track") as HTMLStyleElement).style.transition =
-      "all 0.5s";
-  }, [trackDisplayS]);
-
-  useEffect(() => {
-    (document.getElementById("track") as HTMLStyleElement).style.opacity = "0";
-    (document.getElementById("track") as HTMLStyleElement).style.transform =
-      "translate(-200px, -600px)";
-    (document.getElementById("track") as HTMLStyleElement).style.transition =
-      "all 0.5s";
-  }, [trackTop]);
+  const maxImageLength = imageSize * scrollsPerImage;
 
   useEffect(() => {
     const onScroll = () => {
       setValue(scrollY);
-      let imageNum = Math.floor(scrollY / 150);
-      let trackNum = Math.floor(scrollY / 10000);
-      let trackNumTop = Math.floor((scrollY - 8000) / 10000);
-      let trackNumDisplay = Math.floor((scrollY - 7000) / 10000);
-      let trackNumDisplayS = Math.floor((scrollY - 3000) / 10000);
-      let trackNumBottom = Math.floor((scrollY - 2000) / 10000);
-      const imageData = images[imageNum];
-      const trackData = tracks[trackNum];
+      const imageNum = Math.floor(scrollY / scrollsPerImage);
+      const imageData = getImage(imageNum);
       setImage(imageData);
-      setTrack(trackData);
-      setTrackDisplayS(trackNumDisplayS);
-      setTrackDisplay(trackNumDisplay);
-      setTrackTop(trackNumTop);
-      setTrackBottom(trackNumBottom);
     };
 
     document.addEventListener("scroll", onScroll);
 
     return () => document.removeEventListener("scroll", onScroll);
-  }, [image, track, trackDisplay, trackDisplayS, trackTop, trackBottom]);
+  }, [image]);
   return (
-    <div className="home">
+    <div className="home" ref={rootRef}>
       <div className="image">
         <ImageView image={image} />
-        <TextView track={track} />
-        <input
-          type="range"
-          id="sliderBar"
-          min="0"
+        {tracks.length > 0 &&
+          tracks.map((track) => (
+            <TrackView
+              className={classNames.trackView}
+              track={track.html}
+              start={track.timing.start}
+              end={track.timing.end}
+            />
+          ))}
+        <SliderBar
+          className={classNames.sliderBar}
           max={maxImageLength}
           value={value}
-          onChange={handleSliderChange}
         />
         <div className="button">
-          <input type="button" value="1" onClick={() => scrollButtonA()} />
-          <input type="button" value="2" onClick={() => scrollButtonB()} />
-          <input type="button" value="3" onClick={() => scrollButtonC()} />
-          <input type="button" value="4" onClick={() => scrollButtonD()} />
-          <input type="button" value="5" onClick={() => scrollButtonE()} />
-          <input type="button" value="6" onClick={() => scrollButtonF()} />
+          {tracks.length > 0 &&
+            tracks.map((track) => (
+              <LabelView
+                className={classNames.labelView}
+                buttonLabel={track.buttonLabel}
+                start={track.timing.start}
+              />
+            ))}
         </div>
       </div>
     </div>
   );
 };
-
-export default ImagesChangeScroll;
