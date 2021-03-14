@@ -1,4 +1,4 @@
-.scroll-moview__track-view {
+.scroll-movie__track-view {
   position: absolute;
   top: 30%;
   left: 50%;
@@ -25,7 +25,7 @@
   }
 }
 
-.scroll-moview__slider-bar {
+.scroll-movie__slider-bar {
   position: absolute;
   top: 80%;
   left: 50%;
@@ -56,6 +56,6 @@
   text-align: center;
 }
 
-.scroll-moview__label-view {
+.scroll-movie__label-view {
   width: 200px;
 }

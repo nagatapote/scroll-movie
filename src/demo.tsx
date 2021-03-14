@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import smoothscroll from "smoothscroll-polyfill";
 import { ScrollMovie } from "./ScrollMovie";
-import "./demo.css";
+import "../demo.css";
 
 smoothscroll.polyfill();
 
