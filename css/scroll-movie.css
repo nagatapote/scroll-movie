@@ -1,0 +1,65 @@
+.scroll-movie__image-view {
+  height: 100vh;
+  width: auto;
+}
+.scroll-movie__track-view {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: white;
+  animation-name: scroll-movie-fadeup;
+  animation-duration: 0.5s;
+}
+
+@keyframes scroll-movie-fadeup {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.scroll-movie__slider-bar {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  height: 6px;
+  background: white;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.scroll-movie__navigation {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.scroll-movie__label-view {
+  width: 200px;
+}

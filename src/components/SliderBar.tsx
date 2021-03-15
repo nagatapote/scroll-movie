@@ -3,10 +3,14 @@ import React from "react";
 type Props = {
   max: number;
   value: number;
-  className?: string;
+  className: string;
 };
 
-export const SliderBar: React.FC<Props> = ({ max, value, className }) => {
+export const SliderBar: React.FC<Props> = ({ 
+  max, 
+  value, 
+  className
+}) => {
   return (
     <input
       type="range"

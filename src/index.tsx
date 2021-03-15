@@ -1,0 +1,1 @@
+export { ScrollMovie } from "./ScrollMovie";

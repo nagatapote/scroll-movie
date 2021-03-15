@@ -1,5 +1,25 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { ImageView, SliderBar, TrackView, LabelView } from "./components/index";
+
+const defaultClassNames = {
+  root: "scroll-movie",
+  inner: "scroll-movie__inner",
+  trackView: "scroll-movie__track-view",
+  labelView: "scroll-movie__label-view",
+  imageView: "scroll-movie__image-view",
+  sliderBar: "scroll-movie__slider-bar",
+  navigation: "scroll-movie__navigation",
+};
+
+type ClassNames = {
+  trackView: string;
+  labelView: string;
+  imageView: string;
+  sliderBar: string;
+  root: string;
+  inner: string;
+  navigation: string;
+};
 
 type Props = {
   imageSize: number;
@@ -10,20 +30,23 @@ type Props = {
     buttonLabel: string;
   }[];
   scrollsPerImage: number;
-  classNames?: { trackView: string; labelView: string; sliderBar: string };
+  classNames?: ClassNames;
 };
 
-export const ImageChangeScroll: React.FC<Props> = ({
+export const ScrollMovie: React.FC<Props> = ({
   getImage,
   imageSize,
   tracks,
   scrollsPerImage,
-  classNames,
+  classNames = defaultClassNames,
 }) => {
-  const rootRef = useRef<HTMLDivElement>();
   const [image, setImage] = useState("");
   const [value, setValue] = useState(0);
   const maxImageLength = imageSize * scrollsPerImage;
+
+  useEffect(() => {
+    document.body.style.height = `${maxImageLength}px`;
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -38,9 +61,9 @@ export const ImageChangeScroll: React.FC<Props> = ({
     return () => document.removeEventListener("scroll", onScroll);
   }, [image]);
   return (
-    <div className="home" ref={rootRef}>
-      <div className="image">
-        <ImageView image={image} />
+    <div className={classNames.root}>
+      <div className={classNames.inner}>
+        <ImageView image={image} className={classNames.imageView} />
         {tracks.length > 0 &&
           tracks.map((track) => (
             <TrackView
@@ -55,7 +78,7 @@ export const ImageChangeScroll: React.FC<Props> = ({
           max={maxImageLength}
           value={value}
         />
-        <div className="button">
+        <div className={classNames.navigation}>
           {tracks.length > 0 &&
             tracks.map((track) => (
               <LabelView

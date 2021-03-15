@@ -3,7 +3,7 @@ import React, { useCallback } from "react";
 type Props = {
   buttonLabel?: string;
   start: number;
-  className?: string;
+  className;
 };
 
 export const LabelView: React.FC<Props> = ({
