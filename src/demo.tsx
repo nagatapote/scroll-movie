@@ -37,6 +37,7 @@ export const Demo = () => {
               end: 2000,
             },
             buttonLabel: "研究",
+            animation: "fadeIn",
           },
           {
             html: "これでリアルキャンパスツアーは終了です。",
