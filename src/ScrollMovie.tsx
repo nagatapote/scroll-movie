@@ -45,10 +45,6 @@ export const ScrollMovie: React.FC<Props> = ({
   const maxImageLength = imageSize * scrollsPerImage;
 
   useEffect(() => {
-    document.body.style.height = `${maxImageLength}px`;
-  }, []);
-
-  useEffect(() => {
     const onScroll = () => {
       setValue(scrollY);
       const imageNum = Math.floor(scrollY / scrollsPerImage);
@@ -61,7 +57,7 @@ export const ScrollMovie: React.FC<Props> = ({
     return () => document.removeEventListener("scroll", onScroll);
   }, [image]);
   return (
-    <div className={classNames.root}>
+    <div className={classNames.root} style={{ height: maxImageLength }}>
       <div className={classNames.inner}>
         <ImageView image={image} className={classNames.imageView} />
         {tracks.length > 0 &&
