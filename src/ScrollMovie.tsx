@@ -4,7 +4,8 @@ import { ImageView, SliderBar, TrackView, LabelView } from "./components/index";
 const defaultClassNames = {
   root: "scroll-movie",
   inner: "scroll-movie__inner",
-  trackView: "scroll-movie__track-view",
+  trackViewStart: "scroll-movie__track-view_start",
+  trackViewEnd: "scroll-movie__track-view_end",
   labelView: "scroll-movie__label-view",
   imageView: "scroll-movie__image-view",
   sliderBar: "scroll-movie__slider-bar",
@@ -12,7 +13,8 @@ const defaultClassNames = {
 };
 
 type ClassNames = {
-  trackView: string;
+  trackViewStart: string;
+  trackViewEnd: string;
   labelView: string;
   imageView: string;
   sliderBar: string;
@@ -27,7 +29,7 @@ type Props = {
   tracks: {
     html: string;
     timing: { start: number; end: number };
-    buttonLabel: string;
+    buttonLabel?: string;
   }[];
   scrollsPerImage: number;
   classNames?: ClassNames;
@@ -63,7 +65,7 @@ export const ScrollMovie: React.FC<Props> = ({
         {tracks.length > 0 &&
           tracks.map((track) => (
             <TrackView
-              className={classNames.trackView}
+              className={classNames}
               track={track.html}
               start={track.timing.start}
               end={track.timing.end}

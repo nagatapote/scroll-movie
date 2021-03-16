@@ -22,7 +22,6 @@ export const Demo = () => {
           {
             html: "<h1>リアルキャンパスツアーへようこそ！！</h1>",
             timing: { start: 100, end: 1000 },
-            buttonLabel: "キャンパスツアートップ",
           },
           {
             html:
