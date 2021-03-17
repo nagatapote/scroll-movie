@@ -6,16 +6,12 @@ type Props = {
   className: string;
 };
 
-export const SliderBar: React.FC<Props> = ({ 
-  max, 
-  value, 
-  className
-}) => {
+export const SliderBar: React.FC<Props> = ({ max, value, className }) => {
   return (
     <input
       type="range"
-      disabled={true}
       className={className}
+      disabled={true}
       min={0}
       max={max}
       value={value}

@@ -8,41 +8,61 @@ smoothscroll.polyfill();
 
 export const Demo = () => {
   //imageの表示間隔(値が小さいほど、間隔が速い。)
-  const scrollsPerImage = 150; //
+  const scrollsPerImage = 60; //
+
+  //timing数値のMAXは、scrollsPerImage * imageSizeがMAX
+
+  /*トップにhtmlを表示させる場合、フェードインアニメーションをつけなければアクセス時に表示される。
+    animation: {
+                start: "notFadeInStart",
+                end: "scroll-movie__track-view_end",
+               },
+  */
 
   return (
     <div>
       <ScrollMovie
         getImage={(index) => {
-          const pad = `${index}`.padStart(4, "0");
-          return `https://ct.st.keio.ac.jp/wordpress/wp-content/themes/ko-campus/assets/movie_images/movie${pad}.jpg`;
+          const pad = `${index}`.padStart(3, "0");
+          return `images/image_${pad}.jpg`;
         }}
-        imageSize={1126}
+        imageSize={758}
         tracks={[
           {
-            html: "<h1>リアルキャンパスツアーへようこそ！！</h1>",
-            timing: { start: 100, end: 1000 },
+            html: "<h1>ドローンで撮影した映像です。</h1>",
+            timing: { start: 0, end: 1000 },
+            buttonLabel: "トップ",
+            animation: {
+              start: "notFadeInStart",
+              end: "scroll-movie__track-view_end",
+            },
           },
           {
-            html:
-              "理工学部では、第3学年から学生生活の拠点が矢上キャンパスへと移ります。学科専門科目の履修が始まるとともに、第4学年からは研究室に所属して教員の指導のもと、研究活動に取り組みます。",
+            html: "とてもきれいな風景で癒やされます。",
             timing: { start: 10000, end: 3000 },
-            buttonLabel: "学習",
+            buttonLabel: "風景",
+          },
+          {
+            html: "海の波がとてもきれい。",
+            timing: {
+              start: 20000,
+              end: 2000,
+            },
           },
           {
             html:
-              "<h1>IBM Q Network Hub @ Keio University</h1><br /><small>量子コンピュータは、最適化問題や材料探索などの実社会問題を現行器をはるかに超えるスピードで解けると期待される夢の技術です。慶應義塾大学では、20量子ビットの量子コンピュータIBM Qを利用できるアジア地区唯一の量子コンピューティングネットワークのハブとして、量子コンピューティングの研究を推進しています。</small>",
+              "<h1>ドローン操縦</h1><br /><small>ドローン操縦してみたい。</small>",
             timing: {
               start: 30000,
               end: 2000,
             },
-            buttonLabel: "研究",
-            animation: "fadeIn",
+            buttonLabel: "感想",
+            animation: { start: "notFadeInStart", end: "notFadeInEnd" },
           },
           {
-            html: "これでリアルキャンパスツアーは終了です。",
+            html: "これで風景映像は終了です。",
             timing: {
-              start: 165000,
+              start: 45000,
               end: 3000,
             },
             buttonLabel: "より詳しく知りたい方は",

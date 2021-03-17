@@ -4,7 +4,6 @@ import { ImageView, SliderBar, TrackView, LabelView } from "./components/index";
 const defaultClassNames = {
   root: "scroll-movie",
   inner: "scroll-movie__inner",
-  trackView: "scroll-movie__track-view",
   trackViewStart: "scroll-movie__track-view_start",
   trackViewEnd: "scroll-movie__track-view_end",
   labelView: "scroll-movie__label-view",
@@ -14,7 +13,6 @@ const defaultClassNames = {
 };
 
 type ClassNames = {
-  trackView: string;
   trackViewStart: string;
   trackViewEnd: string;
   labelView: string;
@@ -32,7 +30,7 @@ type Props = {
     html: string;
     timing: { start: number; end: number };
     buttonLabel?: string;
-    animation?: string;
+    animation?: { start: string; end: string };
   }[];
   scrollsPerImage: number;
   classNames?: ClassNames;
@@ -45,14 +43,20 @@ export const ScrollMovie: React.FC<Props> = ({
   scrollsPerImage,
   classNames = defaultClassNames,
 }) => {
-  const [image, setImage] = useState("");
+  const imageStartData = getImage(0);
+  const [image, setImage] = useState(imageStartData);
   const [value, setValue] = useState(0);
-  const maxImageLength = imageSize * scrollsPerImage;
+  const browserHeight = document.documentElement.clientHeight;
+  const maxImageLength = imageSize * scrollsPerImage + browserHeight;
+
+  useEffect(() => {
+    setTimeout(() => scrollTo({ top: 0, left: 0 }), 50);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
       setValue(scrollY);
-      const imageNum = Math.floor(scrollY / scrollsPerImage);
+      const imageNum = Math.trunc(scrollY / scrollsPerImage);
       const imageData = getImage(imageNum);
       setImage(imageData);
     };
@@ -62,7 +66,7 @@ export const ScrollMovie: React.FC<Props> = ({
     return () => document.removeEventListener("scroll", onScroll);
   }, [image]);
   return (
-    <div className={classNames.root} style={{ height: maxImageLength }}>
+    <div className={classNames.root} style={{ height: `${maxImageLength}px` }}>
       <div className={classNames.inner}>
         <ImageView image={image} className={classNames.imageView} />
         {tracks.length > 0 &&
@@ -75,11 +79,13 @@ export const ScrollMovie: React.FC<Props> = ({
               animation={track.animation}
             />
           ))}
+
         <SliderBar
           className={classNames.sliderBar}
           max={maxImageLength}
           value={value}
         />
+
         <div className={classNames.navigation}>
           {tracks.length > 0 &&
             tracks.map((track) => (

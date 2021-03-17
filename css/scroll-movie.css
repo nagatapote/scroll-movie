@@ -1,9 +1,19 @@
+html,
+body,
+.scroll-movie {
+  overflow: scroll;
+}
+
+.scroll-movie__inner {
+  position: fixed;
+}
+
 .scroll-movie__image-view {
   height: 100vh;
   width: auto;
 }
 
-.scroll-movie__track-view {
+.notFadeInStart {
   position: absolute;
   top: 30%;
   left: 50%;
@@ -15,6 +25,22 @@
   font-weight: bold;
   font-size: 1.5em;
   color: white;
+  opacity: 1;
+}
+
+.notFadeInEnd {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: white;
+  opacity: 0;
 }
 
 .scroll-movie__track-view_start {
@@ -75,6 +101,7 @@
 
 .scroll-movie__slider-bar {
   position: absolute;
+
   top: 80%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);

@@ -1,9 +1,2 @@
-html,
-body,
-.scroll-movie {
-  overflow: scroll;
-}
 
-.scroll-movie__inner {
-  position: fixed;
-}
+
