@@ -10,41 +10,53 @@ $ npm install scroll-movie --save
 
 ```tsx
 <ScrollMovie
-  getImage={(index) => {
-    const pad = `${index}`.padStart(4, "0");
-    return `https://ct.st.keio.ac.jp/wordpress/wp-content/themes/ko-campus/assets/movie_images/movie${pad}.jpg`;
-  }}
-  imageSize={1126}
-  tracks={[
-    {
-      html: "<h1>リアルキャンパスツアーへようこそ！！</h1>",
-      timing: { start: 100, end: 1000 },
-      buttonLabel: "キャンパスツアートップ",
-    },
-    {
-      html:
-        "理工学部では、第3学年から学生生活の拠点が矢上キャンパスへと移ります。学科専門科目の履修が始まるとともに、第4学年からは研究室に所属して教員の指導のもと、研究活動に取り組みます。",
-      timing: { start: 10000, end: 3000 },
-      buttonLabel: "学習",
-    },
-    {
-      html:
-        "<h1>IBM Q Network Hub @ Keio University</h1><br /><small>量子コンピュータは、最適化問題や材料探索などの実社会問題を現行器をはるかに超えるスピードで解けると期待される夢の技術です。慶應義塾大学では、20量子ビットの量子コンピュータIBM Qを利用できるアジア地区唯一の量子コンピューティングネットワークのハブとして、量子コンピューティングの研究を推進しています。</small>",
-      timing: {
-        start: 30000,
-        end: 2000,
-      },
-      buttonLabel: "研究",
-    },
-    {
-      html: "これでリアルキャンパスツアーは終了です。",
-      timing: {
-        start: 165000,
-        end: 3000,
-      },
-      buttonLabel: "より詳しく知りたい方は",
-    },
-  ]}
-  scrollsPerImage={scrollsPerImage}
-/>
+        getImage={(index) => {
+          const pad = `${index}`.padStart(3, "0");
+          return `images/image_${pad}.jpg`;
+        }}
+        imageSize={758}
+        scrollsPerImage={scrollsPerImage}
+        tracks={[
+          {
+            html:
+              "<U><h1>Scroll-movie Description</h1></U><br /><small>If you scroll, the background and display characters will change.</small>",
+            timing: { start: 0, end: 2000 },
+            buttonLabel: "TOP",
+            animation: {
+              start: "notFadeInStart",
+              end: "scroll-movie__track-view_end",
+            },
+          },
+          {
+            html:
+              "<font color='red'><h1>html</h1></font><br/><b>It can be expressed freely in html.</b><br /><br /><U>It can be expressed freely in html.</U><br /><br /><S>It can be expressed freely in html.</S>",
+            timing: { start: 10000, end: 3000 },
+            buttonLabel: "html",
+          },
+          {
+            html: "You can also leave out the label.",
+            timing: {
+              start: 20000,
+              end: 3000,
+            },
+          },
+          {
+            html:
+              "<h1>animation</h1><br />The start and end strings for animation are className, so you can freely specify css in that string.<br />Here we have no fade-in and no fade-out.",
+            timing: {
+              start: 30000,
+              end: 3000,
+            },
+            buttonLabel: "animation",
+            animation: { start: "notFadeInStart", end: "notFadeInEnd" },
+          },
+          {
+            html: "That's it. Please try it.",
+            timing: {
+              start: 45000,
+              end: 1000,
+            },
+            buttonLabel: "END",
+          },
+        ]}
 ```

@@ -2,17 +2,17 @@ import React from "react";
 import { render } from "react-dom";
 import smoothscroll from "smoothscroll-polyfill";
 import { ScrollMovie } from "./ScrollMovie";
-import "../demo.css";
 
 smoothscroll.polyfill();
 
 export const Demo = () => {
-  //imageの表示間隔(値が小さいほど、間隔が速い。)
+  //image displayinterval (The smaller the value, the narrower the spacing.)
   const scrollsPerImage = 60; //
 
-  //timing数値のMAXは、scrollsPerImage * imageSizeがMAX
+  //MAX in timing (number) is equivalent to scrollsPerImage * imageSize
 
-  /*トップにhtmlを表示させる場合、フェードインアニメーションをつけなければアクセス時に表示される。
+  /*When html is displayed on the top (0, 0) in the first access, css without fade-in animation must be set.
+   The notFadeInStart below is css with no fade-in.
     animation: {
                 start: "notFadeInStart",
                 end: "scroll-movie__track-view_end",
@@ -27,48 +27,50 @@ export const Demo = () => {
           return `images/image_${pad}.jpg`;
         }}
         imageSize={758}
+        scrollsPerImage={scrollsPerImage}
         tracks={[
           {
-            html: "<h1>ドローンで撮影した映像です。</h1>",
-            timing: { start: 0, end: 1000 },
-            buttonLabel: "トップ",
+            html:
+              "<U><h1>Scroll-movie Description</h1></U><br /><small>If you scroll, the background and display characters will change.</small>",
+            timing: { start: 0, end: 2000 },
+            buttonLabel: "TOP",
             animation: {
               start: "notFadeInStart",
               end: "scroll-movie__track-view_end",
             },
           },
           {
-            html: "とてもきれいな風景で癒やされます。",
+            html:
+              "<font color='red'><h1>html</h1></font><br/><b>It can be expressed freely in html.</b><br /><br /><U>It can be expressed freely in html.</U><br /><br /><S>It can be expressed freely in html.</S>",
             timing: { start: 10000, end: 3000 },
-            buttonLabel: "風景",
+            buttonLabel: "html",
           },
           {
-            html: "海の波がとてもきれい。",
+            html: "You can also leave out the label.",
             timing: {
               start: 20000,
-              end: 2000,
+              end: 3000,
             },
           },
           {
             html:
-              "<h1>ドローン操縦</h1><br /><small>ドローン操縦してみたい。</small>",
+              "<h1>animation</h1><br />The start and end strings for animation are className, so you can freely specify css in that string.<br />Here we have no fade-in and no fade-out.",
             timing: {
               start: 30000,
-              end: 2000,
+              end: 3000,
             },
-            buttonLabel: "感想",
+            buttonLabel: "animation",
             animation: { start: "notFadeInStart", end: "notFadeInEnd" },
           },
           {
-            html: "これで風景映像は終了です。",
+            html: "That's it. Please try it.",
             timing: {
               start: 45000,
-              end: 3000,
+              end: 1000,
             },
-            buttonLabel: "より詳しく知りたい方は",
+            buttonLabel: "END",
           },
         ]}
-        scrollsPerImage={scrollsPerImage}
       />
     </div>
   );
