@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { ImageView, SliderBar, TrackView, LabelView } from "./components/index";
 
 const defaultClassNames = {
@@ -25,7 +25,7 @@ type ClassNames = {
   imageView: string;
   sliderBar: string;
   sliderBarInner: string;
-  sliderBarTrack: string;
+  sliderBarThumb: string;
   root: string;
   inner: string;
   navigation: string;
@@ -36,7 +36,7 @@ type Track = {
   timing: { start: number; end: number };
   buttonLabel?: string;
   animation?: { start: string; end: string };
-}
+};
 
 export type ScrollMovieProps = {
   imageSize: number;
@@ -73,15 +73,15 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
       setImage(imageData);
 
       // 現在activeなindexを計算
-      const index = [...tracks].reverse().findIndex(t => {
-        const { buttonLabel, timing } = t
-        const { start } = timing
+      const index = [...tracks].reverse().findIndex((t) => {
+        const { buttonLabel, timing } = t;
+        const { start } = timing;
         if (buttonLabel && window.scrollY >= start) {
-          return true
+          return true;
         }
-        return false
-      })
-      const active = tracks.length - index - 1
+        return false;
+      });
+      const active = tracks.length - index - 1;
       setActiveIndex(active);
     };
 
