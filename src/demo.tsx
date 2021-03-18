@@ -65,7 +65,7 @@ export const Demo = () => {
           {
             html: "That's it. Please try it.",
             timing: {
-              start: 45000,
+              start: 45480,
               end: 1000,
             },
             buttonLabel: "END",

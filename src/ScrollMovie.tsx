@@ -48,6 +48,7 @@ export const ScrollMovie: React.FC<Props> = ({
   const [value, setValue] = useState(0);
   const browserHeight = document.documentElement.clientHeight;
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
+  const maxSliderBar = imageSize * scrollsPerImage;
 
   useEffect(() => {
     setTimeout(() => scrollTo({ top: 0, left: 0 }), 50);
@@ -82,7 +83,7 @@ export const ScrollMovie: React.FC<Props> = ({
 
         <SliderBar
           className={classNames.sliderBar}
-          max={maxImageLength}
+          max={maxSliderBar}
           value={value}
         />
 

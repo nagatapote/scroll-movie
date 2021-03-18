@@ -1,5 +1,8 @@
 html,
-body,
+body {
+  display: flex;
+}
+
 .scroll-movie {
   overflow: scroll;
 }
@@ -101,7 +104,6 @@ body,
 
 .scroll-movie__slider-bar {
   position: absolute;
-
   top: 80%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
@@ -116,6 +118,16 @@ body,
   background: white;
   border-radius: 10px;
   width: 60%;
+  overflow: hidden;
+}
+
+::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  box-shadow: -100vw 0 0 100vw yellow;
+  border: 2px solid #999;
 }
 
 .scroll-movie__navigation {
