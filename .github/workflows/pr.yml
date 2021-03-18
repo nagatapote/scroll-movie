@@ -1,0 +1,47 @@
+name: PR
+env:
+  CI: true
+# preview環境更新および、stage環境やproduction環境の更新を行うworkflow
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+    types:
+      - opened
+      - synchronize
+      - closed
+      - labeled
+      - unlabeled
+    tags:
+      - "!*"
+jobs:
+  release:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: check label
+        if: |
+          github.event_name == 'pull_request' && 
+          !contains(github.event.pull_request.labels.*.name, 'fix') && 
+          !contains(github.event.pull_request.labels.*.name, 'bugfix')  && 
+          !contains(github.event.pull_request.labels.*.name, 'enhancement')  && 
+          !contains(github.event.pull_request.labels.*.name, 'chore')  && 
+          !contains(github.event.pull_request.labels.*.name, 'feature')  && 
+          !contains(github.event.pull_request.labels.*.name, 'release') &&
+          !contains(github.event.pull_request.labels.*.name, 'auto')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.comments_url }}
+        run: |
+          echo "Please add one of the following labels: fix, bugfix, enhancement, chore, feature, release" >> comments
+          sed -i -z 's/\n/\\n/g' comments
+          curl -X POST \
+              -H "Authorization: token ${GITHUB_TOKEN}" \
+              -d "{\"body\": \"$(cat comments)\"}" \
+              ${URL}
+          exit 1

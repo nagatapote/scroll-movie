@@ -1,0 +1,26 @@
+name: Version Check
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  auto-bumping:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v1
+    - name: setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+        registry-url: 'https://npm.pkg.github.com'
+    - name: install
+      run: yarn --frozen-lockfile
+    - name: version check
+      run: BRANCH_NAME=$HEAD_BRANCH node ./utility/version-check.js
+      env:
+        HEAD_BRANCH: ${{ github.head_ref }}
