@@ -1,10 +1,8 @@
 html,
-body {
-  display: flex;
-}
-
+body,
 .scroll-movie {
   overflow: scroll;
+  display: flex;
 }
 
 .scroll-movie__inner {
