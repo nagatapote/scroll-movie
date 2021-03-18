@@ -1,89 +1,48 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+
+type ClassName = {
+  trackViewStart: string;
+  trackViewEnd: string;
+  trackView: string;
+}
 
 type Props = {
+  pos: number;
   track: string;
   animation?: { start: string; end: string };
   start: number;
   end: number;
-  className: {
-    trackViewStart: string;
-    trackViewEnd: string;
-  };
+  classes: ClassName;
 };
+
+const getClassNameFromStatus = (
+  status: number, 
+  classes: ClassName, 
+  animation: { start: string; end: string }
+) => {
+  if (status === 0) {
+    return ''
+  } else if (status === 1) {
+    return animation?.start ?? classes.trackViewStart
+  }
+  return animation?.end ?? classes.trackViewEnd
+}
 
 export const TrackView: React.FC<Props> = ({
   track,
+  pos,
   animation,
   start,
   end,
-  className,
+  classes,
 }) => {
-  const [flag, setFlag] = useState(0);
+  const currentStatus = pos < start ? 0 : start <= pos && pos <= end ? 1 : 2;
+  const className = getClassNameFromStatus(currentStatus, classes, animation)
 
-  useEffect(() => {
-    const onFlag = () => {
-      if (scrollY >= start) {
-        setFlag(1);
-      }
-    };
-    document.addEventListener("scroll", onFlag);
-
-    return () => document.removeEventListener("scroll", onFlag);
-  }, []);
   return (
-    <>
-      {flag === 0 &&
-        animation &&
-        start <= scrollY &&
-        scrollY <= start + end && (
-          <span
-            className={animation.start}
-            dangerouslySetInnerHTML={{ __html: track }}
-          />
-        )}
-      {flag === 0 &&
-        animation &&
-        (scrollY > start + end || scrollY < start) && (
-          <span
-            className={animation.end}
-            dangerouslySetInnerHTML={{ __html: track }}
-          />
-        )}
-      {flag === 1 &&
-        animation &&
-        start <= scrollY &&
-        scrollY <= start + end && (
-          <span
-            className={animation.start}
-            dangerouslySetInnerHTML={{ __html: track }}
-          />
-        )}
-      {flag === 1 &&
-        animation &&
-        (scrollY > start + end || scrollY < start) && (
-          <span
-            className={animation.end}
-            dangerouslySetInnerHTML={{ __html: track }}
-          />
-        )}
-
-      {flag === 1 &&
-        !animation &&
-        start <= scrollY &&
-        scrollY <= start + end && (
-          <span
-            className={className.trackViewStart}
-            dangerouslySetInnerHTML={{ __html: track }}
-          />
-        )}
-      {flag === 1 &&
-        !animation &&
-        (scrollY > start + end || scrollY < start) && (
-          <span
-            className={className.trackViewEnd}
-            dangerouslySetInnerHTML={{ __html: track }}
-          />
-        )}
-    </>
+    <span
+      className={`${classes.trackView}${className ? ` ${className}` : ''}`}
+      dangerouslySetInnerHTML={{ __html: track }}
+    />
   );
 };

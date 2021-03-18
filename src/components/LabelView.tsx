@@ -1,40 +1,38 @@
 import React, { useState, useEffect, useCallback } from "react";
+import clsx from "clsx";
 
 type Props = {
-  buttonLabel?: { text: string; backColor: string };
-  start: number;
-  end: number;
-  className: string;
+  buttonLabel?: string;
+  active: boolean;
+  classes: {
+    label: string;
+    active: string;
+  }
+  timing: {
+    start: number;
+    end: number;
+  }
 };
 
 export const LabelView: React.FC<Props> = ({
   buttonLabel,
-  className,
-  start,
-  end,
+  classes,
+  active,
+  timing,
 }) => {
   const handleClick = useCallback(() => {
-    return scrollTo({ top: start, left: 0, behavior: "smooth" });
-  }, []);
-
-  const [color, setColor] = useState("");
-
-  useEffect(() => {
-    if (buttonLabel && scrollY >= start && scrollY <= start + end) {
-      setColor(`${buttonLabel.backColor}`);
-    } else {
-      setColor("");
-    }
-  });
+    return scrollTo({ top: timing.start, left: 0, behavior: "smooth" });
+  }, [timing]);
 
   return (
     <>
       {buttonLabel && (
         <input
           type="button"
-          style={{ backgroundColor: `${color}` }}
-          className={className}
-          value={buttonLabel.text}
+          className={clsx(classes.label, {
+            [classes.active]: active,
+          })}
+          value={buttonLabel}
           onClick={handleClick}
         />
       )}
