@@ -1,6 +1,5 @@
 .scroll-movie {
   overflow: scroll;
-  display: flex;
 }
 
 .scroll-movie__inner {
@@ -18,7 +17,7 @@
   left: 50%;
   transform: translate(-50%, 100%);
   opacity: 0;
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
   margin: 0;
   padding: 0;
   font-weight: bold;
@@ -45,7 +44,6 @@
   padding: 0;
   -webkit-appearance: none;
   outline: none;
-  cursor: pointer;
   height: 6px;
   background: white;
   border-radius: 10px;
@@ -58,10 +56,9 @@
   height: 6px;
 }
 
-.scroll-movie__slider-bar-track {
+.scroll-movie__slider-bar-thumb {
   height: 10px;
   width: 10px;
-  border-radius: 50%;
   background-color: #fc0;
   position: absolute;
   top: 0;
@@ -71,8 +68,6 @@
   position: absolute;
   top: 90%;
   left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   color: white;
   width: 100%;
@@ -86,12 +81,13 @@
   width: 200px;
   padding: 15px;
   border: none;
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
 }
 
 .scroll-movie__label-view-active {
   background-color: #fc0;
-  color: #FFF;
+  color: #fff;
 }
 
 .scroll-movie__label-view:last-child {

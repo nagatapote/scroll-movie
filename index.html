@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ScrollMovie</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
     <link rel="stylesheet" href="./css/scroll-movie.css" />
     <link rel="stylesheet" href="./demo.css" />
   </head>
@@ -17,22 +20,18 @@
         {
           html:
             "<U><h1>ScrollMovie.js</h1></U><br /><small>If you scroll, the background and display characters will change.</small>",
-          timing: { 
-            start: 0, 
-            end: 2000 
+          timing: {
+            start: 0,
+            end: 2000,
           },
           buttonLabel: "TOP",
-          animation: {
-            start: "notFadeInStart",
-            end: "scroll-movie__track-view_end",
-          },
         },
         {
           html:
             "<font color='red'><h1>html</h1></font><br/><b>It can be expressed freely in html.</b><br /><br /><U>It can be expressed freely in html.</U><br /><br /><S>It can be expressed freely in html.</S>",
-          timing: { 
-            start: 10000, 
-            end: 13000 
+          timing: {
+            start: 10000,
+            end: 13000,
           },
           buttonLabel: "html",
         },
@@ -51,9 +50,9 @@
             end: 33000,
           },
           buttonLabel: "animation",
-          animation: { 
-            start: "notFadeInStart", 
-            end: "notFadeInEnd" 
+          animation: {
+            start: "originalCssStart",
+            end: "originalCssEnd",
           },
         },
         {
@@ -64,7 +63,7 @@
           },
           buttonLabel: "END",
         },
-      ]
+      ];
       ScrollMovie("#app", {
         getImage: (index) => {
           const pad = `${index}`.padStart(3, "0");
@@ -72,8 +71,8 @@
         },
         imageSize: 758,
         scrollsPerImage: 60,
-        tracks: tracks
-      })
+        tracks: tracks,
+      });
     </script>
   </body>
 </html>

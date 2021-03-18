@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useCallback } from "react";
 import clsx from "clsx";
 
 type Props = {
@@ -7,11 +7,11 @@ type Props = {
   classes: {
     label: string;
     active: string;
-  }
+  };
   timing: {
     start: number;
     end: number;
-  }
+  };
 };
 
 export const LabelView: React.FC<Props> = ({
