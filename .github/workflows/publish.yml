@@ -47,6 +47,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: build lib
         run: npm run tsc
+      - name: build dist
+        run: npm run build
       - name: publish to npm
         run: npm publish
         env:
