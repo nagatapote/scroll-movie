@@ -1,26 +1,37 @@
-import React, { useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import clsx from "clsx";
 
 type Props = {
   buttonLabel?: string;
-  start: number;
-  className;
+  active: boolean;
+  classes: {
+    label: string;
+    active: string;
+  }
+  timing: {
+    start: number;
+    end: number;
+  }
 };
 
 export const LabelView: React.FC<Props> = ({
   buttonLabel,
-  className,
-  start,
+  classes,
+  active,
+  timing,
 }) => {
   const handleClick = useCallback(() => {
-    return scrollTo({ top: start, left: 0, behavior: "smooth" });
-  }, []);
+    return scrollTo({ top: timing.start, left: 0, behavior: "smooth" });
+  }, [timing]);
 
   return (
     <>
       {buttonLabel && (
         <input
           type="button"
-          className={className}
+          className={clsx(classes.label, {
+            [classes.active]: active,
+          })}
           value={buttonLabel}
           onClick={handleClick}
         />
