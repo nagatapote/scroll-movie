@@ -33,7 +33,7 @@ export const Demo = () => {
             html:
               "<U><h1>Scroll-movie Description</h1></U><br /><small>If you scroll, the background and display characters will change.</small>",
             timing: { start: 0, end: 2000 },
-            buttonLabel: "TOP",
+            buttonLabel: { text: "TOP", backColor: "yellow" },
             animation: {
               start: "notFadeInStart",
               end: "scroll-movie__track-view_end",
@@ -43,7 +43,7 @@ export const Demo = () => {
             html:
               "<font color='red'><h1>html</h1></font><br/><b>It can be expressed freely in html.</b><br /><br /><U>It can be expressed freely in html.</U><br /><br /><S>It can be expressed freely in html.</S>",
             timing: { start: 10000, end: 3000 },
-            buttonLabel: "html",
+            buttonLabel: { text: "html", backColor: "yellow" },
           },
           {
             html: "You can also leave out the label.",
@@ -59,7 +59,7 @@ export const Demo = () => {
               start: 30000,
               end: 3000,
             },
-            buttonLabel: "animation",
+            buttonLabel: { text: "animation", backColor: "yellow" },
             animation: { start: "notFadeInStart", end: "notFadeInEnd" },
           },
           {
@@ -68,7 +68,7 @@ export const Demo = () => {
               start: 45480,
               end: 1000,
             },
-            buttonLabel: "END",
+            buttonLabel: { text: "END", backColor: "yellow" },
           },
         ]}
       />

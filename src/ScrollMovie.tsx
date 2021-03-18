@@ -29,7 +29,7 @@ type Props = {
   tracks: {
     html: string;
     timing: { start: number; end: number };
-    buttonLabel?: string;
+    buttonLabel?: { text: string; backColor: string };
     animation?: { start: string; end: string };
   }[];
   scrollsPerImage: number;
@@ -94,6 +94,7 @@ export const ScrollMovie: React.FC<Props> = ({
                 className={classNames.labelView}
                 buttonLabel={track.buttonLabel}
                 start={track.timing.start}
+                end={track.timing.end}
               />
             ))}
         </div>
