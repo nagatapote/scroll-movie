@@ -6,7 +6,7 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild ./src/demo.tsx --platform=browser --target=chrome58,firefox57,safari11,edge16 --outdir=dist --minify --bundle '--define:process.env.NODE_ENV=\"production\"'",
+    "build": "webpack --mode production",
     "build:lib": "rm -rf ./lib && tsc"
   },
   "keywords": [],
@@ -16,11 +16,20 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "esbuild": "^0.8.46",
-    "typescript": "^4.1.5"
-  },
-  "dependencies": {
+    "preact": "^10.5.13",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "ts-loader": "^8.0.18",
+    "typescript": "^4.1.5",
+    "webpack": "^5.26.3",
+    "webpack-cli": "^4.5.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
     "smoothscroll-polyfill": "^0.4.4"
   }
 }
