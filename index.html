@@ -19,34 +19,44 @@
       const tracks = [
         {
           html:
-            "<U><h1>ScrollMovie.js</h1></U><br /><small>If you scroll, the background and display characters will change.</small>",
+            "<h1>ScrollMovie.js</h1><br />If you scroll, the background and display characters will change.",
           timing: {
             start: 0,
-            end: 2000,
+            end: 5000,
           },
-          buttonLabel: "TOP",
+          buttonLabel: "top",
         },
         {
           html:
-            "<font color='red'><h1>html</h1></font><br/><b>It can be expressed freely in html.</b><br /><br /><U>It can be expressed freely in html.</U><br /><br /><S>It can be expressed freely in html.</S>",
+            "<h1>Installation</h1><br />React<br /><br />$ npm i scroll-movie<br /><br />&lt;ScrollMovie getImage={images} imageSize={758} scrollsPerImage={60} tracks={tracks} /&gt;<br /><br />Vanilla<br /><br />ScrollMovie(&quot;#app&quot;,{ getImage: images,imageSize: 758,scrollsPerImage: 60,tracks: tracks,});",
           timing: {
-            start: 10000,
-            end: 13000,
+            start: 7000,
+            end: 12000,
+          },
+          buttonLabel: "installation",
+        },
+
+        {
+          html:
+            "<h1>html</h1><br/><b>It can be expressed freely in html.</b><br /><br /><i>It can be expressed freely in html.</i><br /><br /><S>It can be expressed freely in html.</S>",
+          timing: {
+            start: 14000,
+            end: 19000,
           },
           buttonLabel: "html",
         },
         {
-          html: "You can also leave out the label.",
+          html: "<h1>Not Label</h1>You can do it without a label.",
           timing: {
-            start: 20000,
-            end: 23000,
+            start: 21000,
+            end: 26000,
           },
         },
         {
           html:
-            "<h1>animation</h1><br />The start and end strings for animation are className, so you can freely specify css in that string.<br />Here we have no fade-in and no fade-out.",
+            "<h1>animation</h1><br />Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.",
           timing: {
-            start: 30000,
+            start: 28000,
             end: 33000,
           },
           buttonLabel: "animation",
@@ -56,12 +66,21 @@
           },
         },
         {
-          html: "That's it. Please try it.",
+          html:
+            "<h1>Convert video to image</h1><br/>$ brew install ffmpeg<br /><br />$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg",
           timing: {
-            start: 44480,
+            start: 35000,
+            end: 40000,
+          },
+          buttonLabel: "image",
+        },
+        {
+          html: "<h1>Thank you</h1><br/>That's it. Please try it.",
+          timing: {
+            start: 42000,
             end: 45480,
           },
-          buttonLabel: "END",
+          buttonLabel: "end",
         },
       ];
       ScrollMovie("#app", {
