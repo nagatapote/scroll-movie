@@ -6,6 +6,7 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
     "build": "webpack --mode production",
     "build:lib": "rm -rf ./lib && tsc"
   },
