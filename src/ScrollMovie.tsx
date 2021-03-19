@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ImageView, SliderBar, TrackView, LabelView } from "./components/index";
+import smoothscroll from "smoothscroll-polyfill";
+
+smoothscroll.polyfill();
 
 const defaultClassNames = {
   root: "scroll-movie",
