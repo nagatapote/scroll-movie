@@ -37,7 +37,7 @@
 
 .scroll-movie__slider-bar {
   position: absolute;
-  top: 80%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
@@ -47,8 +47,6 @@
   height: 6px;
   background: white;
   border-radius: 10px;
-  width: 60%;
-  overflow: hidden;
 }
 
 .scroll-movie__slider-bar-inner {
@@ -62,6 +60,14 @@
   background-color: #fc0;
   position: absolute;
   top: 0;
+}
+
+.scroll-movie__slider-bar-label {
+  position: absolute;
+  top: 78%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
 }
 
 .scroll-movie__navigation {
