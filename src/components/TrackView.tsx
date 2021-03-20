@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import hljs from "highlight.js/lib/core";
+import xml from "highlight.js/lib/languages/xml";
+import javascript from "highlight.js/lib/languages/javascript";
+
+hljs.registerLanguage("xml", xml);
+hljs.registerLanguage("javascript", javascript);
 
 type ClassName = {
   trackViewStart: string;
   trackViewEnd: string;
   trackView: string;
-}
+};
 
 type Props = {
   pos: number;
@@ -16,17 +22,17 @@ type Props = {
 };
 
 const getClassNameFromStatus = (
-  status: number, 
-  classes: ClassName, 
+  status: number,
+  classes: ClassName,
   animation: { start: string; end: string }
 ) => {
   if (status === 0) {
-    return ''
+    return "";
   } else if (status === 1) {
-    return animation?.start ?? classes.trackViewStart
+    return animation?.start ?? classes.trackViewStart;
   }
-  return animation?.end ?? classes.trackViewEnd
-}
+  return animation?.end ?? classes.trackViewEnd;
+};
 
 export const TrackView: React.FC<Props> = ({
   track,
@@ -37,11 +43,16 @@ export const TrackView: React.FC<Props> = ({
   classes,
 }) => {
   const currentStatus = pos < start ? 0 : start <= pos && pos <= end ? 1 : 2;
-  const className = getClassNameFromStatus(currentStatus, classes, animation)
+  const className = getClassNameFromStatus(currentStatus, classes, animation);
+
+  useEffect(() => {
+    hljs.initHighlighting();
+    hljs.initHighlighting.called = false;
+  }, []);
 
   return (
     <span
-      className={`${classes.trackView}${className ? ` ${className}` : ''}`}
+      className={`${classes.trackView}${className ? ` ${className}` : ""}`}
       dangerouslySetInnerHTML={{ __html: track }}
     />
   );

@@ -8,16 +8,16 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
     alias: {
-      react: 'preact/compat',
-      'react-dom/test-utils': 'preact/test-utils',
-      'react-dom': 'preact/compat',
+      react: "preact/compat",
+      "react-dom/test-utils": "preact/test-utils",
+      "react-dom": "preact/compat",
     },
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, "dist"),
     library: "ScrollMovie",
     libraryExport: "default",
-    libraryTarget: 'umd'
+    libraryTarget: "umd",
   },
   module: {
     rules: [
@@ -29,6 +29,7 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: "ts-loader",
+
         options: {
           transpileOnly: true,
         },
