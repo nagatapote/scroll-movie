@@ -4,7 +4,7 @@ type ClassName = {
   trackViewStart: string;
   trackViewEnd: string;
   trackView: string;
-}
+};
 
 type Props = {
   pos: number;
@@ -16,17 +16,17 @@ type Props = {
 };
 
 const getClassNameFromStatus = (
-  status: number, 
-  classes: ClassName, 
+  status: number,
+  classes: ClassName,
   animation: { start: string; end: string }
 ) => {
   if (status === 0) {
-    return ''
+    return "";
   } else if (status === 1) {
-    return animation?.start ?? classes.trackViewStart
+    return animation?.start ?? classes.trackViewStart;
   }
-  return animation?.end ?? classes.trackViewEnd
-}
+  return animation?.end ?? classes.trackViewEnd;
+};
 
 export const TrackView: React.FC<Props> = ({
   track,
@@ -37,15 +37,11 @@ export const TrackView: React.FC<Props> = ({
   classes,
 }) => {
   const currentStatus = pos < start ? 0 : start <= pos && pos <= end ? 1 : 2;
-<<<<<<< HEAD
-  const className = getClassNameFromStatus(currentStatus, classes, animation)
-=======
   const className = getClassNameFromStatus(currentStatus, classes, animation);
->>>>>>> c185260... fix
 
   return (
     <span
-      className={`${classes.trackView}${className ? ` ${className}` : ''}`}
+      className={`${classes.trackView}${className ? ` ${className}` : ""}`}
       dangerouslySetInnerHTML={{ __html: track }}
     />
   );
