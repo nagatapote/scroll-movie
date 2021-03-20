@@ -48,7 +48,6 @@
   background: white;
   border-radius: 10px;
   width: 60%;
-  overflow: hidden;
 }
 
 .scroll-movie__slider-bar-inner {
@@ -57,11 +56,20 @@
 }
 
 .scroll-movie__slider-bar-thumb {
-  height: 10px;
-  width: 10px;
+  height: 6px;
+  width: 6px;
   background-color: #fc0;
   position: absolute;
   top: 0;
+}
+
+.scroll-movie__slider-bar-label {
+  position: absolute;
+  top: 83%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 60%;
 }
 
 .scroll-movie__navigation {

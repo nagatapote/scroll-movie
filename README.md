@@ -6,6 +6,10 @@
 $ npm install scroll-movie --save
 ```
 
+```
+<script src="https://unpkg.com/scroll-movie@1.0.0/dist/main.js"></script>
+```
+
 ## Usage
 
 When using as React component
@@ -21,7 +25,7 @@ When using as React component
   tracks={[
     {
       html:
-        "<h1>ScrollMovie.js</h1><br />If you scroll, the background and display characters will change.",
+        "<h1>ScrollMovie.js</h1><br />If you scroll, the background image will move.<br /><br />I'll show you how to install this library.",
       timing: {
         start: 0,
         end: 5000,
@@ -30,7 +34,7 @@ When using as React component
     },
     {
       html:
-        "<h1>Installation</h1><br />React<br /><br />$ npm i scroll-movie<br /><br />&lt;ScrollMovie getImage={images} imageSize={758} scrollsPerImage={60} tracks={tracks} /&gt;<br /><br />Vanilla<br /><br />ScrollMovie(&quot;#app&quot;,{ getImage: images,imageSize: 758,scrollsPerImage: 60,tracks: tracks,});",
+        "<h1>Installation</h1>・Vanilla<br /><br />&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;<br /><br />ScrollMovie(&quot;#app&quot;,{ getImage: images,imageSize: number,scrollsPerImage: number,tracks: tracks,});<br /><br />・React<br /><br />$ npm install scroll-movie --save<br /><br />&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;",
       timing: {
         start: 7000,
         end: 12000,
@@ -40,26 +44,36 @@ When using as React component
 
     {
       html:
-        "<h1>html</h1><br/><b>It can be expressed freely in html.</b><br /><br /><i>It can be expressed freely in html.</i><br /><br /><S>It can be expressed freely in html.</S>",
+        "<h1>tracks</h1><br/>{ html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js, timing: { start: 0,end: 5000},buttonLabel: &quot;animation&quot;,ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;}",
       timing: {
         start: 14000,
         end: 19000,
       },
-      buttonLabel: "html",
+      buttonLabel: "tracks",
     },
     {
-      html: "<h1>Not Label</h1>You can do it without a label.",
+      html:
+        "<h1>Convert video to image</h1><br/>$ brew install ffmpeg<br /><br />$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg<br /><br />getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;",
       timing: {
         start: 21000,
         end: 26000,
+      },
+      buttonLabel: "images",
+    },
+    {
+      html: "<h1>Not Label</h1>You can do it without a label.",
+
+      timing: {
+        start: 28000,
+        end: 33000,
       },
     },
     {
       html:
         "<h1>animation</h1><br />Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.",
       timing: {
-        start: 28000,
-        end: 33000,
+        start: 35000,
+        end: 40000,
       },
       buttonLabel: "animation",
       animation: {
@@ -67,15 +81,7 @@ When using as React component
         end: "originalCssEnd",
       },
     },
-    {
-      html:
-        "<h1>Convert video to image</h1><br/>$ brew install ffmpeg<br /><br />$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg",
-      timing: {
-        start: 35000,
-        end: 40000,
-      },
-      buttonLabel: "image",
-    },
+
     {
       html: "<h1>Thank you</h1><br/>That's it. Please try it.",
       timing: {
@@ -94,7 +100,7 @@ When using as vanilla.js
 const tracks = [
   {
     html:
-      "<h1>ScrollMovie.js</h1><br />If you scroll, the background and display characters will change.",
+      "<h1>ScrollMovie.js</h1><br />If you scroll, the background image will move.<br /><br />I'll show you how to install this library.",
     timing: {
       start: 0,
       end: 5000,
@@ -103,7 +109,7 @@ const tracks = [
   },
   {
     html:
-      "<h1>Installation</h1><br />React<br /><br />$ npm i scroll-movie<br /><br />&lt;ScrollMovie getImage={images} imageSize={758} scrollsPerImage={60} tracks={tracks} /&gt;<br /><br />Vanilla<br /><br />ScrollMovie(&quot;#app&quot;,{ getImage: images,imageSize: 758,scrollsPerImage: 60,tracks: tracks,});",
+      "<h1>Installation</h1>・Vanilla<br /><br />&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;<br /><br />ScrollMovie(&quot;#app&quot;,{ getImage: images,imageSize: number,scrollsPerImage: number,tracks: tracks,});<br /><br />・React<br /><br />$ npm install scroll-movie --save<br /><br />&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;",
     timing: {
       start: 7000,
       end: 12000,
@@ -113,26 +119,36 @@ const tracks = [
 
   {
     html:
-      "<h1>html</h1><br/><b>It can be expressed freely in html.</b><br /><br /><i>It can be expressed freely in html.</i><br /><br /><S>It can be expressed freely in html.</S>",
+      "<h1>tracks</h1><br/>{ html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js, timing: { start: 0,end: 5000},buttonLabel: &quot;animation&quot;,ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;}",
     timing: {
       start: 14000,
       end: 19000,
     },
-    buttonLabel: "html",
+    buttonLabel: "tracks",
   },
   {
-    html: "<h1>Not Label</h1>You can do it without a label.",
+    html:
+      "<h1>Convert video to image</h1><br/>$ brew install ffmpeg<br /><br />$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg<br /><br />getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;",
     timing: {
       start: 21000,
       end: 26000,
+    },
+    buttonLabel: "images",
+  },
+  {
+    html: "<h1>Not Label</h1>You can do it without a label.",
+
+    timing: {
+      start: 28000,
+      end: 33000,
     },
   },
   {
     html:
       "<h1>animation</h1><br />Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.",
     timing: {
-      start: 28000,
-      end: 33000,
+      start: 35000,
+      end: 40000,
     },
     buttonLabel: "animation",
     animation: {
@@ -140,15 +156,7 @@ const tracks = [
       end: "originalCssEnd",
     },
   },
-  {
-    html:
-      "<h1>Convert video to image</h1><br/>$ brew install ffmpeg<br /><br />$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg",
-    timing: {
-      start: 35000,
-      end: 40000,
-    },
-    buttonLabel: "image",
-  },
+
   {
     html: "<h1>Thank you</h1><br/>That's it. Please try it.",
     timing: {
