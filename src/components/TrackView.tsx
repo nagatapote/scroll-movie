@@ -1,10 +1,4 @@
-import React, { useEffect } from "react";
-import hljs from "highlight.js/lib/core";
-import xml from "highlight.js/lib/languages/xml";
-import javascript from "highlight.js/lib/languages/javascript";
-
-hljs.registerLanguage("xml", xml);
-hljs.registerLanguage("javascript", javascript);
+import React from "react";
 
 type ClassName = {
   trackViewStart: string;
@@ -44,11 +38,6 @@ export const TrackView: React.FC<Props> = ({
 }) => {
   const currentStatus = pos < start ? 0 : start <= pos && pos <= end ? 1 : 2;
   const className = getClassNameFromStatus(currentStatus, classes, animation);
-
-  useEffect(() => {
-    hljs.initHighlighting();
-    hljs.initHighlighting.called = false;
-  }, []);
 
   return (
     <span

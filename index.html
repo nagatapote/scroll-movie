@@ -10,7 +10,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
     <link rel="stylesheet" href="./css/scroll-movie.css" />
-    <link rel="stylesheet" href="./css/highlight.css" />
     <link rel="stylesheet" href="./demo.css" />
   </head>
   <body>
@@ -29,7 +28,7 @@
         },
         {
           html:
-            "<h1>Installation</h1><br />・React<pre><code>$ npm i scroll-movie</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={758} scrollsPerImage={60} tracks={tracks} /&gt;</code></pre>・Vanilla<pre><code>ScrollMovie(&quot;#app&quot;,{ getImage: images,imageSize: 758,scrollsPerImage: 60,tracks: tracks,});</pre></code>",
+            "<h1>Installation</h1><br />・React$ npm i scroll-movie&lt;ScrollMovie getImage={images} imageSize={758} scrollsPerImage={60} tracks={tracks} /&gt;・VanillaScrollMovie(&quot;#app&quot;,{ getImage: images,imageSize: 758,scrollsPerImage: 60,tracks: tracks,});",
           timing: {
             start: 7000,
             end: 12000,
@@ -68,7 +67,7 @@
         },
         {
           html:
-            "<h1>Convert video to image</h1><br/><pre><code>$ brew install ffmpeg</pre></code><pre><code>$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg</pre></code>",
+            "<h1>Convert video to image</h1><br/>$ brew install ffmpeg$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg",
           timing: {
             start: 35000,
             end: 40000,
