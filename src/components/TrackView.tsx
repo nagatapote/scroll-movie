@@ -37,7 +37,11 @@ export const TrackView: React.FC<Props> = ({
   classes,
 }) => {
   const currentStatus = pos < start ? 0 : start <= pos && pos <= end ? 1 : 2;
+<<<<<<< HEAD
   const className = getClassNameFromStatus(currentStatus, classes, animation)
+=======
+  const className = getClassNameFromStatus(currentStatus, classes, animation);
+>>>>>>> c185260... fix
 
   return (
     <span
