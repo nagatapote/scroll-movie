@@ -1,18 +1,18 @@
 import React from "react";
 
 type ClassName = {
+  trackView: string;
   trackViewStart: string;
   trackViewEnd: string;
-  trackView: string;
 };
 
 type Props = {
-  pos: number;
+  classes: ClassName;
   track: string;
-  animation?: { start: string; end: string };
   start: number;
   end: number;
-  classes: ClassName;
+  animation?: { start: string; end: string };
+  pos: number;
 };
 
 const getClassNameFromStatus = (
