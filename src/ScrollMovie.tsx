@@ -16,7 +16,7 @@ const defaultClassNames = {
   sliderBar: "scroll-movie__slider-bar",
   sliderBarInner: "scroll-movie__slider-bar-inner",
   sliderBarThumb: "scroll-movie__slider-bar-thumb",
-  sliderBarlabel: "scroll-movie__slider-bar-label",
+  sliderBarLabel: "scroll-movie__slider-bar-label",
   navigation: "scroll-movie__navigation",
 };
 
@@ -30,7 +30,7 @@ type ClassNames = {
   sliderBar: string;
   sliderBarInner: string;
   sliderBarThumb: string;
-  sliderBarlabel: string;
+  sliderBarLabel: string;
   root: string;
   inner: string;
   navigation: string;
@@ -119,7 +119,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
             outer: classes.sliderBar,
             inner: classes.sliderBarInner,
             thumb: classes.sliderBarThumb,
-            label: classes.sliderBarlabel,
+            label: classes.sliderBarLabel,
           }}
           max={maxSliderBar}
           value={value}
