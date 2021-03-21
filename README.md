@@ -2,9 +2,13 @@
 
 ## Install
 
+When using as React component
+
 ```
 $ npm install scroll-movie --save
 ```
+
+When using as vanilla.js
 
 ```
 <script src="https://unpkg.com/scroll-movie@1.0.0/dist/main.js"></script>
@@ -167,12 +171,13 @@ const tracks = [
   },
 ];
 ScrollMovie("#app", {
+  tracks: tracks,
   getImage: (index) => {
     const pad = `${index}`.padStart(3, "0");
     return `images/image_${pad}.jpg`;
   },
   imageSize: 758,
   scrollsPerImage: 60,
-  tracks: tracks,
+  sliderBarLength: 60,
 });
 ```

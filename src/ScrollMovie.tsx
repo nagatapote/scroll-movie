@@ -50,6 +50,7 @@ export type ScrollMovieProps = {
   imageSize: number;
   scrollsPerImage: number;
   sliderBarLength: number;
+  onTrackEnter: () => {};
 };
 
 export const ScrollMovie: React.FC<ScrollMovieProps> = ({
@@ -59,6 +60,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   imageSize,
   scrollsPerImage,
   sliderBarLength,
+  onTrackEnter,
 }) => {
   const imageStartData = getImage(0);
   const [image, setImage] = useState(imageStartData);
@@ -70,6 +72,10 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
 
   useEffect(() => {
     setTimeout(() => scrollTo({ top: 0, left: 0 }), 50);
+  }, []);
+
+  useEffect(() => {
+    onTrackEnter();
   }, []);
 
   useEffect(() => {

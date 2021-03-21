@@ -92,13 +92,14 @@
         },
       ];
       ScrollMovie("#app", {
+        tracks: tracks,
         getImage: (index) => {
           const pad = `${index}`.padStart(3, "0");
           return `images/image_${pad}.jpg`;
         },
         imageSize: 758,
         scrollsPerImage: 60,
-        tracks: tracks,
+        sliderBarLength: 60,
       });
     </script>
   </body>
