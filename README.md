@@ -20,12 +20,6 @@ When using as React component
 
 ```tsx
 <ScrollMovie
-  getImage={(index) => {
-    const pad = `${index}`.padStart(3, "0");
-    return `images/image_${pad}.jpg`;
-  }}
-  imageSize={758}
-  scrollsPerImage={scrollsPerImage}
   tracks={[
     {
       html:
@@ -38,7 +32,7 @@ When using as React component
     },
     {
       html:
-        "<h1>Installation</h1>・Vanilla<br /><br />&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;<br /><br />ScrollMovie(&quot;#app&quot;,{ getImage: images,imageSize: number,scrollsPerImage: number,tracks: tracks,});<br /><br />・React<br /><br />$ npm install scroll-movie --save<br /><br />&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;",
+        "<h1>Installation</h1>・Vanilla<pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre><pre><code>ScrollMovie(&quot;#app&quot;,{ getImage: images, imageSize: number, scrollsPerImage: number, tracks: tracks,});</code></pre>・React<pre><code>$ npm install scroll-movie --save</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;</code></pre>",
       timing: {
         start: 7000,
         end: 12000,
@@ -48,7 +42,7 @@ When using as React component
 
     {
       html:
-        "<h1>tracks</h1><br/>{ html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js, timing: { start: 0,end: 5000},buttonLabel: &quot;animation&quot;,ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;}",
+        "<h1>tracks</h1><pre><code>{<br /> html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js,<br /> timing: { start: 0,end: 5000 },<br /> buttonLabel: &quot;animation&quot;,<br /> ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;<br />}</code></pre>",
       timing: {
         start: 14000,
         end: 19000,
@@ -57,7 +51,7 @@ When using as React component
     },
     {
       html:
-        "<h1>Convert video to image</h1><br/>$ brew install ffmpeg<br /><br />$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg<br /><br />getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;",
+        "<h1>Convert video to image</h1><pre><code>$ brew install ffmpeg</code></pre><pre><code>$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg</code></pre><pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;</code></pre>",
       timing: {
         start: 21000,
         end: 26000,
@@ -85,7 +79,6 @@ When using as React component
         end: "originalCssEnd",
       },
     },
-
     {
       html: "<h1>Thank you</h1><br/>That's it. Please try it.",
       timing: {
@@ -95,6 +88,17 @@ When using as React component
       buttonLabel: "end",
     },
   ]}
+  getImage={(index) => {
+    const pad = `${index}`.padStart(3, "0");
+    return `images/image_${pad}.jpg`;
+  }}
+  imageSize={758}
+  scrollsPerImage={60}
+  sliderBarLength={60}
+  onTrackEnter={() => {
+    hljs.initHighlightingOnLoad();
+  }}
+  onTrackLeave={() => {}}
 />
 ```
 
@@ -113,7 +117,7 @@ const tracks = [
   },
   {
     html:
-      "<h1>Installation</h1>・Vanilla<br /><br />&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;<br /><br />ScrollMovie(&quot;#app&quot;,{ getImage: images,imageSize: number,scrollsPerImage: number,tracks: tracks,});<br /><br />・React<br /><br />$ npm install scroll-movie --save<br /><br />&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;",
+      "<h1>Installation</h1>・Vanilla<pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre><pre><code>ScrollMovie(&quot;#app&quot;,{ getImage: images, imageSize: number, scrollsPerImage: number, tracks: tracks,});</code></pre>・React<pre><code>$ npm install scroll-movie --save</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;</code></pre>",
     timing: {
       start: 7000,
       end: 12000,
@@ -123,7 +127,7 @@ const tracks = [
 
   {
     html:
-      "<h1>tracks</h1><br/>{ html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js, timing: { start: 0,end: 5000},buttonLabel: &quot;animation&quot;,ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;}",
+      "<h1>tracks</h1><pre><code>{<br /> html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js,<br /> timing: { start: 0,end: 5000 },<br /> buttonLabel: &quot;animation&quot;,<br /> ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;<br />}</code></pre>",
     timing: {
       start: 14000,
       end: 19000,
@@ -132,7 +136,7 @@ const tracks = [
   },
   {
     html:
-      "<h1>Convert video to image</h1><br/>$ brew install ffmpeg<br /><br />$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg<br /><br />getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;",
+      "<h1>Convert video to image</h1><pre><code>$ brew install ffmpeg</code></pre><pre><code>$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg</code></pre><pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;</code></pre>",
     timing: {
       start: 21000,
       end: 26000,
@@ -160,7 +164,6 @@ const tracks = [
       end: "originalCssEnd",
     },
   },
-
   {
     html: "<h1>Thank you</h1><br/>That's it. Please try it.",
     timing: {
@@ -179,5 +182,9 @@ ScrollMovie("#app", {
   imageSize: 758,
   scrollsPerImage: 60,
   sliderBarLength: 60,
+  onTrackEnter: () => {
+    hljs.initHighlightingOnLoad();
+  },
+  onTrackLeave: () => {},
 });
 ```
