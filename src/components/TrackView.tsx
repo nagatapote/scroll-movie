@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 type ClassName = {
   trackView: string;
@@ -13,6 +13,8 @@ type Props = {
   end: number;
   animation?: { start: string; end: string };
   pos: number;
+  onTrackEnter?: () => void;
+  onTrackLeave?: () => void;
 };
 
 const getClassNameFromStatus = (
@@ -29,15 +31,29 @@ const getClassNameFromStatus = (
 };
 
 export const TrackView: React.FC<Props> = ({
+  classes,
   track,
-  pos,
   animation,
   start,
   end,
-  classes,
+  pos,
+  onTrackEnter,
+  onTrackLeave,
 }) => {
   const currentStatus = pos < start ? 0 : start <= pos && pos <= end ? 1 : 2;
   const className = getClassNameFromStatus(currentStatus, classes, animation);
+
+  useEffect(() => {
+    if (onTrackEnter && currentStatus === 1) {
+      onTrackEnter();
+    }
+  }, [currentStatus]);
+
+  useEffect(() => {
+    if (onTrackLeave && currentStatus === 2) {
+      onTrackLeave();
+    }
+  }, [currentStatus]);
 
   return (
     <span

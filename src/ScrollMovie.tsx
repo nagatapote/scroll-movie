@@ -71,28 +71,10 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   const browserHeight = document.documentElement.clientHeight;
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
-  const onTrackStatus =
-    value < window.scrollY
-      ? 0
-      : value <= window.scrollY && value <= window.scrollY
-      ? 1
-      : 2;
 
   useEffect(() => {
     setTimeout(() => scrollTo({ top: 0, left: 0 }), 50);
   }, []);
-
-  useEffect(() => {
-    if (onTrackEnter && onTrackStatus === 1) {
-      onTrackEnter();
-    }
-  }, [onTrackStatus]);
-
-  useEffect(() => {
-    if (onTrackLeave && onTrackStatus === 2) {
-      onTrackLeave();
-    }
-  }, [onTrackStatus]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -136,6 +118,8 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
               end={track.timing.end}
               animation={track.animation}
               pos={value}
+              onTrackEnter={onTrackEnter}
+              onTrackLeave={onTrackLeave}
             />
           ))}
         <SliderBar
