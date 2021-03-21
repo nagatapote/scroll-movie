@@ -9,6 +9,7 @@
 .scroll-movie__image-view {
   height: 100vh;
   width: auto;
+  max-width: 100%;
 }
 
 .scroll-movie__track-view {
@@ -23,6 +24,7 @@
   font-weight: bold;
   font-size: 20px;
   color: white;
+  max-width: 80%;
 }
 
 .scroll-movie__track-view_start {
