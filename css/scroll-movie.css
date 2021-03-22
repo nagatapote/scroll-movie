@@ -8,7 +8,7 @@
 
 .scroll-movie__image-view {
   height: 100vh;
-  width: auto;
+  width: 100%;
   max-width: 100%;
 }
 

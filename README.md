@@ -95,6 +95,7 @@ When using as React component
   imageSize={758}
   scrollsPerImage={60}
   sliderBarLength={60}
+  preload={true}
   onTrackEnter={() => {
     hljs.initHighlightingOnLoad();
   }}
@@ -182,8 +183,9 @@ ScrollMovie("#app", {
   imageSize: 758,
   scrollsPerImage: 60,
   sliderBarLength: 60,
+  preload: true,
   onTrackEnter: () => {
-    hljs.initHighlightingOnLoad();
+    hljs.highlightAll();
   },
   onTrackLeave: () => {},
 });
