@@ -50,7 +50,7 @@ export type ScrollMovieProps = {
   imageSize: number;
   scrollsPerImage: number;
   sliderBarLength: number;
-  preload: boolean;
+  preload?: boolean;
   onTrackEnter?: () => void;
   onTrackLeave?: () => void;
 };
