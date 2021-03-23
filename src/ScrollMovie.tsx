@@ -90,18 +90,18 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
         for (let i = 0; i <= imageSize; i++) {
           const img = new Image();
           img.src = getImage(i);
-          if (i < imageSize) {
-            document.addEventListener("touchmove", scrollControl, {
-              passive: false,
-            });
-            document.addEventListener("mousewheel", scrollControl, {
-              passive: false,
-            });
-          } else if (i === imageSize) {
-            document.removeEventListener("touchmove", scrollControl);
-            document.removeEventListener("mousewheel", scrollControl);
-            setLoadState(0);
-          }
+        }
+        document.addEventListener("touchmove", scrollControl, {
+          passive: false,
+        });
+        document.addEventListener("mousewheel", scrollControl, {
+          passive: false,
+        });
+
+        if (getImage(imageSize)) {
+          document.removeEventListener("touchmove", scrollControl);
+          document.removeEventListener("mousewheel", scrollControl);
+          setLoadState(0);
         }
       }, 100);
     }
