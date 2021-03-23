@@ -11,6 +11,8 @@ const defaultClassNames = {
   trackView: "scroll-movie__track-view",
   trackViewStart: "scroll-movie__track-view_start",
   trackViewEnd: "scroll-movie__track-view_end",
+  nowLoading: "scroll-movie__now-loading",
+  nowLoadingNone: "scroll-movie__now-loading-none",
   sliderBar: "scroll-movie__slider-bar",
   sliderBarInner: "scroll-movie__slider-bar-inner",
   sliderBarThumb: "scroll-movie__slider-bar-thumb",
@@ -27,6 +29,8 @@ type ClassNames = {
   trackView: string;
   trackViewStart: string;
   trackViewEnd: string;
+  nowLoading: string;
+  nowLoadingNone: string;
   sliderBar: string;
   sliderBarInner: string;
   sliderBarThumb: string;
@@ -70,9 +74,14 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   const [image, setImage] = useState(imageStartData);
   const [value, setValue] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [loadState, setLoadState] = useState(1);
   const browserHeight = document.documentElement.clientHeight;
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
+
+  const scrollControl = (event) => {
+    event.preventDefault();
+  };
 
   useEffect(() => {
     setTimeout(() => scrollTo({ top: 0, left: 0 }), 50);
@@ -81,6 +90,18 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
         for (let i = 0; i <= imageSize; i++) {
           const img = new Image();
           img.src = getImage(i);
+          if (i < imageSize) {
+            document.addEventListener("touchmove", scrollControl, {
+              passive: false,
+            });
+            document.addEventListener("mousewheel", scrollControl, {
+              passive: false,
+            });
+          } else if (i === imageSize) {
+            document.removeEventListener("touchmove", scrollControl);
+            document.removeEventListener("mousewheel", scrollControl);
+            setLoadState(0);
+          }
         }
       }, 100);
     }
@@ -132,6 +153,15 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
               onTrackLeave={onTrackLeave}
             />
           ))}
+        <span
+          className={
+            preload === true && loadState == 1
+              ? classes.nowLoading
+              : classes.nowLoadingNone
+          }
+        >
+          Now loading...
+        </span>
         <SliderBar
           classes={{
             outer: classes.sliderBar,

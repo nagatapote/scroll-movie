@@ -12,6 +12,32 @@
   max-width: 100%;
 }
 
+.scroll-movie__now-loading-none {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 20px;
+  color: yellow;
+}
+
+.scroll-movie__now-loading {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 20px;
+  color: yellow;
+}
+
 .scroll-movie__track-view {
   position: absolute;
   top: 30%;
