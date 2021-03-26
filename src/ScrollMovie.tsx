@@ -79,49 +79,41 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
 
-  const scrollControl = (event) => {
-    event.preventDefault();
+  const loadImage = (i: number) => {
+    return new Promise<void>((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        resolve();
+      };
+      img.src = getImage(i);
+    });
   };
+
+  async function loadAllImages() {
+    const promises = [];
+    for (let i = 0; i <= imageSize; i++) {
+      promises.push(loadImage(i));
+    }
+    await Promise.all(promises);
+  }
 
   useEffect(() => {
     setTimeout(() => scrollTo({ top: 0, left: 0 }), 50);
     if (preload === true) {
-      setTimeout(() => {
-        const loadImage = (i: number) => {
-          return new Promise((resolve) => {
-            const img = new Image();
-            img.onload = () => {
-              resolve();
-              console.log("resolve");
-            };
-            img.src = getImage(i);
-            console.log("getImage");
-          });
+      setTimeout(async () => {
+        const scrollControl = (event) => {
+          event.preventDefault();
         };
-
-        async function loadAllImages() {
-          const promises = [];
-          for (let i = 0; i <= imageSize; i++) {
-            promises.push(loadImage(i));
-          }
-          await Promise.all(promises);
-          setLoadState(0);
-          document.removeEventListener("touchmove", scrollControl);
-          document.removeEventListener("mousewheel", scrollControl);
-          console.log("scrollOn");
-          console.log(loadState);
-        }
-
-        console.log(loadState);
-        console.log("scrollOff");
         document.addEventListener("touchmove", scrollControl, {
           passive: false,
         });
         document.addEventListener("mousewheel", scrollControl, {
           passive: false,
         });
-
-        loadAllImages();
+        await loadAllImages();
+        setLoadState(0);
+        document.removeEventListener("touchmove", scrollControl);
+        document.removeEventListener("mousewheel", scrollControl);
       }, 100);
     }
   }, [loadState]);
