@@ -117,7 +117,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
         document.removeEventListener("mousewheel", scrollControl);
       }, 100);
     }
-  }, []);
+  }, [preload]);
 
   useEffect(() => {
     const onScroll = () => {
