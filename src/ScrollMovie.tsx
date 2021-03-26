@@ -67,8 +67,8 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   imageSize,
   scrollsPerImage,
   sliderBarLength,
-  preload,
-  nowLoadingMessage,
+  preload = false,
+  nowLoadingMessage = "<div>NowLoading</div>",
   onTrackEnter,
   onTrackLeave,
 }) => {
