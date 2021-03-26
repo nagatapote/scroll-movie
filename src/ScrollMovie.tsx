@@ -110,7 +110,6 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
         document.addEventListener("mousewheel", scrollControl, {
           passive: false,
         });
-
         await loadAllImages();
         setLoadState(0);
         document.removeEventListener("touchmove", scrollControl);
