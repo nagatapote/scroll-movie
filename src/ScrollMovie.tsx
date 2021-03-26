@@ -55,6 +55,7 @@ export type ScrollMovieProps = {
   scrollsPerImage: number;
   sliderBarLength: number;
   preload?: boolean;
+  nowLoadingMessage?: string;
   onTrackEnter?: () => void;
   onTrackLeave?: () => void;
 };
@@ -67,6 +68,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   scrollsPerImage,
   sliderBarLength,
   preload,
+  nowLoadingMessage,
   onTrackEnter,
   onTrackLeave,
 }) => {
@@ -171,7 +173,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
               : classes.nowLoadingNone
           }
         >
-          Now loading...
+          <span dangerouslySetInnerHTML={{ __html: nowLoadingMessage }} />
         </span>
         <SliderBar
           classes={{
