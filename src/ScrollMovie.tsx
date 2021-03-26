@@ -87,10 +87,33 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
     setTimeout(() => scrollTo({ top: 0, left: 0 }), 50);
     if (preload === true) {
       setTimeout(() => {
-        for (let i = 0; i <= imageSize; i++) {
-          const img = new Image();
-          img.src = getImage(i);
+        const loadImage = (i: number) => {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.onload = () => {
+              resolve();
+              console.log("resolve");
+              setLoadState(0);
+              document.removeEventListener("touchmove", scrollControl);
+              document.removeEventListener("mousewheel", scrollControl);
+              console.log("scrollOn");
+              console.log(loadState);
+            };
+            img.src = getImage(i);
+            console.log("getImage");
+          });
+        };
+
+        async function loadAllImages() {
+          const promises = [];
+          for (let i = 0; i <= imageSize; i++) {
+            promises.push(loadImage(i));
+          }
+          await Promise.all(promises);
         }
+
+        console.log(loadState);
+        console.log("scrollOff");
         document.addEventListener("touchmove", scrollControl, {
           passive: false,
         });
@@ -98,14 +121,10 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
           passive: false,
         });
 
-        if (getImage(imageSize)) {
-          document.removeEventListener("touchmove", scrollControl);
-          document.removeEventListener("mousewheel", scrollControl);
-          setLoadState(0);
-        }
+        loadAllImages();
       }, 100);
     }
-  }, []);
+  }, [loadState]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -155,7 +174,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
           ))}
         <span
           className={
-            preload === true && loadState == 1
+            preload === true && loadState === 1
               ? classes.nowLoading
               : classes.nowLoadingNone
           }
