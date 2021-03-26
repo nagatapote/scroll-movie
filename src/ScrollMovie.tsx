@@ -93,11 +93,6 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
             img.onload = () => {
               resolve();
               console.log("resolve");
-              setLoadState(0);
-              document.removeEventListener("touchmove", scrollControl);
-              document.removeEventListener("mousewheel", scrollControl);
-              console.log("scrollOn");
-              console.log(loadState);
             };
             img.src = getImage(i);
             console.log("getImage");
@@ -110,6 +105,11 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
             promises.push(loadImage(i));
           }
           await Promise.all(promises);
+          setLoadState(0);
+          document.removeEventListener("touchmove", scrollControl);
+          document.removeEventListener("mousewheel", scrollControl);
+          console.log("scrollOn");
+          console.log(loadState);
         }
 
         console.log(loadState);
