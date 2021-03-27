@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="version" content="1.0.0" />
+    <meta property="og:type" content="website" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400:500"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="
+    https://unpkg.com/unitscss@0.1.4/dist/units.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/atom-one-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
+    <title>Scroll Movie</title>
+  </head>
+  <body class="_theme-light">
+    <header class="uc-header _ghost">
+      <div class="uc-header-logo"><a href="">Scroll Movie</a></div>
+      <div class="uc-header-menu _hide-small" role="navigation">
+        <a href="">About</a
+        ><a href="https://nagatapote.github.io/scroll-movie/" target="_blank"
+          >Demo</a
+        ><a href="https://github.com/nagatapote/scroll-movie" target="_blank"
+          >GitHub</a
+        >
+      </div>
+      <div
+        class="uc-menu-btn _text _hide-medium _hide-large"
+        data-open-target="#menu"
+      >
+        <button>Menu</button>
+      </div>
+    </header>
+    <nav class="uc-menu _slide _black" id="menu">
+      <div class="uc-menu-wrap">
+        <div class="uc-menu-list">
+          <a href="">About</a>
+          <a href="https://nagatapote.github.io/scroll-movie/" target="_blank"
+            >Demo</a
+          >
+          <a href="https://github.com/nagatapote/scroll-movie" target="_blank"
+            >GitHub</a
+          >
+        </div>
+      </div>
+    </nav>
+    <div class="uc-hero _full" style="background-color: #ccc">
+      <div
+        class="uc-hero-bg"
+        style="background-image: url(./img/wave.png)"
+      ></div>
+      <h1 class="uc-hero-title">Scroll Movie</h1>
+      <p class="uc-btn">
+        <a href="https://github.com/nagatapote/scroll-movie" target="_blank"
+          >View on GitHub</a
+        >
+      </p>
+    </div>
+    <main class="uc-content content">
+      <div class="uc-section">
+        <div class="uc-section-inner" style="max-width: 960px">
+          <h2 class="uc-section-title">About Scroll Movie</h2>
+          <p>
+            The Scroll Movie is a component that allows you to scroll through
+            images and display tracks and labels.
+          </p>
+          <p>
+            Track display timing and labels In addition to options like changing
+            characters, you can also customize your CSS by setting className.
+          </p>
+          <div class="uc-photo-unit">
+            <figure class="uc-photo _full">
+              <img src="./img/scrollmovie.png" style="background-color: #fff" />
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="uc-section _gray">
+        <div class="uc-section-inner" style="max-width: 960px">
+          <h2 class="uc-section-title">Install</h2>
+          <div class="uc-code-unit">
+            <pre><code class="html hljs">&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="uc-section">
+        <div class="uc-section-inner" style="max-width: 960px">
+          <h2 class="uc-section-title">Usage</h2>
+          <div class="uc-code-unit">
+            <p>When using as vanilla.js</p>
+            <pre><code class="html hljs">
+&lt;link rel=&quot;stylesheet&quot; href=&quot;./css/scroll-movie.css&quot; /&gt;
+
+&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;
+  
+&lt;script&gt;
+const tracks = [
+  {
+    html:
+      &quot;&lt;h1&gt;Scroll Movie.js&lt;/h1&gt;&lt;br /&gt;If you scroll, the background image will move.&quot;,
+    timing: {
+      start: 0,
+      end: 5000,
+    },
+    buttonLabel: &quot;animation&quot;,
+    animation: {
+      start: &quot;originalCssStart&quot;,
+      end: &quot;originalCssEnd&quot;,
+    },
+  },
+];
+ScrollMovie(&quot;#app&quot;, {
+  tracks: tracks,
+  getImage: (index) =&gt; {
+    const pad = `${index}`.padStart(3, &quot;0&quot;);
+    return `images/image_${pad}.jpg`;
+  },
+  imageSize: 758,
+  scrollsPerImage: 60,
+  sliderBarLength: 60,
+  preload: true,
+});
+&lt;/script&gt;
+            </code></pre>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <footer class="uc-footer _dark">
+        <div class="uc-footer-menu">
+          <a href="">About</a>
+          <a href="https://nagatapote.github.io/scroll-movie/" target="_blank"
+            >Demo</a
+          >
+          <a href="https://github.com/nagatapote/scroll-movie" target="_blank"
+            >GitHub</a
+          >
+        </div>
+        <div class="uc-footer-logo"><cite>Scroll Movie</cite></div>
+        <p>
+          This page was made using
+          <a href="https://www.npmjs.com/package/unitscss" target="_blank"
+            >UNITS</a
+          >.
+        </p>
+        <small>© 2021 Scroll Movie</small>
+      </footer>
+    </footer>
+    <script src="https://unpkg.com/unitscss@latest/dist/units.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>

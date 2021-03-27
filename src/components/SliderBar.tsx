@@ -1,11 +1,18 @@
 import React from "react";
 
-
 type ClassNames = {
-  outer: string
-  inner: string
-  thumb: string
-}
+  outer: string;
+  inner: string;
+  thumb: string;
+  label: string;
+};
+
+type Track = {
+  html: string;
+  timing: { start: number; end: number };
+  buttonLabel?: string;
+  animation?: { start: string; end: string };
+};
 
 type Props = {
   classes: ClassNames;
@@ -13,19 +20,6 @@ type Props = {
   sliderBarLength: number;
   max: number;
   value: number;
-<<<<<<< HEAD
-  classes: ClassNames;
-};
-
-export const SliderBar: React.FC<Props> = ({ max, value, classes }) => {
-
-  const left = `${value / max * 100}%`;
-
-  return (
-    <div className={classes.outer}>
-      <div className={classes.inner} style={{ width: left }}></div>
-      <div className={classes.thumb} style={{ left }}></div>
-=======
 };
 
 export const SliderBar: React.FC<Props> = ({
@@ -54,7 +48,6 @@ export const SliderBar: React.FC<Props> = ({
           {track.buttonLabel && ++num}
         </a>
       ))}
->>>>>>> 80fac8e... add: sliderBarLength
     </div>
   );
 };
