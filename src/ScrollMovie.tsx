@@ -7,31 +7,37 @@ smoothscroll.polyfill();
 const defaultClassNames = {
   root: "scroll-movie",
   inner: "scroll-movie__inner",
+  imageView: "scroll-movie__image-view",
   trackView: "scroll-movie__track-view",
   trackViewStart: "scroll-movie__track-view_start",
   trackViewEnd: "scroll-movie__track-view_end",
-  labelView: "scroll-movie__label-view",
-  activeLabelView: "scroll-movie__label-view-active",
-  imageView: "scroll-movie__image-view",
+  nowLoading: "scroll-movie__now-loading",
+  nowLoadingNone: "scroll-movie__now-loading-none",
   sliderBar: "scroll-movie__slider-bar",
   sliderBarInner: "scroll-movie__slider-bar-inner",
   sliderBarThumb: "scroll-movie__slider-bar-thumb",
+  sliderBarLabel: "scroll-movie__slider-bar-label",
   navigation: "scroll-movie__navigation",
+  labelView: "scroll-movie__label-view",
+  activeLabelView: "scroll-movie__label-view-active",
 };
 
 type ClassNames = {
+  root: string;
+  inner: string;
+  imageView: string;
   trackView: string;
   trackViewStart: string;
   trackViewEnd: string;
-  labelView: string;
-  activeLabelView: string;
-  imageView: string;
+  nowLoading: string;
+  nowLoadingNone: string;
   sliderBar: string;
   sliderBarInner: string;
   sliderBarThumb: string;
-  root: string;
-  inner: string;
+  sliderBarLabel: string;
   navigation: string;
+  labelView: string;
+  activeLabelView: string;
 };
 
 type Track = {
@@ -42,31 +48,77 @@ type Track = {
 };
 
 export type ScrollMovieProps = {
-  imageSize: number;
-  getImage: (index: number) => string;
-  tracks: Track[];
-  scrollsPerImage: number;
   classes?: ClassNames;
+  tracks: Track[];
+  getImage: (index: number) => string;
+  imageSize: number;
+  scrollsPerImage: number;
+  sliderBarLength: number;
+  preload?: boolean;
+  nowLoadingMessage?: string;
+  onTrackEnter?: () => void;
+  onTrackLeave?: () => void;
 };
 
 export const ScrollMovie: React.FC<ScrollMovieProps> = ({
+  classes = defaultClassNames,
+  tracks,
   getImage,
   imageSize,
-  tracks,
   scrollsPerImage,
-  classes = defaultClassNames,
+  sliderBarLength,
+  preload = false,
+  nowLoadingMessage = "<div>NowLoading</div>",
+  onTrackEnter,
+  onTrackLeave,
 }) => {
   const imageStartData = getImage(0);
   const [image, setImage] = useState(imageStartData);
   const [value, setValue] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [loadState, setLoadState] = useState(1);
   const browserHeight = document.documentElement.clientHeight;
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
 
+  const loadImage = (i: number) => {
+    return new Promise<void>((resolve) => {
+      const img = new Image();
+      img.onload = () => {
+        resolve();
+      };
+      img.src = getImage(i);
+    });
+  };
+
+  async function loadAllImages() {
+    const promises = [];
+    for (let i = 0; i <= imageSize; i++) {
+      promises.push(loadImage(i));
+    }
+    await Promise.all(promises);
+  }
+
   useEffect(() => {
     setTimeout(() => scrollTo({ top: 0, left: 0 }), 50);
-  }, []);
+    if (preload === true) {
+      setTimeout(async () => {
+        const scrollControl = (event) => {
+          event.preventDefault();
+        };
+        document.addEventListener("touchmove", scrollControl, {
+          passive: false,
+        });
+        document.addEventListener("mousewheel", scrollControl, {
+          passive: false,
+        });
+        await loadAllImages();
+        setLoadState(0);
+        document.removeEventListener("touchmove", scrollControl);
+        document.removeEventListener("mousewheel", scrollControl);
+      }, 100);
+    }
+  }, [preload]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -105,20 +157,33 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
                 trackViewStart: classes.trackViewStart,
                 trackViewEnd: classes.trackViewEnd,
               }}
-              pos={value}
               track={track.html}
               start={track.timing.start}
               end={track.timing.end}
               animation={track.animation}
+              pos={value}
+              onTrackEnter={onTrackEnter}
+              onTrackLeave={onTrackLeave}
             />
           ))}
-
+        <span
+          className={
+            preload === true && loadState === 1
+              ? classes.nowLoading
+              : classes.nowLoadingNone
+          }
+        >
+          <span dangerouslySetInnerHTML={{ __html: nowLoadingMessage }} />
+        </span>
         <SliderBar
           classes={{
             outer: classes.sliderBar,
             inner: classes.sliderBarInner,
             thumb: classes.sliderBarThumb,
+            label: classes.sliderBarLabel,
           }}
+          tracks={tracks}
+          sliderBarLength={sliderBarLength}
           max={maxSliderBar}
           value={value}
         />
@@ -127,14 +192,13 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
           {tracks.length > 0 &&
             tracks.map((track, index) => (
               <LabelView
-                key={index}
                 classes={{
                   label: classes.labelView,
                   active: classes.activeLabelView,
                 }}
+                timing={track.timing}
                 buttonLabel={track.buttonLabel}
                 active={activeIndex === index}
-                timing={track.timing}
               />
             ))}
         </div>

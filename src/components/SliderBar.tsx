@@ -1,26 +1,53 @@
 import React from "react";
 
-
 type ClassNames = {
-  outer: string
-  inner: string
-  thumb: string
-}
-
-type Props = {
-  max: number;
-  value: number;
-  classes: ClassNames;
+  outer: string;
+  inner: string;
+  thumb: string;
+  label: string;
 };
 
-export const SliderBar: React.FC<Props> = ({ max, value, classes }) => {
+type Track = {
+  html: string;
+  timing: { start: number; end: number };
+  buttonLabel?: string;
+  animation?: { start: string; end: string };
+};
 
-  const left = `${value / max * 100}%`;
+type Props = {
+  classes: ClassNames;
+  tracks: Track[];
+  sliderBarLength: number;
+  max: number;
+  value: number;
+};
 
+export const SliderBar: React.FC<Props> = ({
+  classes,
+  tracks,
+  sliderBarLength,
+  max,
+  value,
+}) => {
+  const left = `${(value / max) * 100}%`;
+  let num = 0;
   return (
-    <div className={classes.outer}>
-      <div className={classes.inner} style={{ width: left }}></div>
-      <div className={classes.thumb} style={{ left }}></div>
+    <div>
+      <div className={classes.outer} style={{ width: `${sliderBarLength}%` }}>
+        <div className={classes.inner} style={{ width: left }}></div>
+        <div className={classes.thumb} style={{ left }}></div>
+      </div>
+      {tracks.map((track) => (
+        <a
+          className={classes.label}
+          style={{
+            width: `${sliderBarLength}%`,
+            marginLeft: `${(track.timing.start / max) * sliderBarLength}%`,
+          }}
+        >
+          {track.buttonLabel && ++num}
+        </a>
+      ))}
     </div>
   );
 };

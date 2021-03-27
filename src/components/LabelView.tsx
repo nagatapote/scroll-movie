@@ -2,23 +2,23 @@ import React, { useCallback } from "react";
 import clsx from "clsx";
 
 type Props = {
-  buttonLabel?: string;
-  active: boolean;
   classes: {
     label: string;
     active: string;
   };
+  buttonLabel?: string;
   timing: {
     start: number;
     end: number;
   };
+  active: boolean;
 };
 
 export const LabelView: React.FC<Props> = ({
-  buttonLabel,
   classes,
-  active,
+  buttonLabel,
   timing,
+  active,
 }) => {
   const handleClick = useCallback(() => {
     return scrollTo({ top: timing.start, left: 0, behavior: "smooth" });

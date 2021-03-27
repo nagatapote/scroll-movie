@@ -2,72 +2,19 @@
 
 ## Install
 
+When using as vanilla.js
+
+```
+<script src="https://unpkg.com/scroll-movie@1.0.0/dist/main.js"></script>
+```
+
+When using as React component
+
 ```
 $ npm install scroll-movie --save
 ```
 
 ## Usage
-
-When using as React component
-
-```tsx
-<ScrollMovie
-  getImage={(index) => {
-    const pad = `${index}`.padStart(3, "0");
-    return `images/image_${pad}.jpg`;
-  }}
-  imageSize={758}
-  scrollsPerImage={scrollsPerImage}
-  tracks={[
-    {
-      html:
-        "<U><h1>ScrollMovie.js</h1></U><br /><small>If you scroll, the background and display characters will change.</small>",
-      timing: {
-        start: 0,
-        end: 2000,
-      },
-      buttonLabel: "TOP",
-    },
-    {
-      html:
-        "<font color='red'><h1>html</h1></font><br/><b>It can be expressed freely in html.</b><br /><br /><U>It can be expressed freely in html.</U><br /><br /><S>It can be expressed freely in html.</S>",
-      timing: {
-        start: 10000,
-        end: 13000,
-      },
-      buttonLabel: "html",
-    },
-    {
-      html: "You can also leave out the label.",
-      timing: {
-        start: 20000,
-        end: 23000,
-      },
-    },
-    {
-      html:
-        "<h1>animation</h1><br />The start and end strings for animation are className, so you can freely specify css in that string.<br />Here we have no fade-in and no fade-out.",
-      timing: {
-        start: 30000,
-        end: 33000,
-      },
-      buttonLabel: "animation",
-      animation: {
-        start: "originalCssStart",
-        end: "originalCssEnd",
-      },
-    },
-    {
-      html: "That's it. Please try it.",
-      timing: {
-        start: 44480,
-        end: 45480,
-      },
-      buttonLabel: "END",
-    },
-  ]}
-/>
-```
 
 When using as vanilla.js
 
@@ -75,35 +22,55 @@ When using as vanilla.js
 const tracks = [
   {
     html:
-      "<U><h1>ScrollMovie.js</h1></U><br /><small>If you scroll, the background and display characters will change.</small>",
+      "<h1>ScrollMovie.js</h1><br />If you scroll, the background image will move.<br /><br />I'll show you how to install this library.",
     timing: {
       start: 0,
-      end: 2000,
+      end: 5000,
     },
-    buttonLabel: "TOP",
+    buttonLabel: "top",
   },
   {
     html:
-      "<font color='red'><h1>html</h1></font><br/><b>It can be expressed freely in html.</b><br /><br /><U>It can be expressed freely in html.</U><br /><br /><S>It can be expressed freely in html.</S>",
+      "<h1>Installation</h1>・Vanilla<pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre><pre><code>ScrollMovie(&quot;#app&quot;,{ getImage: images, imageSize: number, scrollsPerImage: number, tracks: tracks,});</code></pre>・React<pre><code>$ npm install scroll-movie --save</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;</code></pre>",
     timing: {
-      start: 10000,
-      end: 13000,
+      start: 7000,
+      end: 12000,
     },
-    buttonLabel: "html",
+    buttonLabel: "installation",
   },
+
   {
-    html: "You can also leave out the label.",
+    html:
+      "<h1>tracks</h1><pre><code>{<br /> html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js,<br /> timing: { start: 0,end: 5000 },<br /> buttonLabel: &quot;animation&quot;,<br /> ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;<br />}</code></pre>",
     timing: {
-      start: 20000,
-      end: 23000,
+      start: 14000,
+      end: 19000,
     },
+    buttonLabel: "tracks",
   },
   {
     html:
-      "<h1>animation</h1><br />The start and end strings for animation are className, so you can freely specify css in that string.<br />Here we have no fade-in and no fade-out.",
+      "<h1>Convert video to image</h1><pre><code>$ brew install ffmpeg</code></pre><pre><code>$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg</code></pre><pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;</code></pre>",
     timing: {
-      start: 30000,
+      start: 21000,
+      end: 26000,
+    },
+    buttonLabel: "images",
+  },
+  {
+    html: "<h1>Not Label</h1>You can do it without a label.",
+
+    timing: {
+      start: 28000,
       end: 33000,
+    },
+  },
+  {
+    html:
+      "<h1>animation</h1><br />Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.",
+    timing: {
+      start: 35000,
+      end: 40000,
     },
     buttonLabel: "animation",
     animation: {
@@ -112,21 +79,116 @@ const tracks = [
     },
   },
   {
-    html: "That's it. Please try it.",
+    html: "<h1>Thank you</h1><br/>That's it. Please try it.",
     timing: {
-      start: 44480,
+      start: 42000,
       end: 45480,
     },
-    buttonLabel: "END",
+    buttonLabel: "end",
   },
 ];
 ScrollMovie("#app", {
+  tracks: tracks,
   getImage: (index) => {
     const pad = `${index}`.padStart(3, "0");
     return `images/image_${pad}.jpg`;
   },
   imageSize: 758,
   scrollsPerImage: 60,
-  tracks: tracks,
+  sliderBarLength: 60,
+  preload: true,
+  nowLoadingMessage: "<div>Now Loading...</div>",
+  onTrackEnter: () => {
+    hljs.highlightAll();
+  },
+  onTrackLeave: () => {},
 });
+```
+
+When using as React component
+
+```tsx
+<ScrollMovie
+  tracks={[
+    {
+      html:
+        "<h1>ScrollMovie.js</h1><br />If you scroll, the background image will move.<br /><br />I'll show you how to install this library.",
+      timing: {
+        start: 0,
+        end: 5000,
+      },
+      buttonLabel: "top",
+    },
+    {
+      html:
+        "<h1>Installation</h1>・Vanilla<pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre><pre><code>ScrollMovie(&quot;#app&quot;,{ getImage: images, imageSize: number, scrollsPerImage: number, tracks: tracks,});</code></pre>・React<pre><code>$ npm install scroll-movie --save</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;</code></pre>",
+      timing: {
+        start: 7000,
+        end: 12000,
+      },
+      buttonLabel: "installation",
+    },
+
+    {
+      html:
+        "<h1>tracks</h1><pre><code>{<br /> html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js,<br /> timing: { start: 0,end: 5000 },<br /> buttonLabel: &quot;animation&quot;,<br /> ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;<br />}</code></pre>",
+      timing: {
+        start: 14000,
+        end: 19000,
+      },
+      buttonLabel: "tracks",
+    },
+    {
+      html:
+        "<h1>Convert video to image</h1><pre><code>$ brew install ffmpeg</code></pre><pre><code>$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg</code></pre><pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;</code></pre>",
+      timing: {
+        start: 21000,
+        end: 26000,
+      },
+      buttonLabel: "images",
+    },
+    {
+      html: "<h1>Not Label</h1>You can do it without a label.",
+
+      timing: {
+        start: 28000,
+        end: 33000,
+      },
+    },
+    {
+      html:
+        "<h1>animation</h1><br />Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.",
+      timing: {
+        start: 35000,
+        end: 40000,
+      },
+      buttonLabel: "animation",
+      animation: {
+        start: "originalCssStart",
+        end: "originalCssEnd",
+      },
+    },
+    {
+      html: "<h1>Thank you</h1><br/>That's it. Please try it.",
+      timing: {
+        start: 42000,
+        end: 45480,
+      },
+      buttonLabel: "end",
+    },
+  ]}
+  getImage={(index) => {
+    const pad = `${index}`.padStart(3, "0");
+    return `images/image_${pad}.jpg`;
+  }}
+  imageSize={758}
+  scrollsPerImage={60}
+  sliderBarLength={60}
+  preload={true}
+  nowLoadingMessage={"<div>Now Loading...</div>"}
+  onTrackEnter={() => {
+    hljs.initHighlightingOnLoad();
+  }}
+  onTrackLeave={() => {}}
+/>
 ```
