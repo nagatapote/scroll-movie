@@ -1,5 +1,8 @@
 node_modules/*
 src/*
 images/*
+img/*
 index.html
+develop.html
+scroll-movie-site.html
 demo.css
