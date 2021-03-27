@@ -97,6 +97,7 @@ ScrollMovie("#app", {
   scrollsPerImage: 60,
   sliderBarLength: 60,
   preload: true,
+  nowLoadingMessage: "<div>Now Loading...</div>",
   onTrackEnter: () => {
     hljs.highlightAll();
   },
@@ -184,6 +185,7 @@ When using as React component
   scrollsPerImage={60}
   sliderBarLength={60}
   preload={true}
+  nowLoadingMessage={"<div>Now Loading...</div>"}
   onTrackEnter={() => {
     hljs.initHighlightingOnLoad();
   }}
