@@ -46,9 +46,9 @@ export const TrackView: React.FC<Props> = ({
 
   useEffect(() => {
     const target = ref.current;
-    if (onTrackEnter && currentStatus === 1) {
+    if (onTrackEnter && target && currentStatus === 1) {
       onTrackEnter(target);
-    } else if (onTrackLeave && currentStatus === 2) {
+    } else if (onTrackLeave && target && currentStatus === 2) {
       onTrackLeave(target);
     }
   }, [currentStatus]);
