@@ -5,7 +5,7 @@
 When using as vanilla.js
 
 ```
-<script src="https://unpkg.com/scroll-movie@1.0.0/dist/main.js"></script>
+<script src="https://unpkg.com/scroll-movie@latest/dist/main.js"></script>
 ```
 
 When using as React component
@@ -31,7 +31,7 @@ const tracks = [
   },
   {
     html:
-      "<h1>Installation</h1>・Vanilla<pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre><pre><code>ScrollMovie(&quot;#app&quot;,{ getImage: images, imageSize: number, scrollsPerImage: number, tracks: tracks,});</code></pre>・React<pre><code>$ npm install scroll-movie --save</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;</code></pre>",
+      "<h1>Installation</h1>・Vanilla<pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@latest/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre><pre><code>ScrollMovie(&quot;#app&quot;,{ getImage: images, imageSize: number, scrollsPerImage: number, tracks: tracks,});</code></pre>・React<pre><code>$ npm install scroll-movie --save</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;</code></pre>",
     timing: {
       start: 7000,
       end: 12000,
@@ -98,8 +98,10 @@ ScrollMovie("#app", {
   sliderBarLength: 60,
   preload: true,
   nowLoadingMessage: "<div>Now Loading...</div>",
-  onTrackEnter: () => {
-    hljs.highlightAll();
+  onTrackEnter: (targetElement) => {
+    targetElement.querySelectorAll("pre code").forEach((block) => {
+      hljs.highlightBlock(block);
+    });
   },
   onTrackLeave: () => {},
 });
@@ -121,7 +123,7 @@ When using as React component
     },
     {
       html:
-        "<h1>Installation</h1>・Vanilla<pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@1.0.0/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre><pre><code>ScrollMovie(&quot;#app&quot;,{ getImage: images, imageSize: number, scrollsPerImage: number, tracks: tracks,});</code></pre>・React<pre><code>$ npm install scroll-movie --save</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;</code></pre>",
+        "<h1>Installation</h1>・Vanilla<pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@latest/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre><pre><code>ScrollMovie(&quot;#app&quot;,{ getImage: images, imageSize: number, scrollsPerImage: number, tracks: tracks,});</code></pre>・React<pre><code>$ npm install scroll-movie --save</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;</code></pre>",
       timing: {
         start: 7000,
         end: 12000,
@@ -186,8 +188,10 @@ When using as React component
   sliderBarLength={60}
   preload={true}
   nowLoadingMessage={"<div>Now Loading...</div>"}
-  onTrackEnter={() => {
-    hljs.initHighlightingOnLoad();
+  onTrackEnter={(targetElement) => {
+    targetElement.querySelectorAll("pre code").forEach((block) => {
+      hljs.highlightBlock(block);
+    });
   }}
   onTrackLeave={() => {}}
 />

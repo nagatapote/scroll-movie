@@ -56,8 +56,8 @@ export type ScrollMovieProps = {
   sliderBarLength: number;
   preload?: boolean;
   nowLoadingMessage?: string;
-  onTrackEnter?: () => void;
-  onTrackLeave?: () => void;
+  onTrackEnter?: (target: HTMLElement) => void;
+  onTrackLeave?: (target: HTMLElement) => void;
 };
 
 export const ScrollMovie: React.FC<ScrollMovieProps> = ({
@@ -187,7 +187,6 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
           max={maxSliderBar}
           value={value}
         />
-
         <div className={classes.navigation}>
           {tracks.length > 0 &&
             tracks.map((track, index) => (
