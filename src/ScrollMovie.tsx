@@ -187,7 +187,6 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
           max={maxSliderBar}
           value={value}
         />
-
         <div className={classes.navigation}>
           {tracks.length > 0 &&
             tracks.map((track, index) => (
