@@ -13,8 +13,8 @@ type Props = {
   end: number;
   animation?: { start: string; end: string };
   pos: number;
-  onTrackEnter?: (target: HTMLCollectionOf<Element>) => void;
-  onTrackLeave?: (target: HTMLCollectionOf<Element>) => void;
+  onTrackEnter?: (target: HTMLElement) => void;
+  onTrackLeave?: (target: HTMLElement) => void;
 };
 
 const getClassNameFromStatus = (
@@ -42,7 +42,7 @@ export const TrackView: React.FC<Props> = ({
 }) => {
   const currentStatus = pos < start ? 0 : start <= pos && pos <= end ? 1 : 2;
   const className = getClassNameFromStatus(currentStatus, classes, animation);
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const target = ref.current;
