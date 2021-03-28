@@ -120,7 +120,6 @@
   border: none;
   transition: all 0.3s ease-in;
   cursor: pointer;
-  border-radius: 10px;
 }
 
 .scroll-movie__label-view-active {
@@ -129,11 +128,11 @@
 }
 
 .scroll-movie__label-view:last-child {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .scroll-movie__label-view:first-child {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
