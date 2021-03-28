@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 type ClassName = {
   trackView: string;
@@ -13,8 +13,8 @@ type Props = {
   end: number;
   animation?: { start: string; end: string };
   pos: number;
-  onTrackEnter?: () => void;
-  onTrackLeave?: () => void;
+  onTrackEnter?: (target: HTMLElement) => void;
+  onTrackLeave?: (target: HTMLElement) => void;
 };
 
 const getClassNameFromStatus = (
@@ -42,17 +42,20 @@ export const TrackView: React.FC<Props> = ({
 }) => {
   const currentStatus = pos < start ? 0 : start <= pos && pos <= end ? 1 : 2;
   const className = getClassNameFromStatus(currentStatus, classes, animation);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (onTrackEnter && currentStatus === 1) {
-      onTrackEnter();
-    } else if (onTrackLeave && currentStatus === 2) {
-      onTrackLeave();
+    const target = ref.current;
+    if (onTrackEnter && target && currentStatus === 1) {
+      onTrackEnter(target);
+    } else if (onTrackLeave && target && currentStatus === 2) {
+      onTrackLeave(target);
     }
   }, [currentStatus]);
 
   return (
     <span
+      ref={ref}
       className={`${classes.trackView}${className ? ` ${className}` : ""}`}
       dangerouslySetInnerHTML={{ __html: track }}
     />

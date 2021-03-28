@@ -56,8 +56,8 @@ export type ScrollMovieProps = {
   sliderBarLength: number;
   preload?: boolean;
   nowLoadingMessage?: string;
-  onTrackEnter?: () => void;
-  onTrackLeave?: () => void;
+  onTrackEnter?: (target: HTMLElement) => void;
+  onTrackLeave?: (target: HTMLElement) => void;
 };
 
 export const ScrollMovie: React.FC<ScrollMovieProps> = ({
