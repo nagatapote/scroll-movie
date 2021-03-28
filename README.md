@@ -41,7 +41,7 @@ const tracks = [
 
   {
     html:
-      "<h1>tracks</h1><pre><code>{<br /> html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js,<br /> timing: { start: 0,end: 5000 },<br /> buttonLabel: &quot;animation&quot;,<br /> ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;<br />}</code></pre>",
+      "<h1>Tracks</h1><pre><code>{<br /> html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js,<br /> timing: { start: 0,end: 5000 },<br /> buttonLabel: &quot;animation&quot;,<br /> ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;<br />}</code></pre>",
     timing: {
       start: 14000,
       end: 19000,
@@ -67,7 +67,7 @@ const tracks = [
   },
   {
     html:
-      "<h1>animation</h1><br />Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.",
+      "<h1>Animation</h1><br />Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.",
     timing: {
       start: 35000,
       end: 40000,
@@ -133,7 +133,7 @@ When using as React component
 
     {
       html:
-        "<h1>tracks</h1><pre><code>{<br /> html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js,<br /> timing: { start: 0,end: 5000 },<br /> buttonLabel: &quot;animation&quot;,<br /> ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;<br />}</code></pre>",
+        "<h1>Tracks</h1><pre><code>{<br /> html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js,<br /> timing: { start: 0,end: 5000 },<br /> buttonLabel: &quot;animation&quot;,<br /> ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;<br />}</code></pre>",
       timing: {
         start: 14000,
         end: 19000,
@@ -159,7 +159,7 @@ When using as React component
     },
     {
       html:
-        "<h1>animation</h1><br />Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.",
+        "<h1>Animation</h1><br />Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.",
       timing: {
         start: 35000,
         end: 40000,
