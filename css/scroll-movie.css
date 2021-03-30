@@ -13,6 +13,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  object-fit: cover;
+  width: 100%;
   height: 100%;
 }
 
@@ -135,4 +137,36 @@
 .scroll-movie__label-view:first-child {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+@media screen and (max-width: 767px) {
+  .scroll-movie__navigation {
+    display: none;
+  }
+
+  .scroll-movie__label-view {
+    display: none;
+  }
+
+  .scroll-movie__slider-bar {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    outline: none;
+    height: 6px;
+    background: white;
+    border-radius: 10px;
+  }
+
+  .scroll-movie__slider-bar-label {
+    position: absolute;
+    top: 93%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
 }
