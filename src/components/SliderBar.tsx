@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 type ClassNames = {
   outer: string;
   inner: string;
   thumb: string;
-  label: string;
+  label?: string;
+  button?: string;
 };
 
 type Track = {
@@ -20,6 +21,7 @@ type Props = {
   sliderBarLength: number;
   max: number;
   value: number;
+  labelRequired: boolean;
 };
 
 export const SliderBar: React.FC<Props> = ({
@@ -28,7 +30,11 @@ export const SliderBar: React.FC<Props> = ({
   sliderBarLength,
   max,
   value,
+  labelRequired,
 }) => {
+  const handleClick = useCallback((start) => {
+    return scrollTo({ top: start, left: 0, behavior: "smooth" });
+  }, []);
   const left = `${(value / max) * 100}%`;
   let num = 0;
   return (
@@ -37,17 +43,28 @@ export const SliderBar: React.FC<Props> = ({
         <div className={classes.inner} style={{ width: left }}></div>
         <div className={classes.thumb} style={{ left }}></div>
       </div>
-      {tracks.map((track) => (
-        <a
-          className={classes.label}
-          style={{
-            width: `${sliderBarLength}%`,
-            marginLeft: `${(track.timing.start / max) * sliderBarLength}%`,
-          }}
-        >
-          {track.buttonLabel && ++num}
-        </a>
-      ))}
+      {labelRequired === true && (
+        <div>
+          {tracks.map((track) => (
+            <a
+              className={classes.label}
+              style={{
+                width: `${sliderBarLength}%`,
+                marginLeft: `${(track.timing.start / max) * sliderBarLength}%`,
+              }}
+            >
+              {track.buttonLabel && (
+                <span
+                  className={classes.button}
+                  onClick={() => handleClick(track.timing.start)}
+                >
+                  {++num}
+                </span>
+              )}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

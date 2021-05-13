@@ -13,10 +13,14 @@ const defaultClassNames = {
   trackViewEnd: "scroll-movie__track-view_end",
   nowLoading: "scroll-movie__now-loading",
   nowLoadingNone: "scroll-movie__now-loading-none",
+  sliderBarTop: "scroll-movie__slider-bar-top",
+  sliderBarTopInner: "scroll-movie__slider-bar-top-inner",
+  sliderBarTopThumb: "scroll-movie__slider-bar-top-thumb",
   sliderBar: "scroll-movie__slider-bar",
   sliderBarInner: "scroll-movie__slider-bar-inner",
   sliderBarThumb: "scroll-movie__slider-bar-thumb",
   sliderBarLabel: "scroll-movie__slider-bar-label",
+  sliderBarLabelButton: "scroll-movie__slider-bar-label-button",
   navigation: "scroll-movie__navigation",
   labelView: "scroll-movie__label-view",
   activeLabelView: "scroll-movie__label-view-active",
@@ -31,10 +35,14 @@ type ClassNames = {
   trackViewEnd: string;
   nowLoading: string;
   nowLoadingNone: string;
+  sliderBarTop: string;
+  sliderBarTopInner: string;
+  sliderBarTopThumb: string;
   sliderBar: string;
   sliderBarInner: string;
   sliderBarThumb: string;
   sliderBarLabel: string;
+  sliderBarLabelButton: string;
   navigation: string;
   labelView: string;
   activeLabelView: string;
@@ -77,7 +85,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   const [value, setValue] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loadState, setLoadState] = useState(1);
-  const browserHeight = document.documentElement.clientHeight;
+  const browserHeight = window.innerHeight;
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
 
@@ -149,6 +157,18 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
     <div className={classes.root} style={{ height: `${maxImageLength}px` }}>
       <div className={classes.inner}>
         <ImageView image={image} className={classes.imageView} />
+        <SliderBar
+          classes={{
+            outer: classes.sliderBarTop,
+            inner: classes.sliderBarTopInner,
+            thumb: classes.sliderBarTopThumb,
+          }}
+          tracks={tracks}
+          sliderBarLength={100}
+          max={maxSliderBar}
+          value={value}
+          labelRequired={false}
+        />
         {tracks.length > 0 &&
           tracks.map((track) => (
             <TrackView
@@ -181,11 +201,13 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
             inner: classes.sliderBarInner,
             thumb: classes.sliderBarThumb,
             label: classes.sliderBarLabel,
+            button: classes.sliderBarLabelButton,
           }}
           tracks={tracks}
           sliderBarLength={sliderBarLength}
           max={maxSliderBar}
           value={value}
+          labelRequired={true}
         />
         <div className={classes.navigation}>
           {tracks.length > 0 &&
