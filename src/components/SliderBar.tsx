@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 
 type ClassNames = {
   outer: string;
@@ -32,9 +32,9 @@ export const SliderBar: React.FC<Props> = ({
   value,
   labelRequired,
 }) => {
-  const handleClick = useCallback((start) => {
+  const handleClick = (start) => {
     return scrollTo({ top: start, left: 0, behavior: "smooth" });
-  }, []);
+  };
   const left = `${(value / max) * 100}%`;
   let num = 0;
   return (
@@ -58,7 +58,7 @@ export const SliderBar: React.FC<Props> = ({
                   className={classes.button}
                   onClick={() => handleClick(track.timing.start)}
                 >
-                  {++num}
+                  {(num += 1)}
                 </span>
               )}
             </a>
