@@ -167,7 +167,6 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
           sliderBarLength={100}
           max={maxSliderBar}
           value={value}
-          labelRequired={false}
         />
         {tracks.length > 0 &&
           tracks.map((track) => (
@@ -207,7 +206,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
           sliderBarLength={sliderBarLength}
           max={maxSliderBar}
           value={value}
-          labelRequired={true}
+          labelRequired
         />
         <div className={classes.navigation}>
           {tracks.length > 0 &&

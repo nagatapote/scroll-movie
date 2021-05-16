@@ -21,7 +21,7 @@ type Props = {
   sliderBarLength: number;
   max: number;
   value: number;
-  labelRequired: boolean;
+  labelRequired?: boolean;
 };
 
 export const SliderBar: React.FC<Props> = ({
@@ -32,7 +32,7 @@ export const SliderBar: React.FC<Props> = ({
   value,
   labelRequired,
 }) => {
-  const handleClick = (start) => {
+  const handleClick = (start: number) => {
     return scrollTo({ top: start, left: 0, behavior: "smooth" });
   };
   const left = `${(value / max) * 100}%`;
@@ -43,7 +43,7 @@ export const SliderBar: React.FC<Props> = ({
         <div className={classes.inner} style={{ width: left }}></div>
         <div className={classes.thumb} style={{ left }}></div>
       </div>
-      {labelRequired === true && (
+      {labelRequired && (
         <div>
           {tracks.map((track) => (
             <a
