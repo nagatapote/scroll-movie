@@ -19,6 +19,7 @@ type Props = {
   classes: ClassNames;
   tracks: Track[];
   sliderBarLength: number;
+  navigationDisplayTiming?: number;
   max: number;
   value: number;
   labelRequired?: boolean;
@@ -28,6 +29,7 @@ export const SliderBar: React.FC<Props> = ({
   classes,
   tracks,
   sliderBarLength,
+  navigationDisplayTiming,
   max,
   value,
   labelRequired,
@@ -38,7 +40,12 @@ export const SliderBar: React.FC<Props> = ({
   const left = `${(value / max) * 100}%`;
   let num = 0;
   return (
-    <div>
+    <div
+      style={
+        labelRequired &&
+        window.scrollY < navigationDisplayTiming && { display: "none" }
+      }
+    >
       <div className={classes.outer} style={{ width: `${sliderBarLength}%` }}>
         <div className={classes.inner} style={{ width: left }}></div>
         <div className={classes.thumb} style={{ left }}></div>

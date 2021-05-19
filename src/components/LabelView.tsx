@@ -12,6 +12,7 @@ type Props = {
     end: number;
   };
   active: boolean;
+  navigationDisplayTiming?: number;
 };
 
 export const LabelView: React.FC<Props> = ({
@@ -19,6 +20,7 @@ export const LabelView: React.FC<Props> = ({
   buttonLabel,
   timing,
   active,
+  navigationDisplayTiming,
 }) => {
   const handleClick = useCallback(() => {
     return scrollTo({ top: timing.start, left: 0, behavior: "smooth" });
@@ -29,6 +31,9 @@ export const LabelView: React.FC<Props> = ({
       {buttonLabel && (
         <input
           type="button"
+          style={
+            window.scrollY < navigationDisplayTiming && { display: "none" }
+          }
           className={clsx(classes.label, {
             [classes.active]: active,
           })}
