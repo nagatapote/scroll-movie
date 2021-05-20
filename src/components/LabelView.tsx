@@ -5,6 +5,8 @@ type Props = {
   classes: {
     label: string;
     active: string;
+    before?: string;
+    after?: string;
   };
   buttonLabel?: string;
   timing: {
@@ -31,12 +33,15 @@ export const LabelView: React.FC<Props> = ({
       {buttonLabel && (
         <input
           type="button"
-          style={
-            window.scrollY < navigationDisplayTiming && { display: "none" }
-          }
-          className={clsx(classes.label, {
-            [classes.active]: active,
-          })}
+          className={clsx(
+            classes.label,
+            {
+              [classes.active]: active,
+            },
+            window.scrollY < navigationDisplayTiming
+              ? classes.before
+              : classes.after
+          )}
           value={buttonLabel}
           onClick={handleClick}
         />

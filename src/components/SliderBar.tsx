@@ -6,6 +6,8 @@ type ClassNames = {
   thumb: string;
   label?: string;
   button?: string;
+  before?: string;
+  after?: string;
 };
 
 type Track = {
@@ -41,9 +43,10 @@ export const SliderBar: React.FC<Props> = ({
   let num = 0;
   return (
     <div
-      style={
-        labelRequired &&
-        window.scrollY < navigationDisplayTiming && { display: "none" }
+      className={
+        labelRequired && window.scrollY < navigationDisplayTiming
+          ? classes.before
+          : classes.after
       }
     >
       <div className={classes.outer} style={{ width: `${sliderBarLength}%` }}>

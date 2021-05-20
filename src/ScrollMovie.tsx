@@ -22,6 +22,8 @@ const defaultClassNames = {
   sliderBarLabel: "scroll-movie__slider-bar-label",
   sliderBarLabelButton: "scroll-movie__slider-bar-label-button",
   navigation: "scroll-movie__navigation",
+  navigationDisplayBefore: "scroll-movie__navigation-display-before",
+  navigationDisplayAfter: "scroll-movie__navigation-display-after",
   labelView: "scroll-movie__label-view",
   activeLabelView: "scroll-movie__label-view-active",
 };
@@ -44,6 +46,8 @@ type ClassNames = {
   sliderBarLabel: string;
   sliderBarLabelButton: string;
   navigation: string;
+  navigationDisplayBefore: string;
+  navigationDisplayAfter: string;
   labelView: string;
   activeLabelView: string;
 };
@@ -203,6 +207,8 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
             thumb: classes.sliderBarThumb,
             label: classes.sliderBarLabel,
             button: classes.sliderBarLabelButton,
+            before: classes.navigationDisplayBefore,
+            after: classes.navigationDisplayAfter,
           }}
           tracks={tracks}
           sliderBarLength={sliderBarLength}
@@ -218,6 +224,8 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
                 classes={{
                   label: classes.labelView,
                   active: classes.activeLabelView,
+                  before: classes.navigationDisplayBefore,
+                  after: classes.navigationDisplayAfter,
                 }}
                 timing={track.timing}
                 buttonLabel={track.buttonLabel}

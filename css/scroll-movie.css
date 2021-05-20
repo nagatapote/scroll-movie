@@ -152,6 +152,16 @@
   z-index: 1;
 }
 
+.scroll-movie__navigation-display-before {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.scroll-movie__navigation-display-after {
+  transition: all 0.3s ease-in;
+  opacity: 1;
+}
+
 .scroll-movie__label-view {
   width: 10vw;
   border: none;
