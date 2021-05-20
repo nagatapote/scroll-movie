@@ -56,10 +56,14 @@
   font-weight: bold;
   font-size: 20px;
   color: white;
+  max-width: 90%;
+  height: 100%;
 }
 
 .scroll-movie__track-view_start {
   transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
   z-index: 1;
   opacity: 1;
 }
@@ -128,6 +132,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  z-index: 1;
 }
 
 .scroll-movie__slider-bar-label-button {
@@ -144,6 +149,7 @@
   margin: 0 auto;
   text-align: center;
   overflow: hidden;
+  z-index: 1;
 }
 
 .scroll-movie__label-view {

@@ -1,6 +1,6 @@
 .originalCssStart {
   position: absolute;
-  top: 30%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
@@ -13,7 +13,7 @@
 
 .originalCssEnd {
   position: absolute;
-  top: 30%;
+  top: 80%;
   left: 50%;
   transform: translate(100%, -50%);
   margin: 0;
