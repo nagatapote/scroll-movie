@@ -22,6 +22,7 @@ type Props = {
   tracks: Track[];
   sliderBarLength: number;
   navigationDisplayTiming?: number;
+  browserHeightNavigationOff?: number;
   max: number;
   value: number;
   labelRequired?: boolean;
@@ -32,6 +33,7 @@ export const SliderBar: React.FC<Props> = ({
   tracks,
   sliderBarLength,
   navigationDisplayTiming,
+  browserHeightNavigationOff,
   max,
   value,
   labelRequired,
@@ -44,7 +46,9 @@ export const SliderBar: React.FC<Props> = ({
   return (
     <div
       className={
-        labelRequired && window.scrollY < navigationDisplayTiming
+        labelRequired &&
+        (window.scrollY < navigationDisplayTiming ||
+          window.innerHeight < browserHeightNavigationOff)
           ? classes.before
           : classes.after
       }
