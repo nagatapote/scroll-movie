@@ -68,7 +68,7 @@ export type ScrollMovieProps = {
   sliderBarLength: number;
   preload?: boolean;
   navigationDisplayTiming?: number;
-  browserHeightNavigationOff?: number;
+  navigationDisabledBrowserSize?: { height: number; width: number };
   nowLoadingMessage?: string;
   onTrackEnter?: (target: HTMLElement) => void;
   onTrackLeave?: (target: HTMLElement) => void;
@@ -83,7 +83,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   sliderBarLength,
   preload = false,
   navigationDisplayTiming,
-  browserHeightNavigationOff,
+  navigationDisabledBrowserSize,
   nowLoadingMessage = "<div>NowLoading</div>",
   onTrackEnter,
   onTrackLeave,
@@ -215,7 +215,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
           tracks={tracks}
           sliderBarLength={sliderBarLength}
           navigationDisplayTiming={navigationDisplayTiming}
-          browserHeightNavigationOff={browserHeightNavigationOff}
+          navigationDisabledBrowserSize={navigationDisabledBrowserSize}
           max={maxSliderBar}
           value={value}
           labelRequired
@@ -234,7 +234,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
                 buttonLabel={track.buttonLabel}
                 active={activeIndex === index}
                 navigationDisplayTiming={navigationDisplayTiming}
-                browserHeightNavigationOff={browserHeightNavigationOff}
+                navigationDisabledBrowserSize={navigationDisabledBrowserSize}
               />
             ))}
         </div>

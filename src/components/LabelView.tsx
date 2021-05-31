@@ -15,7 +15,7 @@ type Props = {
   };
   active: boolean;
   navigationDisplayTiming?: number;
-  browserHeightNavigationOff?: number;
+  navigationDisabledBrowserSize?: { height: number; width: number };
 };
 
 export const LabelView: React.FC<Props> = ({
@@ -24,7 +24,7 @@ export const LabelView: React.FC<Props> = ({
   timing,
   active,
   navigationDisplayTiming,
-  browserHeightNavigationOff,
+  navigationDisabledBrowserSize,
 }) => {
   const handleClick = useCallback(() => {
     return scrollTo({ top: timing.start, left: 0, behavior: "smooth" });
@@ -41,7 +41,8 @@ export const LabelView: React.FC<Props> = ({
               [classes.active]: active,
             },
             window.scrollY < navigationDisplayTiming ||
-              window.innerHeight < browserHeightNavigationOff
+              window.innerHeight < navigationDisabledBrowserSize.height ||
+              window.innerWidth < navigationDisabledBrowserSize.width
               ? classes.before
               : classes.after
           )}
