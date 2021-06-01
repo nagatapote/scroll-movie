@@ -96,8 +96,12 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   const browserHeight = window.innerHeight;
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
-  const classNames = { ...defaultClassNames, ...classes }
-  const disabledBrowserSize = { width: Infinity, height: Infinity, ...navigationDisabledBrowserSize }
+  const classNames = { ...defaultClassNames, ...classes };
+  const disabledBrowserSize = {
+    width: 0,
+    height: 0,
+    ...navigationDisabledBrowserSize,
+  };
 
   const loadImage = (i: number) => {
     return new Promise<void>((resolve) => {
