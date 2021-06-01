@@ -83,7 +83,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   sliderBarLength,
   preload = false,
   navigationDisplayTiming,
-  navigationDisabledBrowserSize,
+  navigationDisabledBrowserSize = {},
   nowLoadingMessage = "<div>NowLoading</div>",
   onTrackEnter,
   onTrackLeave,
@@ -97,6 +97,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
   const classNames = { ...defaultClassNames, ...classes }
+  const disabledBrowserSize = { width: Infinity, height: Infinity, ...navigationDisabledBrowserSize }
 
   const loadImage = (i: number) => {
     return new Promise<void>((resolve) => {
@@ -216,7 +217,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
           tracks={tracks}
           sliderBarLength={sliderBarLength}
           navigationDisplayTiming={navigationDisplayTiming}
-          navigationDisabledBrowserSize={navigationDisabledBrowserSize}
+          navigationDisabledBrowserSize={disabledBrowserSize}
           max={maxSliderBar}
           value={value}
           labelRequired
@@ -235,7 +236,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
                 buttonLabel={track.buttonLabel}
                 active={activeIndex === index}
                 navigationDisplayTiming={navigationDisplayTiming}
-                navigationDisabledBrowserSize={navigationDisabledBrowserSize}
+                navigationDisabledBrowserSize={disabledBrowserSize}
               />
             ))}
         </div>
