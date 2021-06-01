@@ -75,7 +75,7 @@ export type ScrollMovieProps = {
 };
 
 export const ScrollMovie: React.FC<ScrollMovieProps> = ({
-  classes = defaultClassNames,
+  classes = {},
   tracks,
   getImage,
   imageSize,
@@ -83,7 +83,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   sliderBarLength,
   preload = false,
   navigationDisplayTiming,
-  navigationDisabledBrowserSize,
+  navigationDisabledBrowserSize = {},
   nowLoadingMessage = "<div>NowLoading</div>",
   onTrackEnter,
   onTrackLeave,
@@ -96,6 +96,12 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   const browserHeight = window.innerHeight;
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
+  const classNames = { ...defaultClassNames, ...classes };
+  const disabledBrowserSize = {
+    width: 0,
+    height: 0,
+    ...navigationDisabledBrowserSize,
+  };
 
   const loadImage = (i: number) => {
     return new Promise<void>((resolve) => {
@@ -162,14 +168,14 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   }, []);
 
   return (
-    <div className={classes.root} style={{ height: `${maxImageLength}px` }}>
-      <div className={classes.inner}>
-        <ImageView image={image} className={classes.imageView} />
+    <div className={classNames.root} style={{ height: `${maxImageLength}px` }}>
+      <div className={classNames.inner}>
+        <ImageView image={image} className={classNames.imageView} />
         <SliderBar
           classes={{
-            outer: classes.sliderBarTop,
-            inner: classes.sliderBarTopInner,
-            thumb: classes.sliderBarTopThumb,
+            outer: classNames.sliderBarTop,
+            inner: classNames.sliderBarTopInner,
+            thumb: classNames.sliderBarTopThumb,
           }}
           tracks={tracks}
           sliderBarLength={100}
@@ -180,9 +186,9 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
           tracks.map((track) => (
             <TrackView
               classes={{
-                trackView: classes.trackView,
-                trackViewStart: classes.trackViewStart,
-                trackViewEnd: classes.trackViewEnd,
+                trackView: classNames.trackView,
+                trackViewStart: classNames.trackViewStart,
+                trackViewEnd: classNames.trackViewEnd,
               }}
               track={track.html}
               start={track.timing.start}
@@ -196,45 +202,45 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
         <span
           className={
             preload === true && loadState === 1
-              ? classes.nowLoading
-              : classes.nowLoadingNone
+              ? classNames.nowLoading
+              : classNames.nowLoadingNone
           }
         >
           <span dangerouslySetInnerHTML={{ __html: nowLoadingMessage }} />
         </span>
         <SliderBar
           classes={{
-            outer: classes.sliderBar,
-            inner: classes.sliderBarInner,
-            thumb: classes.sliderBarThumb,
-            label: classes.sliderBarLabel,
-            button: classes.sliderBarLabelButton,
-            before: classes.navigationDisplayBefore,
-            after: classes.navigationDisplayAfter,
+            outer: classNames.sliderBar,
+            inner: classNames.sliderBarInner,
+            thumb: classNames.sliderBarThumb,
+            label: classNames.sliderBarLabel,
+            button: classNames.sliderBarLabelButton,
+            before: classNames.navigationDisplayBefore,
+            after: classNames.navigationDisplayAfter,
           }}
           tracks={tracks}
           sliderBarLength={sliderBarLength}
           navigationDisplayTiming={navigationDisplayTiming}
-          navigationDisabledBrowserSize={navigationDisabledBrowserSize}
+          navigationDisabledBrowserSize={disabledBrowserSize}
           max={maxSliderBar}
           value={value}
           labelRequired
         />
-        <div className={classes.navigation}>
+        <div className={classNames.navigation}>
           {tracks.length > 0 &&
             tracks.map((track, index) => (
               <LabelView
                 classes={{
-                  label: classes.labelView,
-                  active: classes.activeLabelView,
-                  before: classes.navigationDisplayBefore,
-                  after: classes.navigationDisplayAfter,
+                  label: classNames.labelView,
+                  active: classNames.activeLabelView,
+                  before: classNames.navigationDisplayBefore,
+                  after: classNames.navigationDisplayAfter,
                 }}
                 timing={track.timing}
                 buttonLabel={track.buttonLabel}
                 active={activeIndex === index}
                 navigationDisplayTiming={navigationDisplayTiming}
-                navigationDisabledBrowserSize={navigationDisabledBrowserSize}
+                navigationDisabledBrowserSize={disabledBrowserSize}
               />
             ))}
         </div>
