@@ -46,8 +46,19 @@ export const TrackView: React.FC<Props> = ({
 
   useEffect(() => {
     const target = ref.current;
+    const atag = target.getElementsByTagName("a");
     if (onTrackEnter && target && currentStatus === 1) {
       onTrackEnter(target);
+      for (let i = 0; i < atag.length; i++) {
+        const a = atag[i];
+        a.addEventListener("click", (e) => {
+          if ((e.target as Element).getAttribute("href").indexOf("#") !== -1) {
+            e.preventDefault();
+            const start = parseInt(a.getAttribute("href").replace("#", ""));
+            scrollTo({ top: start, left: 0, behavior: "smooth" });
+          }
+        });
+      }
     } else if (onTrackLeave && target && currentStatus === 2) {
       onTrackLeave(target);
     }
