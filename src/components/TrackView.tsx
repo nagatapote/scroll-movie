@@ -30,6 +30,18 @@ const getClassNameFromStatus = (
   return animation?.end ?? classes.trackViewEnd;
 };
 
+const onLinkClick = (e) => {
+  const href = (e.target as Element).getAttribute("href");
+  if (href.indexOf("#") !== -1) {
+    const start = parseInt(href.replace("#", ""));
+    if (Number.isInteger(start)) {
+      e.preventDefault();
+      scrollTo({ top: start, left: 0, behavior: "smooth" });
+      location.hash = href;
+    }
+  }
+}
+
 export const TrackView: React.FC<Props> = ({
   classes,
   track,
@@ -46,21 +58,20 @@ export const TrackView: React.FC<Props> = ({
 
   useEffect(() => {
     const target = ref.current;
+
     const atag = target.getElementsByTagName("a");
     if (onTrackEnter && target && currentStatus === 1) {
       onTrackEnter(target);
       for (let i = 0; i < atag.length; i++) {
         const a = atag[i];
-        a.addEventListener("click", (e) => {
-          if ((e.target as Element).getAttribute("href").indexOf("#") !== -1) {
-            e.preventDefault();
-            const start = parseInt(a.getAttribute("href").replace("#", ""));
-            scrollTo({ top: start, left: 0, behavior: "smooth" });
-          }
-        });
+        a.addEventListener("click", onLinkClick);
       }
     } else if (onTrackLeave && target && currentStatus === 2) {
       onTrackLeave(target);
+      for (let i = 0; i < atag.length; i++) {
+        const a = atag[i];
+        a.removeEventListener("click", onLinkClick);
+      }
     }
   }, [currentStatus]);
 
