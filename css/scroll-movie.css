@@ -84,6 +84,7 @@
   outline: none;
   height: 10px;
   overflow: hidden;
+  width: 100%;
 }
 
 .scroll-movie__slider-bar-top-inner {
@@ -99,11 +100,17 @@
   top: 0;
 }
 
-.scroll-movie__slider-bar {
+.scroll-movie__slider-bar-label-wrap {
   position: absolute;
   top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 60%;
+  z-index: 1;
+}
+
+.scroll-movie__slider-bar {
+  position: absolute;
   margin: 0;
   padding: 0;
   -webkit-appearance: none;
@@ -111,6 +118,7 @@
   height: 6px;
   background: white;
   overflow: hidden;
+  width: 100%;
 }
 
 .scroll-movie__slider-bar-inner {
@@ -128,11 +136,9 @@
 
 .scroll-movie__slider-bar-label {
   position: absolute;
-  top: 78%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 10px;
   color: white;
-  z-index: 1;
+  width: 100%;
 }
 
 .scroll-movie__slider-bar-label-button {

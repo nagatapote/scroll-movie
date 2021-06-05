@@ -20,7 +20,6 @@ type Track = {
 type Props = {
   classes: ClassNames;
   tracks: Track[];
-  sliderBarLength: number;
   navigationDisplayTiming?: number;
   navigationDisabledBrowserSize?: { height: number; width: number };
   max: number;
@@ -31,7 +30,6 @@ type Props = {
 export const SliderBar: React.FC<Props> = ({
   classes,
   tracks,
-  sliderBarLength,
   navigationDisplayTiming,
   navigationDisabledBrowserSize,
   max,
@@ -54,7 +52,7 @@ export const SliderBar: React.FC<Props> = ({
           : classes.after
       }
     >
-      <div className={classes.outer} style={{ width: `${sliderBarLength}%` }}>
+      <div className={classes.outer}>
         <div className={classes.inner} style={{ width: left }}></div>
         <div className={classes.thumb} style={{ left }}></div>
       </div>
@@ -64,8 +62,7 @@ export const SliderBar: React.FC<Props> = ({
             <a
               className={classes.label}
               style={{
-                width: `${sliderBarLength}%`,
-                marginLeft: `${(track.timing.start / max) * sliderBarLength}%`,
+                marginLeft: `${(track.timing.start / max) * 100}%`,
               }}
             >
               {track.buttonLabel && (
