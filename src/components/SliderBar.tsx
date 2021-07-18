@@ -6,6 +6,7 @@ type ClassNames = {
   thumb: string;
   label?: string;
   button?: string;
+  buttonActive?: string;
   before?: string;
   after?: string;
 };
@@ -67,7 +68,11 @@ export const SliderBar: React.FC<Props> = ({
             >
               {track.buttonLabel && (
                 <span
-                  className={classes.button}
+                  className={
+                    window.scrollY <= track.timing.start
+                      ? classes.button
+                      : classes.buttonActive
+                  }
                   onClick={() => handleClick(track.timing.start)}
                 >
                   {(num += 1)}

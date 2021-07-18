@@ -24,6 +24,7 @@ const defaultClassNames = {
   sliderBarThumb: "scroll-movie__slider-bar-thumb",
   sliderBarLabel: "scroll-movie__slider-bar-label",
   sliderBarLabelButton: "scroll-movie__slider-bar-label-button",
+  sliderBarLabelButtonActive: "scroll-movie__slider-bar-label-button-active",
   navigation: "scroll-movie__navigation",
   navigationDisplayBefore: "scroll-movie__navigation-display-before",
   navigationDisplayAfter: "scroll-movie__navigation-display-after",
@@ -51,6 +52,7 @@ type ClassNames = {
   sliderBarThumb: string;
   sliderBarLabel: string;
   sliderBarLabelButton: string;
+  sliderBarLabelButtonActive: string;
   navigation: string;
   navigationDisplayBefore: string;
   navigationDisplayAfter: string;
@@ -221,6 +223,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
                   thumb: classNames.sliderBarThumb,
                   label: classNames.sliderBarLabel,
                   button: classNames.sliderBarLabelButton,
+                  buttonActive: classNames.sliderBarLabelButtonActive,
                   before: classNames.navigationDisplayBefore,
                   after: classNames.navigationDisplayAfter,
                 }}
