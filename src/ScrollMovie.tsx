@@ -150,6 +150,8 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   }, [preload]);
 
   useEffect(() => {
+    setBrowserHeight(window.innerHeight);
+    setBrowserWidth(window.innerWidth);
     const onResize = () => {
       setBrowserHeight(window.innerHeight);
       setBrowserWidth(window.innerWidth);
