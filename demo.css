@@ -23,3 +23,7 @@
   color: white;
   opacity: 0;
 }
+
+.scroll-movie__slider-bar-label-button-active {
+  color: #fc0;
+}
