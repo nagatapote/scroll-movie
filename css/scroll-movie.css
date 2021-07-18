@@ -145,10 +145,6 @@
   cursor: pointer;
 }
 
-.scroll-movie__slider-bar-label-button-active {
-  cursor: pointer;
-}
-
 .scroll-movie__navigation {
   position: absolute;
   top: 90%;

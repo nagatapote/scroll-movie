@@ -25,5 +25,6 @@
 }
 
 .scroll-movie__slider-bar-label-button-active {
+  cursor: pointer;
   color: #fc0;
 }
