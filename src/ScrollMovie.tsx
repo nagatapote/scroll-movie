@@ -99,8 +99,8 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   const [value, setValue] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loadState, setLoadState] = useState(1);
-  const browserHeight = window.innerHeight;
-  const browserWidth = window.innerWidth;
+  const [browserHeight, setBrowserHeight] = useState(0);
+  const [browserWidth, setBrowserWidth] = useState(0);
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
   const classNames = { ...defaultClassNames, ...classes };
@@ -150,6 +150,10 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   }, [preload]);
 
   useEffect(() => {
+    const onResize = () => {
+      setBrowserHeight(window.innerHeight);
+      setBrowserWidth(window.innerWidth);
+    }
     const onScroll = () => {
       setValue(window.scrollY);
       const imageNum = Math.trunc(window.scrollY / scrollsPerImage);
@@ -168,10 +172,13 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
       const active = tracks.length - index - 1;
       setActiveIndex(active);
     };
-
     document.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", onResize)
 
-    return () => document.removeEventListener("scroll", onScroll);
+    return () => {
+      document.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+    }
   }, []);
 
   return (
