@@ -24,6 +24,7 @@ const defaultClassNames = {
   sliderBarThumb: "scroll-movie__slider-bar-thumb",
   sliderBarLabel: "scroll-movie__slider-bar-label",
   sliderBarLabelButton: "scroll-movie__slider-bar-label-button",
+  sliderBarLabelButtonActive: "scroll-movie__slider-bar-label-button-active",
   navigation: "scroll-movie__navigation",
   navigationDisplayBefore: "scroll-movie__navigation-display-before",
   navigationDisplayAfter: "scroll-movie__navigation-display-after",
@@ -51,6 +52,7 @@ type ClassNames = {
   sliderBarThumb: string;
   sliderBarLabel: string;
   sliderBarLabelButton: string;
+  sliderBarLabelButtonActive: string;
   navigation: string;
   navigationDisplayBefore: string;
   navigationDisplayAfter: string;
@@ -98,6 +100,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   const [activeIndex, setActiveIndex] = useState(0);
   const [loadState, setLoadState] = useState(1);
   const browserHeight = window.innerHeight;
+  const browserWidth = window.innerWidth;
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
   const classNames = { ...defaultClassNames, ...classes };
@@ -221,6 +224,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
                   thumb: classNames.sliderBarThumb,
                   label: classNames.sliderBarLabel,
                   button: classNames.sliderBarLabelButton,
+                  buttonActive: classNames.sliderBarLabelButtonActive,
                   before: classNames.navigationDisplayBefore,
                   after: classNames.navigationDisplayAfter,
                 }}
@@ -229,6 +233,8 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
                 navigationDisabledBrowserSize={disabledBrowserSize}
                 max={maxSliderBar}
                 value={value}
+                browserHeight={browserHeight}
+                browserWidth={browserWidth}
                 labelRequired
               />
             </div>
@@ -248,6 +254,9 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
                   active={activeIndex === index}
                   navigationDisplayTiming={navigationDisplayTiming}
                   navigationDisabledBrowserSize={disabledBrowserSize}
+                  value={value}
+                  browserHeight={browserHeight}
+                  browserWidth={browserWidth}
                 />
               ))}
           </div>

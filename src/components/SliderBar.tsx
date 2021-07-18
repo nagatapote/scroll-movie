@@ -6,6 +6,7 @@ type ClassNames = {
   thumb: string;
   label?: string;
   button?: string;
+  buttonActive?: string;
   before?: string;
   after?: string;
 };
@@ -25,6 +26,8 @@ type Props = {
   max: number;
   value: number;
   labelRequired?: boolean;
+  browserHeight?: number;
+  browserWidth?: number;
 };
 
 export const SliderBar: React.FC<Props> = ({
@@ -35,6 +38,8 @@ export const SliderBar: React.FC<Props> = ({
   max,
   value,
   labelRequired,
+  browserHeight,
+  browserWidth,
 }) => {
   const handleClick = (start: number) => {
     return scrollTo({ top: start, left: 0, behavior: "smooth" });
@@ -45,9 +50,9 @@ export const SliderBar: React.FC<Props> = ({
     <div
       className={
         labelRequired &&
-        (window.scrollY < navigationDisplayTiming ||
-          window.innerHeight < navigationDisabledBrowserSize.height ||
-          window.innerWidth < navigationDisabledBrowserSize.width)
+        (value < navigationDisplayTiming ||
+          browserHeight < navigationDisabledBrowserSize.height ||
+          browserWidth < navigationDisabledBrowserSize.width)
           ? classes.before
           : classes.after
       }
@@ -67,7 +72,11 @@ export const SliderBar: React.FC<Props> = ({
             >
               {track.buttonLabel && (
                 <span
-                  className={classes.button}
+                  className={
+                    value <= track.timing.start
+                      ? classes.button
+                      : `${classes.button} ${classes.buttonActive}`
+                  }
                   onClick={() => handleClick(track.timing.start)}
                 >
                   {(num += 1)}
