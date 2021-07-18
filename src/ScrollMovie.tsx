@@ -100,6 +100,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   const [activeIndex, setActiveIndex] = useState(0);
   const [loadState, setLoadState] = useState(1);
   const browserHeight = window.innerHeight;
+  const browserWidth = window.innerWidth;
   const maxImageLength = imageSize * scrollsPerImage + browserHeight;
   const maxSliderBar = imageSize * scrollsPerImage;
   const classNames = { ...defaultClassNames, ...classes };
@@ -232,6 +233,8 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
                 navigationDisabledBrowserSize={disabledBrowserSize}
                 max={maxSliderBar}
                 value={value}
+                browserHeight={browserHeight}
+                browserWidth={browserWidth}
                 labelRequired
               />
             </div>
@@ -251,6 +254,9 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
                   active={activeIndex === index}
                   navigationDisplayTiming={navigationDisplayTiming}
                   navigationDisabledBrowserSize={disabledBrowserSize}
+                  value={value}
+                  browserHeight={browserHeight}
+                  browserWidth={browserWidth}
                 />
               ))}
           </div>
