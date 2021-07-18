@@ -75,7 +75,7 @@ export const SliderBar: React.FC<Props> = ({
                   className={
                     value <= track.timing.start
                       ? classes.button
-                      : classes.button && classes.buttonActive
+                      : `${classes.button} ${classes.buttonActive}`
                   }
                   onClick={() => handleClick(track.timing.start)}
                 >
