@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ImageView, SliderBar, TrackView, LabelView } from "./components/index";
 import smoothscroll from "smoothscroll-polyfill";
+import clsx from "clsx";
 
 smoothscroll.polyfill();
 
 const defaultClassNames = {
   root: "scroll-movie",
+  rootLoading: "scroll-movie--is-loading",
   inner: "scroll-movie__inner",
   imageView: "scroll-movie__image-view",
   trackView: "scroll-movie__track-view",
@@ -34,6 +36,7 @@ const defaultClassNames = {
 
 type ClassNames = {
   root: string;
+  rootLoading: string;
   inner: string;
   imageView: string;
   trackView: string;
@@ -184,7 +187,12 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   }, []);
 
   return (
-    <div className={classNames.root} style={{ height: `${maxImageLength}px` }}>
+    <div 
+      className={clsx(classNames.root, {
+        [classNames.rootLoading]: preload && loadState === 1
+      })} 
+      style={{ height: `${maxImageLength}px` }}
+    >
       <div className={classNames.inner}>
         <ImageView image={image} className={classNames.imageView} />
         <SliderBar
