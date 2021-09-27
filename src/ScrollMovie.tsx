@@ -166,7 +166,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
       setBrowserWidth(window.innerWidth);
     }
     const onScroll = () => {
-      setValue(window.scrollY);
+      setValue(window.scrollY > scrollsPerImage * imageSize ? scrollsPerImage * imageSize : window.scrollY);
       let imageNum = Math.trunc(window.scrollY / scrollsPerImage);
       // Safariで下に余計にスクロールした場合に最後のフレームを適用する
       if (imageNum > imageSize) {
