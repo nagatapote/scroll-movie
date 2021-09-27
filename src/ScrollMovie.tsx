@@ -77,6 +77,7 @@ export type ScrollMovieProps = {
   imageSize: number;
   scrollsPerImage: number;
   preload?: boolean;
+  preloadTimes?: number;
   navigationDisplayTiming?: number;
   navigationDisabledBrowserSize?: { height: number; width: number };
   nowLoadingMessage?: string;
@@ -91,6 +92,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
   imageSize,
   scrollsPerImage,
   preload = false,
+  preloadTimes = 0,
   navigationDisplayTiming,
   navigationDisabledBrowserSize = {},
   nowLoadingMessage = "<div>NowLoading</div>",
@@ -144,7 +146,11 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
         document.addEventListener("mousewheel", scrollControl, {
           passive: false,
         });
-        await loadAllImages();
+        if (preloadTimes === 0) {
+          await loadAllImages()
+        } else {
+          await new Promise(resolve => setTimeout(resolve, preloadTimes))
+        }
         setLoadState(0);
         document.removeEventListener("touchmove", scrollControl);
         document.removeEventListener("mousewheel", scrollControl);
@@ -160,8 +166,12 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
       setBrowserWidth(window.innerWidth);
     }
     const onScroll = () => {
-      setValue(window.scrollY);
-      const imageNum = Math.trunc(window.scrollY / scrollsPerImage);
+      setValue(window.scrollY > maxImageLength ? maxImageLength : window.scrollY);
+      let imageNum = Math.trunc(window.scrollY / scrollsPerImage);
+      // Safariで下に余計にスクロールした場合に最後のフレームを適用する
+      if (imageNum > imageSize) {
+        imageNum = imageSize;
+      }
       const imageData = getImage(imageNum);
       setImage(imageData);
 
