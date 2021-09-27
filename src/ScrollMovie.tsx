@@ -149,7 +149,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
         if (preloadTimes === 0) {
           await loadAllImages()
         } else {
-            await new Promise(resolve => setTimeout(resolve, preloadTimes))
+          await new Promise(resolve => setTimeout(resolve, preloadTimes))
         }
         setLoadState(0);
         document.removeEventListener("touchmove", scrollControl);
@@ -166,8 +166,12 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
       setBrowserWidth(window.innerWidth);
     }
     const onScroll = () => {
-      setValue(window.scrollY);
-      const imageNum = Math.trunc(window.scrollY / scrollsPerImage);
+      setValue(window.scrollY > scrollsPerImage * imageSize ? scrollsPerImage * imageSize : window.scrollY);
+      let imageNum = Math.trunc(window.scrollY / scrollsPerImage);
+      // Safariで下に余計にスクロールした場合に最後のフレームを適用する
+      if (imageNum > imageSize) {
+        imageNum = imageSize;
+      }
       const imageData = getImage(imageNum);
       setImage(imageData);
 
