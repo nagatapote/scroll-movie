@@ -155,7 +155,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
     const onResize = () => {
       setBrowserHeight(window.innerHeight);
       setBrowserWidth(window.innerWidth);
-    }
+    };
     const onScroll = () => {
       setValue(window.scrollY);
       const imageNum = Math.trunc(window.scrollY / scrollsPerImage);
@@ -175,12 +175,12 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
       setActiveIndex(active);
     };
     document.addEventListener("scroll", onScroll);
-    window.addEventListener("resize", onResize)
+    window.addEventListener("resize", onResize);
 
     return () => {
       document.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
-    }
+    };
   }, []);
 
   return (

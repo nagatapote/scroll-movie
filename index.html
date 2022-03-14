@@ -11,7 +11,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/github.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/styles/vs2015.min.css"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.1/highlight.min.js"></script>
     <link rel="stylesheet" href="./css/scroll-movie.css" />
@@ -29,51 +29,57 @@
     <script>
       const tracks = [
         {
-          html: "<h1>ScrollMovie.js</h1><br />If you scroll, the background image will move.<br /><br />I'll show you how to install this library.",
+          html: "<div style='margin-top: 300px;'><h1>ScrollMovie.js</h1><br />If you scroll, the background image will move.<br /><br />I'll show you how to install this library.<br /><div style='margin-top: 50px; text-align: center;'><div style='margin-bottom: 8px; color: #fc0;'>Scroll</div><img src='./img/bottom_scroll.svg' width=64px height=64px; /></div></div>",
           timing: {
             start: 0,
-            end: 5000,
+            end: 3000,
           },
           buttonLabel: "top",
         },
         {
-          html: "<h1>Installation</h1>・Vanilla<pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@latest/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre><pre><code>ScrollMovie(&quot;#app&quot;,{ getImage: images, imageSize: number, scrollsPerImage: number, tracks: tracks,});</code></pre>・React<pre><code>$ npm install scroll-movie --save</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;</code></pre>",
+          html: "<div style='margin-top: 200px;'><h1>Installation</h1><h2>Vanilla</h2><pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@latest/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre><pre><code>ScrollMovie(&quot;#app&quot;, { getImage: images, imageSize: number, scrollsPerImage: number, tracks: tracks });</code></pre><h2>React</h2><pre><code class='shell'>$ npm install scroll-movie --save</code></pre><pre><code class='shell'>$ yarn add -D scroll-movie</code></pre><pre><code>&lt;ScrollMovie getImage={images} imageSize={number} scrollsPerImage={number} tracks={tracks} /&gt;</code></pre></div>",
           timing: {
-            start: 7000,
-            end: 12000,
+            start: 4000,
+            end: 7000,
           },
           buttonLabel: "installation",
         },
-
         {
-          html: "<h1>Tracks</h1><pre><code>{<br /> html: &lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js,<br /> timing: { start: 0,end: 5000 },<br /> buttonLabel: &quot;animation&quot;,<br /> ScrollMovie: {start: &quot;scroll-movie__track-view_start&quot;,end: &quot;scroll-movie__track-view_end&quot;<br />}</code></pre>",
+          html: "<div style='margin-top: 100px;'><h1>Tracks</h1><pre><code>const tracks = [<br/>&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html: &quot;&lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js&quot;,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timing: {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start: 0,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end: 5000<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buttonLabel: &quot;start&quot;,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animation: {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start: &quot;scroll-movie__track-view_start&quot;,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end: &quot;scroll-movie__track-view_end&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html: &quot;&lt;h1&gt;Thank You.&lt;/h1&gt;ScrollMovie.js is Great.&quot;,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timing: {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start: 7000,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end: 12000<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buttonLabel: &quot;end&quot;,<br />&nbsp;&nbsp;&nbsp;}<br />]</code></pre></div>",
           timing: {
-            start: 14000,
-            end: 19000,
+            start: 8000,
+            end: 11000,
+          },
+          buttonLabel: "props",
+        },
+        {
+          html: "<div style='margin-top: 100px;'><h1>Tracks</h1><pre><code>const tracks = [<br/>&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html: &quot;&lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js&quot;,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timing: {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start: 0,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end: 5000<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buttonLabel: &quot;start&quot;,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animation: {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start: &quot;scroll-movie__track-view_start&quot;,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end: &quot;scroll-movie__track-view_end&quot;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;html: &quot;&lt;h1&gt;Thank You.&lt;/h1&gt;ScrollMovie.js is Great.&quot;,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timing: {<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start: 7000,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end: 12000<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;buttonLabel: &quot;end&quot;,<br />&nbsp;&nbsp;&nbsp;}<br />]</code></pre></div>",
+          timing: {
+            start: 12000,
+            end: 15000,
           },
           buttonLabel: "tracks",
         },
         {
-          html: "<h1>Convert video to image</h1><pre><code>$ brew install ffmpeg</code></pre><pre><code>$ ffmpeg -i [filename].mp4 -vcodec mjpeg image_%03d.jpg</code></pre><pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;</code></pre>",
+          html: "<div style='margin-top: 350px;'><h1>Labels</h1>Label can be implemented as follows.</div>",
           timing: {
-            start: 21000,
+            start: 16000,
+            end: 19000,
+          },
+          buttonLabel: "labels",
+        },
+        {
+          html: "<div style='margin-top: 350px;'><h1>Not Label</h1>You can do it without a label.</div>",
+          timing: {
+            start: 20000,
+            end: 22000,
+          },
+        },
+        {
+          html: "<div style='margin-top: 100px;'><h1>Animation</h1>Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.<h2>Sample CSS</h2><pre><code class='css'>.originalCssStart {<br />&nbsp;&nbsp;&nbsp;position: absolute;<br />&nbsp;&nbsp;&nbsp;top: 50%;<br />&nbsp;&nbsp;&nbsp;left: 50%;<br />&nbsp;&nbsp;&nbsp;transform: translate(-50%, -50%);<br />&nbsp;&nbsp;&nbsp;opacity: 1;<br />}<br /><br />.originalCssEnd {<br />&nbsp;&nbsp;&nbsp;position: absolute;<br />&nbsp;&nbsp;&nbsp;top: 50%;<br />&nbsp;&nbsp;&nbsp;left: 50%;<br />&nbsp;&nbsp;&nbsp;transform: translate(100%, -50%);<br />&nbsp;&nbsp;&nbsp;opacity: 0;<br />}</code></pre></div>",
+          timing: {
+            start: 23000,
             end: 26000,
-          },
-          buttonLabel: "images",
-        },
-        {
-          html: "<h1>Not Label</h1>You can do it without a label.",
-
-          timing: {
-            start: 28000,
-            end: 33000,
-          },
-        },
-        {
-          html: "<h1>Animation</h1><br />Animation can be customized freely in css.<br /><br />I'm using css that fades out to the right.",
-          timing: {
-            start: 35000,
-            end: 40000,
           },
           buttonLabel: "animation",
           animation: {
@@ -82,10 +88,18 @@
           },
         },
         {
-          html: "<h1>Thank you</h1><br/>That's it. Please try it.",
+          html: "<div style='margin-top: 300px;'><h1>Convert video to image（Bonus）</h1><pre><code class='shell'>$ brew install ffmpeg</code></pre><pre><code class='shell'>$ ffmpeg -i {filename}.mp4 -vcodec mjpeg image_%03d.jpg</code></pre><pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;1&quot;); return `images/image_${pad}.jpg`;</code></pre></div>",
           timing: {
-            start: 42000,
-            end: 45480,
+            start: 27000,
+            end: 30000,
+          },
+          buttonLabel: "images",
+        },
+        {
+          html: "<div style='margin-top: 350px;'><h1>Thank you</h1><br/>That's it. Please try it.</div>",
+          timing: {
+            start: 31000,
+            end: 31440,
           },
           buttonLabel: "end",
         },
@@ -93,10 +107,10 @@
       ScrollMovie("#app", {
         tracks: tracks,
         getImage: (index) => {
-          const pad = `${index}`.padStart(3, "0");
+          const pad = `${index}`.padStart(3, "1");
           return `images/image_${pad}.jpg`;
         },
-        imageSize: 758,
+        imageSize: 524,
         scrollsPerImage: 60,
         sliderBarLength: 60,
         preload: true,
