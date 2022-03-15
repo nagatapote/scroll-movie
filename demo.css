@@ -1,5 +1,29 @@
+body {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+}
+
 pre code {
   border-radius: 10px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  border: 1px solid #fff;
+  padding: 12px;
+  min-width: 300px;
+  font-weight: bold;
+  background-color: black;
+}
+
+td {
+  border: 1px solid #fff;
+  padding: 12px;
+  min-width: 300px;
+  font-size: 14px;
 }
 
 .originalCssStart {
