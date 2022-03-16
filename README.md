@@ -82,7 +82,7 @@ const tracks = [
     },
   },
   {
-    html: "<div style='margin-top: 300px;'><h1>Convert video to image（Bonus）</h1><pre><code class='shell'>$ brew install ffmpeg</code></pre><pre><code class='shell'>$ ffmpeg -i {filename}.mp4 -vcodec mjpeg image_%03d.jpg</code></pre><pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;1&quot;); return `images/image_${pad}.jpg`;</code></pre></div>",
+    html: "<div style='margin-top: 300px;'><h1>Convert video to image（Bonus）</h1><pre><code class='shell'>$ brew install ffmpeg</code></pre><pre><code class='shell'>$ ffmpeg -i {filename}.mp4 -vcodec mjpeg image_%03d.jpg</code></pre><pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;</code></pre></div>",
     timing: {
       start: 27000,
       end: 30000,
@@ -102,7 +102,7 @@ ScrollMovie("#app", {
   classes: {},
   tracks: tracks,
   getImage: (index) => {
-    const pad = `${index}`.padStart(3, "1");
+    const pad = `${index}`.padStart(3, "0");
     return `images/image_${pad}.jpg`;
   },
   imageSize: 524,
@@ -131,7 +131,7 @@ When using as React component
 <ScrollMovie
   tracks={tracks}
   getImage={(index) => {
-    const pad = `${index}`.padStart(3, "1");
+    const pad = `${index}`.padStart(3, "0");
     return `images/image_${pad}.jpg`;
   }}
   imageSize={524}
