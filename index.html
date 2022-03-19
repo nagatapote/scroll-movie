@@ -5,6 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ScrollMovie</title>
+    <meta name="author" content="nagatapote" />
+    <meta
+      name="description"
+      content="Component with background image that moves as scroll"
+    />
+    <meta name="version" content="1.0.0" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://nagatapote.github.io/scroll-movie/"
+    />
+    <meta property="og:title" content="ScrollMovie" />
+    <meta
+      property="og:description"
+      content="Component with background image that moves as scroll"
+    />
+    <meta
+      property="og:image"
+      content="https://nagatapote.github.io/scroll-movie/images/ogp.png"
+    />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@pote_nagata" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -76,7 +99,7 @@
           },
         },
         {
-          html: "<div class='default-class' style='margin-top: 200px;'><h3>Scroll value per image.</h3><img src='./img/scrollsPerImage.png' width=1000px; /><pre><code>scrollsPerImage: 60</code></pre><div class='default-text-font'>The scroll amount value for switching to the next image.<br />60 is recommended.</div></div>",
+          html: "<div class='default-class' style='margin-top: 200px;'><h3>Scroll per image.</h3><img src='./img/scrollsPerImage.png' width=1000px; /><pre><code>scrollsPerImage: 60</code></pre><div class='default-text-font'>The scroll amount value for switching to the next image.<br />60 is recommended.</div></div>",
           timing: {
             start: 15000,
             end: 16500,
@@ -118,7 +141,7 @@
           },
         },
         {
-          html: "<div class='default-class' style='margin-top: 250px;'><h1>Convert video to image（Bonus）</h1><div class='default-text-font'>You can convert a video file to image files.</div><pre><code class='shell'>$ brew install ffmpeg</code></pre><pre><code class='shell'>$ ffmpeg -i {filename}.mp4 -vcodec mjpeg image_%03d.jpg</code></pre></div>",
+          html: "<div class='default-class' style='margin-top: 150px;'><h1>Convert video to image（Bonus）</h1><div class='default-text-font'>Don’t have the images for the background animation?<br />No worry!!<br />By following, You can convert the video to the images.</div><pre><code class='shell'>$ brew install ffmpeg</code></pre><pre><code class='shell'>$ ffmpeg -i {filename}.mp4 -vcodec mjpeg image_%03d.jpg</code></pre></div>",
           timing: {
             start: 27500,
             end: 29000,
