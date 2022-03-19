@@ -7,26 +7,40 @@ pre code {
   border-radius: 10px;
 }
 
+.hljs {
+  background-color: rgba(30, 30, 30, 0.5);
+}
+
 table {
   border-collapse: collapse;
 }
 
 th {
   border: 1px solid #fff;
-  padding: 12px;
+  padding: 8px;
   min-width: 300px;
   font-weight: bold;
-  background-color: black;
+  background-color: rgba(30, 30, 30, 0.5);
+  font-size: 18px;
 }
 
 td {
   border: 1px solid #fff;
   padding: 12px;
   min-width: 300px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
-.originalCssStart {
+.default-text-font {
+  font-weight: normal;
+  line-height: 1.7;
+}
+
+.default-class {
+  width: 1000px;
+}
+
+.original-css-start {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -39,7 +53,7 @@ td {
   opacity: 1;
 }
 
-.originalCssEnd {
+.original-css-end {
   position: absolute;
   top: 50%;
   left: 50%;
