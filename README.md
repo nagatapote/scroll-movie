@@ -10,6 +10,18 @@ Scroll Image is the library that enables you to animate background image as you 
 <script src="https://unpkg.com/scroll-movie@latest/dist/main.js"></script>
 ```
 
+```javascript
+ScrollMovie("#app", {
+  tracks: tracks,
+  getImage: getImage,
+  imageSize: number,
+  scrollsPerImage: number,
+});
+```
+
+At `#app` section, You can specify the element with the query string that can be found by `document.querySelector`.
+Other props can be found as you scroll the window.
+
 ### React
 
 ```shell
