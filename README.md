@@ -66,9 +66,9 @@ You can specify the appearance timing of the each section with the timing proper
 
 ## Images
 
-### getImages
+### getImage
 
-`getImages` is the function to get the image path from the scroll amount.
+`getImage` is the function to get the image path from the scroll amount.
 
 <img src="./img/getImage.png" />
 
