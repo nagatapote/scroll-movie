@@ -1,6 +1,8 @@
 # ScrollMovie
 
-## Install
+Scroll Image is the library that enables you to animate background image as you scroll the window.
+
+## Installation
 
 When using as vanilla.js
 
