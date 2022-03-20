@@ -228,7 +228,7 @@
           <tr>
             <td>scrollsPerImage</td>
             <td>number</td>
-            <td>Scroll value per image</td>
+            <td>Scroll value per image.</td>
           </tr>
           <tr>
             <td>preload</td>
@@ -305,7 +305,6 @@
       <div class="default-class" style="margin-top: 250px">
         <h1>Thank you</h1>
         <div class="default-text-font">That's it. Please try it.</div>
-        div>
       </div>
     </template>
     <script>
@@ -435,6 +434,9 @@
             document.getElementById("loading").style.transition = "all 1s";
             document.getElementById("loading").style.opacity = "1";
           }, 1000);
+          targetElement.querySelectorAll("pre code").forEach((block) => {
+            hljs.highlightBlock(block);
+          });
           // top
           const topTemplate = document.getElementById("top").content;
           document.getElementById("track-top").appendChild(topTemplate);
@@ -470,9 +472,7 @@
           // images-tertiary
           const imagesTertiaryTemplate =
             document.getElementById("images-tertiary").content;
-          document
-            .getElementById("track-images-tertiary")
-            .appendChild(imagesTertiaryTemplate);
+          document.getElementById("track-images-tertiary");
           // internalLink
           const internalLinkTemplate =
             document.getElementById("internalLink").content;
@@ -491,6 +491,12 @@
           document
             .getElementById("track-props-primary")
             .appendChild(propsPrimaryTemplate);
+          // props-secondary
+          const propsSecondaryTemplate =
+            document.getElementById("props-secondary").content;
+          document
+            .getElementById("track-props-secondary")
+            .appendChild(propsSecondaryTemplate);
           // convertImages
           const convertImagesTemplate =
             document.getElementById("convertImages").content;
@@ -500,9 +506,6 @@
           // end
           const endTemplate = document.getElementById("end").content;
           document.getElementById("track-end").appendChild(endTemplate);
-          targetElement.querySelectorAll("pre code").forEach((block) => {
-            hljs.highlightBlock(block);
-          });
         },
         onTrackLeave: () => {},
       });
