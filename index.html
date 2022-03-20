@@ -438,70 +438,102 @@
             hljs.highlightBlock(block);
           });
           // top
-          const topTemplate = document.getElementById("top").content;
-          document.getElementById("track-top").appendChild(topTemplate);
+          if (window.scrollY <= 1500) {
+            const topTemplate = document.getElementById("top").content;
+            document.getElementById("track-top").appendChild(topTemplate);
+          }
           // installation-primary
-          const installationprimaryTemplate = document.getElementById(
-            "installation-primary"
-          ).content;
-          document
-            .getElementById("track-installation-primary")
-            .appendChild(installationprimaryTemplate);
+          if (window.scrollY <= 4000) {
+            const installationprimaryTemplate = document.getElementById(
+              "installation-primary"
+            ).content;
+            document
+              .getElementById("track-installation-primary")
+              .appendChild(installationprimaryTemplate);
+          }
           // installation-secondary
-          const installationSecondaryTemplate = document.getElementById(
-            "installation-secondary"
-          ).content;
-          document
-            .getElementById("track-installation-secondary")
-            .appendChild(installationSecondaryTemplate);
+          if (window.scrollY <= 6500) {
+            const installationSecondaryTemplate = document.getElementById(
+              "installation-secondary"
+            ).content;
+            document
+              .getElementById("track-installation-secondary")
+              .appendChild(installationSecondaryTemplate);
+          }
           // tracks
-          const tracksTemplate = document.getElementById("tracks").content;
-          document.getElementById("track-tracks").appendChild(tracksTemplate);
+          if (window.scrollY <= 9000) {
+            const tracksTemplate = document.getElementById("tracks").content;
+            document.getElementById("track-tracks").appendChild(tracksTemplate);
+          }
           // images-primary
-          const imagesPrimaryTemplate =
-            document.getElementById("images-primary").content;
-          document
-            .getElementById("track-images-primary")
-            .appendChild(imagesPrimaryTemplate);
+          if (window.scrollY <= 11500) {
+            const imagesPrimaryTemplate =
+              document.getElementById("images-primary").content;
+            document
+              .getElementById("track-images-primary")
+              .appendChild(imagesPrimaryTemplate);
+          }
           // images-secondary
-          const imagesSecondaryTemplate =
-            document.getElementById("images-secondary").content;
-          document
-            .getElementById("track-images-secondary")
-            .appendChild(imagesSecondaryTemplate);
+          if (window.scrollY <= 14000) {
+            const imagesSecondaryTemplate =
+              document.getElementById("images-secondary").content;
+            document
+              .getElementById("track-images-secondary")
+              .appendChild(imagesSecondaryTemplate);
+          }
           // images-tertiary
-          const imagesTertiaryTemplate =
-            document.getElementById("images-tertiary").content;
-          document
-            .getElementById("track-images-tertiary")
-            .appendChild(imagesTertiaryTemplate);
+          if (window.scrollY <= 16500) {
+            const imagesTertiaryTemplate =
+              document.getElementById("images-tertiary").content;
+            document
+              .getElementById("track-images-tertiary")
+              .appendChild(imagesTertiaryTemplate);
+          }
           // internalLink
-          const internalLinkTemplate =
-            document.getElementById("internalLink").content;
-          document
-            .getElementById("track-internalLink")
-            .appendChild(internalLinkTemplate);
+          if (window.scrollY <= 19000) {
+            const internalLinkTemplate =
+              document.getElementById("internalLink").content;
+            document
+              .getElementById("track-internalLink")
+              .appendChild(internalLinkTemplate);
+          }
           // animation
-          const animationTemplate =
-            document.getElementById("animation").content;
-          document
-            .getElementById("track-animation")
-            .appendChild(animationTemplate);
+          if (window.scrollY <= 21500) {
+            const animationTemplate =
+              document.getElementById("animation").content;
+            document
+              .getElementById("track-animation")
+              .appendChild(animationTemplate);
+          }
           // props-primary
-          const propsPrimaryTemplate =
-            document.getElementById("props-primary").content;
-          document
-            .getElementById("track-props-primary")
-            .appendChild(propsPrimaryTemplate);
+          if (window.scrollY <= 24000) {
+            const propsPrimaryTemplate =
+              document.getElementById("props-primary").content;
+            document
+              .getElementById("track-props-primary")
+              .appendChild(propsPrimaryTemplate);
+          }
+          // props-secondary
+          if (window.scrollY <= 26500) {
+            const propsSecondaryTemplate =
+              document.getElementById("props-secondary").content;
+            document
+              .getElementById("track-props-secondary")
+              .appendChild(propsSecondaryTemplate);
+          }
           // convertImages
-          const convertImagesTemplate =
-            document.getElementById("convertImages").content;
-          document
-            .getElementById("track-convertImages")
-            .appendChild(convertImagesTemplate);
+          if (window.scrollY <= 29000) {
+            const convertImagesTemplate =
+              document.getElementById("convertImages").content;
+            document
+              .getElementById("track-convertImages")
+              .appendChild(convertImagesTemplate);
+          }
           // end
-          const endTemplate = document.getElementById("end").content;
-          document.getElementById("track-end").appendChild(endTemplate);
+          if (window.scrollY <= 31440) {
+            const endTemplate = document.getElementById("end").content;
+            document.getElementById("track-end").appendChild(endTemplate);
+          }
         },
         onTrackLeave: () => {},
       });
