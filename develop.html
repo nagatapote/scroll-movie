@@ -50,7 +50,7 @@
         alt="Fork me on GitHub"
     /></a>
     <!-- top -->
-    <template id="top"
+    <template id="slide-1"
       ><div class="default-class" style="margin-top: 200px">
         <h1>ScrollMovie.js</h1>
         <br />
@@ -66,9 +66,9 @@
           <div style="margin-bottom: 8px; color: #fc0">Scroll</div>
           <img src="./img/bottom_scroll.svg" width="64px" height="64px;" />
         </div></div></template
-    >;
-    <!-- installation-primary -->
-    <template id="installation-primary">
+    >
+    <!-- slide-2  -->
+    <template id="slide-2">
       <div class="default-class" style="margin-top: 100px">
         <h1>Installation</h1>
         <br />
@@ -102,8 +102,8 @@
         </div>
       </div>
     </template>
-    <!-- installation-secondary -->
-    <template id="installation-secondary"
+    <!-- slide-3 -->
+    <template id="slide-3"
       ><div class="default-class" style="margin-top: 200px">
         <h3>React</h3>
         <pre><code class='shell'>$ npm install scroll-movie --save</code></pre>
@@ -111,8 +111,8 @@
         <pre><code>&lt;ScrollMovie tracks={tracks} getImage={getImage} imageSize={number} scrollsPerImage={number} /&gt;</code></pre>
       </div></template
     >
-    <!-- tracks -->
-    <template id="tracks">
+    <!-- slide-4  -->
+    <template id="slide-4">
       <div class="default-class" style="margin-top: 50px; font-size: 14px">
         <h1>Tracks</h1>
         <img src="./img/tracks.png" width="1000px;" />
@@ -125,8 +125,8 @@
         </div>
       </div>
     </template>
-    <!-- images-primary -->
-    <template id="images-primary">
+    <!-- slide-5  -->
+    <template id="slide-5">
       <div class="default-class" style="margin-top: 150px">
         <h1>Images</h1>
         <br />
@@ -146,8 +146,8 @@
         <pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`;</code></pre>
       </div>
     </template>
-    <!-- images-secondary -->
-    <template id="images-secondary"
+    <!-- slide-6 -->
+    <template id="slide-6"
       ><div class="default-class" style="margin-top: 200px">
         <h3>Number of images (Example)</h3>
         <img src="./img/imageSize.png" width="1000px;" />
@@ -157,8 +157,8 @@
         </div>
       </div></template
     >
-    <!-- images-tertiary -->
-    <template id="images-tertiary">
+    <!-- slide-7 -->
+    <template id="slide-7">
       <div class="default-class" style="margin-top: 200px">
         <h3>Scroll per image</h3>
         <img src="./img/scrollsPerImage.png" width="1000px;" />
@@ -169,8 +169,8 @@
         </div>
       </div>
     </template>
-    <!-- internalLink -->
-    <template id="internalLink">
+    <!-- slide-8  -->
+    <template id="slide-8">
       <div class="default-class" style="margin-top: 150px">
         <h1>Internal link</h1>
         <br />
@@ -185,8 +185,8 @@
         <pre><code>&lt;a href='#20000' style='color: #fff;' &gt;Click Here. Go to Animation #20000&lt;/a&gt;</code></pre>
       </div>
     </template>
-    <!-- animation -->
-    <template id="animation">
+    <!-- slide-9  -->
+    <template id="slide-9">
       <div class="default-class" style="margin-top: 50px; font-size: 16px">
         <h1>Animation</h1>
         <div class="default-text-font">
@@ -200,8 +200,8 @@
         </div>
       </div>
     </template>
-    <!-- props-primary -->
-    <template id="props-primary">
+    <!-- slide-10 -->
+    <template id="slide-10">
       <div class="default-class" style="margin-top: 100px">
         <h2>Props</h2>
         <table>
@@ -243,8 +243,8 @@
         </table>
       </div>
     </template>
-    <!-- props-secondary -->
-    <template id="props-secondary">
+    <!-- slide-11 -->
+    <template id="slide-11">
       <div class="default-class" style="margin-top: 150px">
         <table>
           <tr>
@@ -288,8 +288,8 @@
         </table>
       </div>
     </template>
-    <!-- convertImages -->
-    <template id="convertImages">
+    <!-- slide-12 -->
+    <template id="slide-12">
       <div class="default-class" style="margin-top: 150px">
         <h1>Convert video to image（Bonus）</h1>
         <div class="default-text-font">
@@ -300,8 +300,8 @@
         <pre><code class='shell'>$ ffmpeg -i {filename}.mp4 -vcodec mjpeg image_%03d.jpg</code></pre>
       </div>
     </template>
-    <!-- end -->
-    <template id="end">
+    <!-- slide-13 -->
+    <template id="slide-13">
       <div class="default-class" style="margin-top: 250px">
         <h1>Thank you</h1>
         <div class="default-text-font">That's it. Please try it.</div>
@@ -310,7 +310,7 @@
     <script>
       const tracks = [
         {
-          html: "<div id='track-top' />",
+          html: document.getElementById("slide-1").innerHTML,
           timing: {
             start: 0,
             end: 1500,
@@ -318,7 +318,7 @@
           buttonLabel: "Top",
         },
         {
-          html: "<div id='track-installation-primary' />",
+          html: document.getElementById("slide-2").innerHTML,
           timing: {
             start: 2500,
             end: 4000,
@@ -326,23 +326,22 @@
           buttonLabel: "Installation",
         },
         {
-          html: "<div id='track-installation-secondary' />",
+          html: document.getElementById("slide-3").innerHTML,
           timing: {
             start: 5000,
             end: 6500,
           },
         },
         {
-          html: "<div id='track-tracks' />",
+          html: document.getElementById("slide-4").innerHTML,
           timing: {
             start: 7500,
             end: 9000,
           },
           buttonLabel: "Tracks",
         },
-
         {
-          html: "<div id='track-images-primary' />",
+          html: document.getElementById("slide-5").innerHTML,
           timing: {
             start: 10000,
             end: 11500,
@@ -350,21 +349,21 @@
           buttonLabel: "Images",
         },
         {
-          html: "<div id='track-images-secondary' />",
+          html: document.getElementById("slide-6").innerHTML,
           timing: {
             start: 12500,
             end: 14000,
           },
         },
         {
-          html: "<div id='track-images-tertiary' />",
+          html: document.getElementById("slide-7").innerHTML,
           timing: {
             start: 15000,
             end: 16500,
           },
         },
         {
-          html: "<div id='track-internalLink' />",
+          html: document.getElementById("slide-8").innerHTML,
           timing: {
             start: 17500,
             end: 19000,
@@ -372,7 +371,7 @@
           buttonLabel: "Internal link",
         },
         {
-          html: "<div id='track-animation' />",
+          html: document.getElementById("slide-9").innerHTML,
           timing: {
             start: 20000,
             end: 21500,
@@ -384,7 +383,7 @@
           },
         },
         {
-          html: "<div id='track-props-primary' />",
+          html: document.getElementById("slide-10").innerHTML,
           timing: {
             start: 22500,
             end: 24000,
@@ -392,14 +391,14 @@
           buttonLabel: "Props",
         },
         {
-          html: "<div id='track-props-secondary' />",
+          html: document.getElementById("slide-11").innerHTML,
           timing: {
             start: 25000,
             end: 26500,
           },
         },
         {
-          html: "<div id='track-convertImages' />",
+          html: document.getElementById("slide-12").innerHTML,
           timing: {
             start: 27500,
             end: 29000,
@@ -407,7 +406,7 @@
           buttonLabel: "Convert images",
         },
         {
-          html: "<div id='track-end' />",
+          html: document.getElementById("slide-13").innerHTML,
           timing: {
             start: 30000,
             end: 31440,
@@ -437,75 +436,6 @@
           targetElement.querySelectorAll("pre code").forEach((block) => {
             hljs.highlightBlock(block);
           });
-          // top
-          const topTemplate = document.getElementById("top").content;
-          document.getElementById("track-top").appendChild(topTemplate);
-          // installation-primary
-          const installationprimaryTemplate = document.getElementById(
-            "installation-primary"
-          ).content;
-          document
-            .getElementById("track-installation-primary")
-            .appendChild(installationprimaryTemplate);
-          // installation-secondary
-          const installationSecondaryTemplate = document.getElementById(
-            "installation-secondary"
-          ).content;
-          document
-            .getElementById("track-installation-secondary")
-            .appendChild(installationSecondaryTemplate);
-          // tracks
-          const tracksTemplate = document.getElementById("tracks").content;
-          document.getElementById("track-tracks").appendChild(tracksTemplate);
-          // images-primary
-          const imagesPrimaryTemplate =
-            document.getElementById("images-primary").content;
-          document
-            .getElementById("track-images-primary")
-            .appendChild(imagesPrimaryTemplate);
-          // images-secondary
-          const imagesSecondaryTemplate =
-            document.getElementById("images-secondary").content;
-          document
-            .getElementById("track-images-secondary")
-            .appendChild(imagesSecondaryTemplate);
-          // images-tertiary
-          const imagesTertiaryTemplate =
-            document.getElementById("images-tertiary").content;
-          document.getElementById("track-images-tertiary");
-          // internalLink
-          const internalLinkTemplate =
-            document.getElementById("internalLink").content;
-          document
-            .getElementById("track-internalLink")
-            .appendChild(internalLinkTemplate);
-          // animation
-          const animationTemplate =
-            document.getElementById("animation").content;
-          document
-            .getElementById("track-animation")
-            .appendChild(animationTemplate);
-          // props-primary
-          const propsPrimaryTemplate =
-            document.getElementById("props-primary").content;
-          document
-            .getElementById("track-props-primary")
-            .appendChild(propsPrimaryTemplate);
-          // props-secondary
-          const propsSecondaryTemplate =
-            document.getElementById("props-secondary").content;
-          document
-            .getElementById("track-props-secondary")
-            .appendChild(propsSecondaryTemplate);
-          // convertImages
-          const convertImagesTemplate =
-            document.getElementById("convertImages").content;
-          document
-            .getElementById("track-convertImages")
-            .appendChild(convertImagesTemplate);
-          // end
-          const endTemplate = document.getElementById("end").content;
-          document.getElementById("track-end").appendChild(endTemplate);
         },
         onTrackLeave: () => {},
       });
