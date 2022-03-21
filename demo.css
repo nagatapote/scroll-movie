@@ -11,11 +11,6 @@ pre code {
   background-color: rgba(30, 30, 30, 0.5);
 }
 
-.table-container {
-  white-space: nowrap;
-  overflow: scroll;
-}
-
 table {
   border-collapse: collapse;
 }

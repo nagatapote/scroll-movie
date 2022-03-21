@@ -41,8 +41,6 @@ $ yarn add -D scroll-movie
 
 ## Tracks
 
-<img src="img/tracks.png" />
-
 ```javascript
 [
   {
@@ -70,15 +68,11 @@ You can specify the appearance timing of the each section with the timing proper
 
 `getImage` is the function to get the image path from the scroll amount.
 
-<img src="./img/getImage.png" />
-
 ```javascript
 getImage: (index) => { const pad = `${index}`.padStart(3, "0"); return `images/image_${pad}.jpg`;
 ```
 
 ### Number of images (Example)
-
-<img src="./img/imageSize.png" />
 
 ```javascript
 imageSize: 524;
@@ -87,8 +81,6 @@ imageSize: 524;
 The number of the images for the background-image you want to animate.
 
 ### Scroll per image
-
-<img src="./img/scrollsPerImage.png" />
 
 ```javascript
 scrollsPerImage: 60;
