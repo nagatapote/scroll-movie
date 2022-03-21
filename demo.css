@@ -46,6 +46,11 @@ td {
   max-width: 100%;
 }
 
+.code-image-size {
+  width: 1000px;
+  max-width: 100%;
+}
+
 .original-css-start {
   position: absolute;
   top: 50%;
@@ -96,6 +101,9 @@ td {
     font-size: 10px;
   }
   .default-class {
+    max-width: 100%;
+  }
+  .code-image-size {
     max-width: 100%;
   }
 }
