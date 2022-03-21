@@ -11,6 +11,11 @@ pre code {
   background-color: rgba(30, 30, 30, 0.5);
 }
 
+.table-container {
+  white-space: nowrap;
+  overflow: scroll;
+}
+
 table {
   border-collapse: collapse;
 }
@@ -38,6 +43,7 @@ td {
 
 .default-class {
   width: 1000px;
+  max-width: 100%;
 }
 
 .original-css-start {
@@ -68,4 +74,28 @@ td {
 
 .scroll-movie__slider-bar-label-button-active {
   color: #fc0;
+}
+
+@media (max-width: 767px) {
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    border: 1px solid #fff;
+    padding: 4px;
+    min-width: 120px;
+    font-weight: bold;
+    background-color: rgba(30, 30, 30, 0.5);
+    font-size: 12px;
+  }
+
+  td {
+    border: 1px solid #fff;
+    padding: 8px;
+    min-width: 120px;
+    font-size: 10px;
+  }
+  .default-class {
+    max-width: 100%;
+  }
 }

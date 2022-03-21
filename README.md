@@ -207,7 +207,9 @@ With the following css, The section will fade out to the right.
   </tr>
 </table>
 
-## Convert video to image（Bonus）
+## Bonus
+
+### Convert video to image
 
 Don’t have the images for the background animation?
 
@@ -221,7 +223,7 @@ $ brew install ffmpeg
 $ ffmpeg -i {filename}.mp4 -vcodec mjpeg image_%03d.jpg
 ```
 
-## How to highlight source code(Bonus)
+### How to highlight source code
 
 Use onTrackEnter props.
 
