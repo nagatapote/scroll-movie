@@ -60,7 +60,7 @@
         </div>
         <br />
         <div
-          id="loading"
+          id="scroll-movie__now-loading-done"
           style="opacity: 0; margin-top: 50px; text-align: center"
         >
           <div style="margin-bottom: 8px; color: #fc0">Scroll</div>
@@ -432,11 +432,23 @@
         navigationDisabledBrowserSize: { height: 700, width: 0 },
         nowLoadingMessage: "<div>Now Loading...</div>",
         onTrackEnter: (targetElement) => {
-          if (
-            document.getElementsByClassName("scroll-movie__now-loading-none")
-          ) {
-            document.getElementById("loading").style.transition = "all 1s";
-            document.getElementById("loading").style.opacity = "1";
+          if (window.scrollY <= 1500) {
+            const observer = new MutationObserver(() => {
+              document.getElementById(
+                "scroll-movie__now-loading-done"
+              ).style.transition = "all 1s";
+              document.getElementById(
+                "scroll-movie__now-loading-done"
+              ).style.opacity = "1";
+              observer.disconnect();
+            });
+            const elem = document.getElementById("app");
+            const config = {
+              attributes: true,
+              subtree: true,
+              attributeFilter: ["class"],
+            };
+            observer.observe(elem, config);
           }
           targetElement.querySelectorAll("pre code").forEach((block) => {
             hljs.highlightBlock(block);
