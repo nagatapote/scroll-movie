@@ -429,15 +429,17 @@
         imageSize: 524,
         scrollsPerImage: 60,
         preload: true,
-        preloadTimes: 2000,
+        preloadTimes: 0,
         navigationDisplayTiming: 0,
         navigationDisabledBrowserSize: { height: 780, width: 0 },
         nowLoadingMessage: "<div>Now Loading...</div>",
         onTrackEnter: (targetElement) => {
-          setTimeout(() => {
+          if (
+            document.getElementsByClassName("scroll-movie__now-loading-none")
+          ) {
             document.getElementById("loading").style.transition = "all 1s";
             document.getElementById("loading").style.opacity = "1";
-          }, 2000);
+          }
           targetElement.querySelectorAll("pre code").forEach((block) => {
             hljs.highlightBlock(block);
           });
