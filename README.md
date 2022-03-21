@@ -170,7 +170,7 @@ With the following css, The section will fade out to the right.
   <tr>
     <td>preloadTimes</td>
     <td>number (default: 0)</td>
-    <td>Set preload images time.Unit is ms.(option)</td>
+    <td>Time to wait for preload.Unit is ms.(option)</td>
   </tr>
   <tr>
     <td>navigationDisplayTiming</td>
