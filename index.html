@@ -204,88 +204,93 @@
     <template id="slide-10">
       <div class="default-class" style="margin-top: 100px">
         <h2>Props</h2>
-        <table>
-          <tr>
-            <th>Props name</th>
-            <th>Type</th>
-            <th>Explanation</th>
-          </tr>
-          <tr>
-            <td>tracks</td>
-            <td>Track[]</td>
-            <td>Display content.</td>
-          </tr>
-          <tr>
-            <td>getImage</td>
-            <td>(index: number) => string</td>
-            <td>Moving background.</td>
-          </tr>
-          <tr>
-            <td>imageSize</td>
-            <td>number</td>
-            <td>Number of images.</td>
-          </tr>
-          <tr>
-            <td>scrollsPerImage</td>
-            <td>number</td>
-            <td>Scroll value per image.</td>
-          </tr>
-          <tr>
-            <td>preload</td>
-            <td>boolean (default: false)</td>
-            <td>Preload images.(option)</td>
-          </tr>
-          <tr>
-            <td>preloadTimes</td>
-            <td>number (default: 0)</td>
-            <td>Time to wait for preload.Unit is ms.(option)</td>
-          </tr>
-        </table>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Props name</th>
+              <th>Type</th>
+              <th>Explanation</th>
+            </tr>
+            <tr>
+              <td>tracks</td>
+              <td>Track[]</td>
+              <td>Display content.</td>
+            </tr>
+            <tr>
+              <td>getImage</td>
+              <td>(index: number) => string</td>
+              <td>Moving background.</td>
+            </tr>
+            <tr>
+              <td>imageSize</td>
+              <td>number</td>
+              <td>Number of images.</td>
+            </tr>
+            <tr>
+              <td>scrollsPerImage</td>
+              <td>number</td>
+              <td>Scroll value per image.</td>
+            </tr>
+            <tr>
+              <td>preload</td>
+              <td>boolean (default: false)</td>
+              <td>Preload images.(option)</td>
+            </tr>
+            <tr>
+              <td>preloadTimes</td>
+              <td>number (default: 0)</td>
+              <td>Time to wait for preload.Unit is ms.(option)</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </template>
     <!-- slide-11 -->
     <template id="slide-11">
       <div class="default-class" style="margin-top: 150px">
-        <table>
-          <tr>
-            <th>Props name</th>
-            <th>Type</th>
-            <th>Explanation</th>
-          </tr>
-          <tr>
-            <td>navigationDisplayTiming</td>
-            <td>number (default: 0)</td>
-            <td>When to display the navigation bar and label.(option)</td>
-          </tr>
-          <tr>
-            <td>navigationDisabledBrowserSize</td>
-            <td>{ height: number; width: number }</td>
-            <td>
-              If the browser size is less than or equal to the specified number,
-              the navigation bar and label will not be displayed.(option)
-            </td>
-          </tr>
-          <tr>
-            <td>nowLoadingMessage</td>
-            <td>string (default: '&lt;div&gt;NowLoading&lt;/div&gt;')</td>
-            <td>Display until preload is completed.(option)</td>
-          </tr>
-          <tr>
-            <td>onTrackEnter</td>
-            <td>(target: HTMLElement) => void</td>
-            <td>Function to be executed at Start of trackView.(option)</td>
-          </tr>
-          <tr>
-            <td>onTrackLeave</td>
-            <td>(target: HTMLElement) => void</td>
-            <td>Function to be executed at the end of trackView.(option)</td>
-          </tr>
-          <tr>
-            <td>classes</td>
-            <td>ClassNames</td>
-            <td>Change the default class name.(option)</td>
-          </tr>
-        </table>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Props name</th>
+              <th>Type</th>
+              <th>Explanation</th>
+            </tr>
+            <tr>
+              <td>navigationDisplayTiming</td>
+              <td>number (default: 0)</td>
+              <td>When to display the navigation bar and label.(option)</td>
+            </tr>
+            <tr>
+              <td>navigationDisabledBrowserSize</td>
+              <td>{ height: number; width: number }</td>
+              <td>
+                If the browser size is less than or equal to the specified
+                number, the navigation bar and label will not be
+                displayed.(option)
+              </td>
+            </tr>
+            <tr>
+              <td>nowLoadingMessage</td>
+              <td>string (default: '&lt;div&gt;NowLoading&lt;/div&gt;')</td>
+              <td>Display until preload is completed.(option)</td>
+            </tr>
+            <tr>
+              <td>onTrackEnter</td>
+              <td>(target: HTMLElement) => void</td>
+              <td>Function to be executed at Start of trackView.(option)</td>
+            </tr>
+            <tr>
+              <td>onTrackLeave</td>
+              <td>(target: HTMLElement) => void</td>
+              <td>Function to be executed at the end of trackView.(option)</td>
+            </tr>
+            <tr>
+              <td>classes</td>
+              <td>ClassNames</td>
+              <td>Change the default class name.(option)</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </template>
     <!-- slide-12 -->
