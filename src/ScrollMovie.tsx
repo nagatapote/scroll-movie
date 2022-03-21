@@ -149,6 +149,7 @@ export const ScrollMovie: React.FC<ScrollMovieProps> = ({
         if (preloadTimes === 0) {
           await loadAllImages();
         } else {
+          loadAllImages();
           await new Promise((resolve) => setTimeout(resolve, preloadTimes));
         }
         setLoadState(0);
