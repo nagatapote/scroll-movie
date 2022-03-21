@@ -91,6 +91,12 @@ td {
   color: #fc0;
 }
 
+.highlight {
+  border: 2px solid #fc0;
+  display: inline-block;
+  padding: 3px;
+}
+
 @media (max-width: 767px) {
   .table-container {
     white-space: nowrap;
