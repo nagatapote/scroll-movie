@@ -70,7 +70,10 @@ You can specify the appearance timing of the each section with the timing proper
 `getImage` is the function to get the image path from the scroll amount.
 
 ```javascript
-getImage: (index) => { const pad = `${index}`.padStart(3, "0"); return `images/image_${pad}.jpg`;
+getImage: (index) => {
+  const pad = `${index}`.padStart(3, "0");
+  return `images/image_${pad}.jpg`;
+};
 ```
 
 ### Number of images (Example)
