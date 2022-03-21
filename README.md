@@ -98,7 +98,7 @@ You can also put internal links so to jump to the specific sections you like.
 ### How
 
 ```html
-<a href="#20000">Click Here. Go to the destination. (2000px)</a>;
+<a href="#20000">Click Here. Go to the destination. (20000px)</a>;
 ```
 
 ## Animation
