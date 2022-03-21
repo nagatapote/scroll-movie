@@ -46,6 +46,21 @@ td {
   max-width: 100%;
 }
 
+.scroll-movie--is-loading
+  .scroll-movie__inner
+  .scroll-movie__track-view
+  .default-class
+  .scroll-image {
+  opacity: 0;
+}
+
+.scroll-image {
+  transition: all 1s;
+  opacity: 1;
+  margin-top: 50px;
+  text-align: center;
+}
+
 .original-css-start {
   position: absolute;
   top: 50%;
