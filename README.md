@@ -1,6 +1,7 @@
 # ScrollMovie
 
-Scroll Image is the library that enables you to animate background image as you scroll the window.
+ScrollMovie is the library that enables you to animate background
+image as you scroll the window.
 
 ## Installation
 
@@ -97,7 +98,7 @@ You can also put internal links so to jump to the specific sections you like.
 ### How
 
 ```html
-<a href="#20000" style="color: #fff;">Click Here. Go to Animation #20000</a>;
+<a href="#20000">Click Here. Go to the destination. (2000px)</a>;
 ```
 
 ## Animation
