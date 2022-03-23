@@ -31,19 +31,87 @@ td {
   font-size: 16px;
 }
 
-.default-text-font {
+.default-font-text {
   font-weight: normal;
   line-height: 1.7;
 }
 
-.default-class {
+.slider-1-section {
   width: 1000px;
   max-width: 100%;
+  margin-top: 200px;
 }
 
-.code-image-size {
+.slider-2-section {
   width: 1000px;
   max-width: 100%;
+  margin-top: 100px;
+}
+
+.slider-3-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 200px;
+}
+
+.slider-4-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 80px;
+}
+
+.slider-5-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 100px;
+}
+
+.slider-6-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 200px;
+}
+
+.slider-7-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 200px;
+}
+
+.slider-8-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 140px;
+}
+
+.slider-9-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 50px;
+}
+
+.slider-10-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 100px;
+}
+
+.slider-11-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 100px;
+}
+
+.slider-12-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 150px;
+}
+
+.slider-13-section {
+  width: 1000px;
+  max-width: 100%;
+  margin-top: 250px;
 }
 
 .scroll-movie--is-loading
@@ -105,6 +173,21 @@ td {
 }
 
 @media (max-width: 767px) {
+  .slider-5-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 100px;
+  }
+  .slider-10-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 200px;
+  }
+  .slider-11-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 250px;
+  }
   .table-container {
     white-space: nowrap;
     overflow: scroll;
@@ -118,19 +201,94 @@ td {
     min-width: 120px;
     font-weight: bold;
     background-color: rgba(30, 30, 30, 0.5);
-    font-size: 12px;
   }
-
   td {
     border: 1px solid #fff;
     padding: 8px;
     min-width: 120px;
-    font-size: 10px;
   }
-  .default-class {
+}
+
+@media (max-width: 1020px) and (min-width: 768px) {
+  .slider-1-section {
+    width: 1000px;
     max-width: 100%;
+    margin-top: 300px;
   }
-  .code-image-size {
+  .slider-2-section {
+    width: 1000px;
     max-width: 100%;
+    margin-top: 250px;
+  }
+  .slider-3-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 300px;
+  }
+  .slider-4-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 250px;
+  }
+  .slider-5-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 250px;
+  }
+  .slider-6-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 350px;
+  }
+  .slider-7-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 350px;
+  }
+  .slider-8-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 250px;
+  }
+  .slider-9-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 200px;
+  }
+  .slider-10-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 250px;
+  }
+  .slider-11-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 300px;
+  }
+  .slider-12-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 250px;
+  }
+  .slider-13-section {
+    width: 1000px;
+    max-width: 100%;
+    margin-top: 350px;
+  }
+  .table-container {
+    white-space: nowrap;
+    overflow: scroll;
+  }
+  th {
+    border: 1px solid #fff;
+    padding: 4px;
+    min-width: 120px;
+    font-weight: bold;
+    background-color: rgba(30, 30, 30, 0.5);
+  }
+  td {
+    border: 1px solid #fff;
+    padding: 8px;
+    min-width: 120px;
   }
 }

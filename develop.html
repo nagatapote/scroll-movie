@@ -8,7 +8,8 @@
     <meta name="author" content="nagatapote" />
     <meta
       name="description"
-      content="Component with background image that moves as scroll"
+      content="ScrollMovie is the library that enables you to animate background
+      image as you scroll the window."
     />
     <meta name="version" content="1.0.0" />
     <meta property="og:type" content="website" />
@@ -19,7 +20,8 @@
     <meta property="og:title" content="ScrollMovie" />
     <meta
       property="og:description"
-      content="Component with background image that moves as scroll"
+      content="ScrollMovie is the library that enables you to animate background
+      image as you scroll the window."
     />
     <meta
       property="og:image"
@@ -49,12 +51,12 @@
         src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
         alt="Fork me on GitHub"
     /></a>
-    <!-- top -->
+    <!-- slide-1 -->
     <template id="slide-1"
-      ><div class="default-class" style="margin-top: 200px">
+      ><div class="slider-1-section">
         <h1>ScrollMovie.js</h1>
         <br />
-        <div class="default-text-font">
+        <div class="default-font-text">
           ScrollMovie is the library that enables you to animate background
           image as you scroll the window.
         </div>
@@ -64,9 +66,9 @@
           <img src="./img/bottom_scroll.svg" width="64px" height="64px;" />
         </div></div
     ></template>
-    <!-- slide-2  -->
+    <!-- slide-2 -->
     <template id="slide-2">
-      <div class="default-class" style="margin-top: 100px">
+      <div class="slider-2-section">
         <h1>Installation</h1>
         <br />
         <h3>VanillaJS</h3>
@@ -101,34 +103,36 @@
     </template>
     <!-- slide-3 -->
     <template id="slide-3"
-      ><div class="default-class" style="margin-top: 200px">
+      ><div class="slider-3-section">
         <h3>React</h3>
         <pre><code class='shell'>$ npm install scroll-movie --save</code></pre>
         <pre><code class='shell'>$ yarn add -D scroll-movie</code></pre>
         <pre><code>&lt;ScrollMovie tracks={tracks} getImage={getImage} imageSize={number} scrollsPerImage={number} /&gt;</code></pre>
       </div></template
     >
-    <!-- slide-4  -->
+    <!-- slide-4 -->
     <template id="slide-4">
-      <div class="default-class" style="margin-top: 50px; font-size: 14px">
+      <div class="slider-4-section">
         <h1>Tracks</h1>
-        <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { <span class="highlight">tracks</span>, getImage, imageSize, scrollsPerImage });</code></pre>
-        <pre><code class="javascript">[<br/>   {<br />      html: &quot;&lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js&quot;,<br />      timing: {<br/>         start: 0,<br />         end: 5000<br />      },<br />      buttonLabel: &quot;start&quot;,<br />      animation: {<br />         start: &quot;scroll-movie__track-view_start&quot;,<br />         end: &quot;scroll-movie__track-view_end&quot;<br />      }<br />   },<br />   ...<br />]</code></pre>
-        <div class="default-text-font">
-          You can specify the appearance timing of the each section with the
-          timing property. eg.) End section will appear when scrolled 7000px
-          (scrollPerImages * number of shown images) and disappear when scrolled
-          12000px (scrollPerImages * number of shown images).
+        <div style="font-size: 14px">
+          <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { <span class="highlight">tracks</span>, getImage, imageSize, scrollsPerImage });</code></pre>
+          <pre><code class="javascript">[<br/>   {<br />      html: &quot;&lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js&quot;,<br />      timing: {<br/>         start: 0,<br />         end: 5000<br />      },<br />      buttonLabel: &quot;start&quot;,<br />      animation: {<br />         start: &quot;scroll-movie__track-view_start&quot;,<br />         end: &quot;scroll-movie__track-view_end&quot;<br />      }<br />   },<br />   ...<br />]</code></pre>
+          <div class="default-font-text">
+            You can specify the appearance timing of the each section with the
+            timing property. eg.) End section will appear when scrolled 7000px
+            (scrollPerImages * number of shown images) and disappear when
+            scrolled 12000px (scrollPerImages * number of shown images).
+          </div>
         </div>
       </div>
     </template>
-    <!-- slide-5  -->
+    <!-- slide-5 -->
     <template id="slide-5">
-      <div class="default-class" style="margin-top: 150px">
+      <div class="slider-5-section">
         <h1>Images</h1>
         <br />
         <h3>getImage</h3>
-        <div class="default-text-font">
+        <div class="default-font-text">
           <span
             style="
               background-color: rgba(30, 30, 30, 0.5);
@@ -146,30 +150,30 @@
     </template>
     <!-- slide-6 -->
     <template id="slide-6"
-      ><div class="default-class" style="margin-top: 200px">
+      ><div class="slider-6-section">
         <h3>imageSize</h3>
         <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { tracks, getImage, <span class="highlight">imageSize</span>, scrollsPerImage });</code></pre>
         <pre><code>imageSize: 524</code></pre>
-        <div class="default-text-font">
+        <div class="default-font-text">
           The number of the images for the background-image you want to animate.
         </div>
       </div></template
     >
     <!-- slide-7 -->
     <template id="slide-7">
-      <div class="default-class" style="margin-top: 200px">
+      <div class="slider-7-section">
         <h3>ScrollsPerImage</h3>
         <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { tracks, getImage, imageSize, <span class="highlight">scrollsPerImage</span> });</code></pre>
         <pre><code>scrollsPerImage: 60</code></pre>
-        <div class="default-text-font">
+        <div class="default-font-text">
           The scroll amount value for switching to the next image.<br />60 is
           recommended.
         </div>
       </div>
     </template>
-    <!-- slide-8  -->
+    <!-- slide-8 -->
     <template id="slide-8">
-      <div class="default-class" style="margin-top: 150px">
+      <div class="slider-8-section">
         <h1>Internal link</h1>
         <br />
         <div class="default-font-text">
@@ -183,24 +187,24 @@
         <pre><code class="language-html">&lt;a href='#20000' &gt;Click Here. Go to the destination. (20000px)&lt;/a&gt;</code></pre>
       </div>
     </template>
-    <!-- slide-9  -->
+    <!-- slide-9 -->
     <template id="slide-9">
-      <div class="default-class" style="margin-top: 50px; font-size: 16px">
+      <div class="slider-9-section">
         <h1>Animation</h1>
-        <div class="default-text-font">
+        <div class="default-font-text">
           Animation can be customized freely in css.<br />With the following
           css, The section will fade out to the right.
         </div>
         <br />
         <h3>Sample CSS</h3>
-        <div style="font-size: 16px">
+        <div style="font-size: 14px">
           <pre><code class='css'>.original-css-start {<br />   position: absolute;<br />   top: 50%;<br />   left: 50%;<br />   transform: translate(-50%, -50%);<br />   opacity: 1;<br />}<br /><br />.original-css-end {<br />   position: absolute;<br />   top: 50%;<br />   left: 50%;<br />   transform: translate(100%, -50%);<br />   opacity: 0;<br />}</code></pre>
         </div>
       </div>
     </template>
     <!-- slide-10 -->
     <template id="slide-10">
-      <div class="default-class" style="margin-top: 100px">
+      <div class="slider-10-section">
         <h2>Props</h2>
         <div class="table-container">
           <table>
@@ -245,7 +249,7 @@
     </template>
     <!-- slide-11 -->
     <template id="slide-11">
-      <div class="default-class" style="margin-top: 100px">
+      <div class="slider-11-section">
         <div class="table-container">
           <table>
             <tr>
@@ -263,7 +267,7 @@
               <td>{ height: number; width: number }</td>
               <td>
                 If the browser size is less than or equal to the specified
-                number, the navigation bar and label will not be
+                number,<br />the navigation bar and label will not be
                 displayed.(option)
               </td>
             </tr>
@@ -293,9 +297,9 @@
     </template>
     <!-- slide-12 -->
     <template id="slide-12">
-      <div class="default-class" style="margin-top: 150px">
+      <div class="slider-12-section">
         <h1>Convert video to image（Bonus）</h1>
-        <div class="default-text-font">
+        <div class="default-font-text">
           Don’t have the images for the background animation?<br />No worry!!<br />By
           following, You can convert the video to the images.
         </div>
@@ -305,10 +309,10 @@
     </template>
     <!-- slide-13 -->
     <template id="slide-13">
-      <div class="default-class" style="margin-top: 250px">
+      <div class="slider-13-section">
         <h1>Thank you</h1>
-        <div class="default-text-font">That's it. Please try it.</div>
-        <div class="default-text-font">
+        <div class="default-font-text">That's it. Please try it.</div>
+        <div class="default-font-text">
           If you like it, Please give me a star on
           <a
             class="github-link"
