@@ -1,6 +1,69 @@
-.originalCssStart {
+body {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+}
+
+pre code {
+  border-radius: 10px;
+}
+
+.hljs {
+  background-color: rgba(30, 30, 30, 0.5);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  border: 1px solid #fff;
+  padding: 8px;
+  min-width: 300px;
+  font-weight: bold;
+  background-color: rgba(30, 30, 30, 0.5);
+  font-size: 18px;
+}
+
+td {
+  border: 1px solid #fff;
+  padding: 12px;
+  min-width: 300px;
+  font-size: 16px;
+}
+
+.default-text-font {
+  font-weight: normal;
+  line-height: 1.7;
+}
+
+.default-class {
+  width: 1000px;
+  max-width: 100%;
+}
+
+.code-image-size {
+  width: 1000px;
+  max-width: 100%;
+}
+
+.scroll-movie--is-loading
+  .scroll-movie__inner
+  .scroll-movie__track-view
+  .default-class
+  .scroll-image {
+  opacity: 0;
+}
+
+.scroll-image {
+  transition: all 1s;
+  opacity: 1;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.original-css-start {
   position: absolute;
-  top: 80%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
@@ -11,9 +74,9 @@
   opacity: 1;
 }
 
-.originalCssEnd {
+.original-css-end {
   position: absolute;
-  top: 80%;
+  top: 50%;
   left: 50%;
   transform: translate(100%, -50%);
   margin: 0;
@@ -26,4 +89,48 @@
 
 .scroll-movie__slider-bar-label-button-active {
   color: #fc0;
+}
+
+.github-link,
+.github-link:link,
+.github-link:hover,
+.github-link:visited {
+  color: #fff;
+}
+
+.highlight {
+  border: 2px solid #fc0;
+  display: inline-block;
+  padding: 3px;
+}
+
+@media (max-width: 767px) {
+  .table-container {
+    white-space: nowrap;
+    overflow: scroll;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    border: 1px solid #fff;
+    padding: 4px;
+    min-width: 120px;
+    font-weight: bold;
+    background-color: rgba(30, 30, 30, 0.5);
+    font-size: 12px;
+  }
+
+  td {
+    border: 1px solid #fff;
+    padding: 8px;
+    min-width: 120px;
+    font-size: 10px;
+  }
+  .default-class {
+    max-width: 100%;
+  }
+  .code-image-size {
+    max-width: 100%;
+  }
 }
