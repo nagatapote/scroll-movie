@@ -3,6 +3,10 @@
 ScrollMovie is the library that enables you to animate background
 image as you scroll the window.
 
+## Demo
+
+https://nagatapote.github.io/scroll-movie/
+
 ## Installation
 
 ### vanillaJS
