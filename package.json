@@ -11,8 +11,13 @@
     "build:lib": "rm -rf ./lib && tsc"
   },
   "keywords": [],
-  "author": "",
+  "author": "nagatapote",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nagatapote/scroll-movie.git"
+  },
+  "homepage": "https://nagatapote.github.io/scroll-movie/",
   "devDependencies": {
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
