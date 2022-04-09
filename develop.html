@@ -323,6 +323,17 @@
         </div>
       </div>
     </template>
+    <!-- slide-all -->
+    <template id="slide-all">
+      <div class="slider-all-section">
+        <div class="default-font-text">
+          Developed by
+          <a class="twitter-link" href="https://twitter.com/pote_nagata"
+            >@pote</a
+          >
+        </div>
+      </div>
+    </template>
     <script>
       const tracks = [
         {
@@ -428,6 +439,13 @@
             end: 31440,
           },
           buttonLabel: "End",
+        },
+        {
+          html: document.getElementById("slide-all").innerHTML,
+          timing: {
+            start: 0,
+            end: 31440,
+          },
         },
       ];
       ScrollMovie("#app", {
