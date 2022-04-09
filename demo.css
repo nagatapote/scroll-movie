@@ -116,10 +116,8 @@ td {
 
 .slider-all-section {
   font-size: 14px;
-  width: 150px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  bottom: 0;
+  width: 1300px;
+  margin-top: 20px;
 }
 
 .twitter-link,
