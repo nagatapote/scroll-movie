@@ -43,7 +43,308 @@
     <link rel="stylesheet" href="./demo.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!-- slide-1 -->
+      <template timing-start="0" timing-end="1500" button-label="Top"
+        ><div class="slider-1-section">
+          <h1>ScrollMovie.js</h1>
+          <br />
+          <div class="default-font-text">
+            ScrollMovie is the library that enables you to animate background
+            image as you scroll the window.
+          </div>
+          <br />
+          <div class="scroll-image">
+            <div style="margin-bottom: 8px; color: #fc0">Scroll</div>
+            <img src="./img/bottom_scroll.svg" width="64px" height="64px;" />
+          </div></div
+      ></template>
+      <!-- slide-2 -->
+      <template
+        timing-start="2500"
+        timing-end="4000"
+        button-label="Installation"
+      >
+        <div class="slider-2-section">
+          <h1>Installation</h1>
+          <br />
+          <h3>VanillaJS</h3>
+          <div style="font-size: 18px">
+            <pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@latest/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre>
+          </div>
+          <div style="font-size: 18px">
+            <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { tracks, getImage, imageSize, scrollsPerImage });</code></pre>
+          </div>
+          <div style="font-weight: normal; line-height: 1.7">
+            At
+            <span
+              style="
+                background-color: rgba(30, 30, 30, 0.5);
+                padding: 4px;
+                border-radius: 8px;
+              "
+              >#app</span
+            >
+            section, You can specify the element with the query string that can
+            be found by
+            <span
+              style="
+                background-color: rgba(30, 30, 30, 0.5);
+                padding: 4px;
+                border-radius: 8px;
+              "
+              >document.querySelector</span
+            >.<br />Other props can be found as you scroll the window.
+          </div>
+        </div>
+      </template>
+      <!-- slide-3 -->
+      <template timing-start="5000" timing-end="6500"
+        ><div class="slider-3-section">
+          <h3>React</h3>
+          <pre><code class='shell'>$ npm install scroll-movie --save</code></pre>
+          <pre><code class='shell'>$ yarn add -D scroll-movie</code></pre>
+          <pre><code>&lt;ScrollMovie tracks={tracks} getImage={getImage} imageSize={number} scrollsPerImage={number} /&gt;</code></pre>
+        </div></template
+      >
+      <!-- slide-4 -->
+      <template timing-start="7500" timing-end="9000" button-label="Tracks">
+        <div class="slider-4-section">
+          <h1>Tracks</h1>
+          <div style="font-size: 14px">
+            <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { <span class="highlight">tracks</span>, getImage, imageSize, scrollsPerImage });</code></pre>
+            <pre><code class="javascript">[<br/>   {<br />      html: &quot;&lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js&quot;,<br />      timing: {<br/>         start: 0,<br />         end: 5000<br />      },<br />      buttonLabel: &quot;start&quot;,<br />      animation: {<br />         start: &quot;scroll-movie__track-view_start&quot;,<br />         end: &quot;scroll-movie__track-view_end&quot;<br />      }<br />   },<br />   ...<br />]</code></pre>
+            <div class="default-font-text">
+              You can specify the appearance timing of the each section with the
+              timing property. eg.) End section will appear when scrolled 7000px
+              (scrollPerImages * number of shown images) and disappear when
+              scrolled 12000px (scrollPerImages * number of shown images).
+            </div>
+          </div>
+        </div>
+      </template>
+      <!-- slide-5 -->
+      <template timing-start="10000" timing-end="11500" button-label="Images">
+        <div class="slider-5-section">
+          <h1>Images</h1>
+          <br />
+          <h3>getImage</h3>
+          <div class="default-font-text">
+            <span
+              style="
+                background-color: rgba(30, 30, 30, 0.5);
+                padding: 8px;
+                border-radius: 8px;
+              "
+              >getImage</span
+            >
+            is the function to get the image path from the scroll amount.
+          </div>
+          <br />
+          <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { tracks, <span class="highlight">getImage</span>, imageSize, scrollsPerImage });</code></pre>
+          <pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`; }</code></pre>
+        </div>
+      </template>
+      <!-- slide-6 -->
+      <template timing-start="12500" timing-end="14000"
+        ><div class="slider-6-section">
+          <h3>imageSize</h3>
+          <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { tracks, getImage, <span class="highlight">imageSize</span>, scrollsPerImage });</code></pre>
+          <pre><code>imageSize: 524</code></pre>
+          <div class="default-font-text">
+            The number of the images for the background-image you want to
+            animate.
+          </div>
+        </div></template
+      >
+      <!-- slide-7 -->
+      <template timing-start="15000" timing-end="16500">
+        <div class="slider-7-section">
+          <h3>ScrollsPerImage</h3>
+          <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { tracks, getImage, imageSize, <span class="highlight">scrollsPerImage</span> });</code></pre>
+          <pre><code>scrollsPerImage: 60</code></pre>
+          <div class="default-font-text">
+            The scroll amount value for switching to the next image.<br />60 is
+            recommended.
+          </div>
+        </div>
+      </template>
+      <!-- slide-8 -->
+      <template
+        timing-start="17500"
+        timing-end="19000"
+        button-label="Internal link"
+      >
+        <div class="slider-8-section">
+          <h1>Internal link</h1>
+          <br />
+          <div class="default-font-text">
+            You can also put internal links so to jump to the specific sections
+            you like.
+          </div>
+          <br /><a href="#20000" style="color: #fff"
+            >Click Here. Go to the destination. (20000px)</a
+          ><br /><br />
+          <h3>How</h3>
+          <pre><code class="language-html">&lt;a href='#20000' &gt;Click Here. Go to the destination. (20000px)&lt;/a&gt;</code></pre>
+        </div>
+      </template>
+      <!-- slide-9 -->
+      <template
+        timing-start="20000"
+        timing-end="21500"
+        button-label="Animation"
+        animation-start="original-css-start"
+        animation-end="original-css-end"
+      >
+        <div class="slider-9-section">
+          <h1>Animation</h1>
+          <div class="default-font-text">
+            Animation can be customized freely in css.<br />With the following
+            css, The section will fade out to the right.
+          </div>
+          <br />
+          <h3>Sample CSS</h3>
+          <div style="font-size: 14px">
+            <pre><code class='css'>.original-css-start {<br />   position: absolute;<br />   top: 50%;<br />   left: 50%;<br />   transform: translate(-50%, -50%);<br />   opacity: 1;<br />}<br /><br />.original-css-end {<br />   position: absolute;<br />   top: 50%;<br />   left: 50%;<br />   transform: translate(100%, -50%);<br />   opacity: 0;<br />}</code></pre>
+          </div>
+        </div>
+      </template>
+      <!-- slide-10 -->
+      <template timing-start="22500" timing-end="24000" button-label="Props">
+        <div class="slider-10-section">
+          <h2>Props</h2>
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>Props name</th>
+                <th>Type</th>
+                <th>Explanation</th>
+              </tr>
+              <tr>
+                <td>tracks</td>
+                <td>Track[]</td>
+                <td>Display content.</td>
+              </tr>
+              <tr>
+                <td>getImage</td>
+                <td>(index: number) => string</td>
+                <td>Moving background.</td>
+              </tr>
+              <tr>
+                <td>imageSize</td>
+                <td>number</td>
+                <td>Number of images.</td>
+              </tr>
+              <tr>
+                <td>scrollsPerImage</td>
+                <td>number</td>
+                <td>Scroll value per image.</td>
+              </tr>
+              <tr>
+                <td>preload</td>
+                <td>boolean (default: false)</td>
+                <td>Preload images.(option)</td>
+              </tr>
+              <tr>
+                <td>preloadTimes</td>
+                <td>number (default: 0)</td>
+                <td>Time to wait for preload.Unit is ms.(option)</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </template>
+      <!-- slide-11 -->
+      <template timing-start="25000" timing-end="26500">
+        <div class="slider-11-section">
+          <div class="table-container">
+            <table>
+              <tr>
+                <th>Props name</th>
+                <th>Type</th>
+                <th>Explanation</th>
+              </tr>
+              <tr>
+                <td>navigationDisplayTiming</td>
+                <td>number (default: 0)</td>
+                <td>When to display the navigation bar and label.(option)</td>
+              </tr>
+              <tr>
+                <td>navigationDisabledBrowserSize</td>
+                <td>{ height: number; width: number }</td>
+                <td>
+                  If the browser size is less than or equal to the specified
+                  number,<br />the navigation bar and label will not be
+                  displayed.(option)
+                </td>
+              </tr>
+              <tr>
+                <td>nowLoadingMessage</td>
+                <td>string (default: '&lt;div&gt;NowLoading&lt;/div&gt;')</td>
+                <td>Display until preload is completed.(option)</td>
+              </tr>
+              <tr>
+                <td>onTrackEnter</td>
+                <td>(target: HTMLElement) => void</td>
+                <td>Function to be executed at Start of trackView.(option)</td>
+              </tr>
+              <tr>
+                <td>onTrackLeave</td>
+                <td>(target: HTMLElement) => void</td>
+                <td>
+                  Function to be executed at the end of trackView.(option)
+                </td>
+              </tr>
+              <tr>
+                <td>classes</td>
+                <td>ClassNames</td>
+                <td>Change the default class name.(option)</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </template>
+      <!-- slide-12 -->
+      <template timing-start="27500" timing-end="29000" button-label="Bonus">
+        <div class="slider-12-section">
+          <h1>Convert video to image（Bonus）</h1>
+          <div class="default-font-text">
+            Don’t have the images for the background animation?<br />No
+            worry!!<br />By following, You can convert the video to the images.
+          </div>
+          <pre><code class='shell'>$ brew install ffmpeg</code></pre>
+          <pre><code class='shell'>$ ffmpeg -i {filename}.mp4 -vcodec mjpeg image_%03d.jpg</code></pre>
+        </div>
+      </template>
+      <!-- slide-13 -->
+      <template timing-start="30000" timing-end="31440" button-label="End">
+        <div class="slider-13-section">
+          <h1>Thank you</h1>
+          <div class="default-font-text">That's it. Please try it.</div>
+          <div class="default-font-text">
+            If you like it, Please give me a star on
+            <a
+              class="github-link"
+              href="https://github.com/nagatapote/scroll-movie"
+              >GitHub</a
+            >
+            :)
+          </div>
+        </div>
+      </template>
+      <!-- slide-all -->
+      <template timing-start="0" timing-end="31440">
+        <div class="slider-all-section">
+          <div class="default-font-text">
+            Developed by
+            <a class="twitter-link" href="https://twitter.com/pote_nagata"
+              >@pote</a
+            >
+          </div>
+        </div>
+      </template>
+    </div>
     <script src="./dist/main.js"></script>
     <a href="https://github.com/nagatapote/scroll-movie"
       ><img
@@ -51,406 +352,9 @@
         src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"
         alt="Fork me on GitHub"
     /></a>
-    <!-- slide-1 -->
-    <template id="slide-1"
-      ><div class="slider-1-section">
-        <h1>ScrollMovie.js</h1>
-        <br />
-        <div class="default-font-text">
-          ScrollMovie is the library that enables you to animate background
-          image as you scroll the window.
-        </div>
-        <br />
-        <div class="scroll-image">
-          <div style="margin-bottom: 8px; color: #fc0">Scroll</div>
-          <img src="./img/bottom_scroll.svg" width="64px" height="64px;" />
-        </div></div
-    ></template>
-    <!-- slide-2 -->
-    <template id="slide-2">
-      <div class="slider-2-section">
-        <h1>Installation</h1>
-        <br />
-        <h3>VanillaJS</h3>
-        <div style="font-size: 18px">
-          <pre><code>&lt;script src=&quot;https://unpkg.com/scroll-movie@latest/dist/main.js&quot;&gt;&lt;/script&gt;</code></pre>
-        </div>
-        <div style="font-size: 18px">
-          <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { tracks, getImage, imageSize, scrollsPerImage });</code></pre>
-        </div>
-        <div style="font-weight: normal; line-height: 1.7">
-          At
-          <span
-            style="
-              background-color: rgba(30, 30, 30, 0.5);
-              padding: 4px;
-              border-radius: 8px;
-            "
-            >#app</span
-          >
-          section, You can specify the element with the query string that can be
-          found by
-          <span
-            style="
-              background-color: rgba(30, 30, 30, 0.5);
-              padding: 4px;
-              border-radius: 8px;
-            "
-            >document.querySelector</span
-          >.<br />Other props can be found as you scroll the window.
-        </div>
-      </div>
-    </template>
-    <!-- slide-3 -->
-    <template id="slide-3"
-      ><div class="slider-3-section">
-        <h3>React</h3>
-        <pre><code class='shell'>$ npm install scroll-movie --save</code></pre>
-        <pre><code class='shell'>$ yarn add -D scroll-movie</code></pre>
-        <pre><code>&lt;ScrollMovie tracks={tracks} getImage={getImage} imageSize={number} scrollsPerImage={number} /&gt;</code></pre>
-      </div></template
-    >
-    <!-- slide-4 -->
-    <template id="slide-4">
-      <div class="slider-4-section">
-        <h1>Tracks</h1>
-        <div style="font-size: 14px">
-          <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { <span class="highlight">tracks</span>, getImage, imageSize, scrollsPerImage });</code></pre>
-          <pre><code class="javascript">[<br/>   {<br />      html: &quot;&lt;h1&gt;ScrollMovie.js&lt;/h1&gt;Hello ScrollMovie.js&quot;,<br />      timing: {<br/>         start: 0,<br />         end: 5000<br />      },<br />      buttonLabel: &quot;start&quot;,<br />      animation: {<br />         start: &quot;scroll-movie__track-view_start&quot;,<br />         end: &quot;scroll-movie__track-view_end&quot;<br />      }<br />   },<br />   ...<br />]</code></pre>
-          <div class="default-font-text">
-            You can specify the appearance timing of the each section with the
-            timing property. eg.) End section will appear when scrolled 7000px
-            (scrollPerImages * number of shown images) and disappear when
-            scrolled 12000px (scrollPerImages * number of shown images).
-          </div>
-        </div>
-      </div>
-    </template>
-    <!-- slide-5 -->
-    <template id="slide-5">
-      <div class="slider-5-section">
-        <h1>Images</h1>
-        <br />
-        <h3>getImage</h3>
-        <div class="default-font-text">
-          <span
-            style="
-              background-color: rgba(30, 30, 30, 0.5);
-              padding: 8px;
-              border-radius: 8px;
-            "
-            >getImage</span
-          >
-          is the function to get the image path from the scroll amount.
-        </div>
-        <br />
-        <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { tracks, <span class="highlight">getImage</span>, imageSize, scrollsPerImage });</code></pre>
-        <pre><code>getImage: (index) => { const pad = `${index}`.padStart(3, &quot;0&quot;); return `images/image_${pad}.jpg`; }</code></pre>
-      </div>
-    </template>
-    <!-- slide-6 -->
-    <template id="slide-6"
-      ><div class="slider-6-section">
-        <h3>imageSize</h3>
-        <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { tracks, getImage, <span class="highlight">imageSize</span>, scrollsPerImage });</code></pre>
-        <pre><code>imageSize: 524</code></pre>
-        <div class="default-font-text">
-          The number of the images for the background-image you want to animate.
-        </div>
-      </div></template
-    >
-    <!-- slide-7 -->
-    <template id="slide-7">
-      <div class="slider-7-section">
-        <h3>ScrollsPerImage</h3>
-        <pre><code class="language-javascript">ScrollMovie(&quot;#app&quot;, { tracks, getImage, imageSize, <span class="highlight">scrollsPerImage</span> });</code></pre>
-        <pre><code>scrollsPerImage: 60</code></pre>
-        <div class="default-font-text">
-          The scroll amount value for switching to the next image.<br />60 is
-          recommended.
-        </div>
-      </div>
-    </template>
-    <!-- slide-8 -->
-    <template id="slide-8">
-      <div class="slider-8-section">
-        <h1>Internal link</h1>
-        <br />
-        <div class="default-font-text">
-          You can also put internal links so to jump to the specific sections
-          you like.
-        </div>
-        <br /><a href="#20000" style="color: #fff"
-          >Click Here. Go to the destination. (20000px)</a
-        ><br /><br />
-        <h3>How</h3>
-        <pre><code class="language-html">&lt;a href='#20000' &gt;Click Here. Go to the destination. (20000px)&lt;/a&gt;</code></pre>
-      </div>
-    </template>
-    <!-- slide-9 -->
-    <template id="slide-9">
-      <div class="slider-9-section">
-        <h1>Animation</h1>
-        <div class="default-font-text">
-          Animation can be customized freely in css.<br />With the following
-          css, The section will fade out to the right.
-        </div>
-        <br />
-        <h3>Sample CSS</h3>
-        <div style="font-size: 14px">
-          <pre><code class='css'>.original-css-start {<br />   position: absolute;<br />   top: 50%;<br />   left: 50%;<br />   transform: translate(-50%, -50%);<br />   opacity: 1;<br />}<br /><br />.original-css-end {<br />   position: absolute;<br />   top: 50%;<br />   left: 50%;<br />   transform: translate(100%, -50%);<br />   opacity: 0;<br />}</code></pre>
-        </div>
-      </div>
-    </template>
-    <!-- slide-10 -->
-    <template id="slide-10">
-      <div class="slider-10-section">
-        <h2>Props</h2>
-        <div class="table-container">
-          <table>
-            <tr>
-              <th>Props name</th>
-              <th>Type</th>
-              <th>Explanation</th>
-            </tr>
-            <tr>
-              <td>tracks</td>
-              <td>Track[]</td>
-              <td>Display content.</td>
-            </tr>
-            <tr>
-              <td>getImage</td>
-              <td>(index: number) => string</td>
-              <td>Moving background.</td>
-            </tr>
-            <tr>
-              <td>imageSize</td>
-              <td>number</td>
-              <td>Number of images.</td>
-            </tr>
-            <tr>
-              <td>scrollsPerImage</td>
-              <td>number</td>
-              <td>Scroll value per image.</td>
-            </tr>
-            <tr>
-              <td>preload</td>
-              <td>boolean (default: false)</td>
-              <td>Preload images.(option)</td>
-            </tr>
-            <tr>
-              <td>preloadTimes</td>
-              <td>number (default: 0)</td>
-              <td>Time to wait for preload.Unit is ms.(option)</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </template>
-    <!-- slide-11 -->
-    <template id="slide-11">
-      <div class="slider-11-section">
-        <div class="table-container">
-          <table>
-            <tr>
-              <th>Props name</th>
-              <th>Type</th>
-              <th>Explanation</th>
-            </tr>
-            <tr>
-              <td>navigationDisplayTiming</td>
-              <td>number (default: 0)</td>
-              <td>When to display the navigation bar and label.(option)</td>
-            </tr>
-            <tr>
-              <td>navigationDisabledBrowserSize</td>
-              <td>{ height: number; width: number }</td>
-              <td>
-                If the browser size is less than or equal to the specified
-                number,<br />the navigation bar and label will not be
-                displayed.(option)
-              </td>
-            </tr>
-            <tr>
-              <td>nowLoadingMessage</td>
-              <td>string (default: '&lt;div&gt;NowLoading&lt;/div&gt;')</td>
-              <td>Display until preload is completed.(option)</td>
-            </tr>
-            <tr>
-              <td>onTrackEnter</td>
-              <td>(target: HTMLElement) => void</td>
-              <td>Function to be executed at Start of trackView.(option)</td>
-            </tr>
-            <tr>
-              <td>onTrackLeave</td>
-              <td>(target: HTMLElement) => void</td>
-              <td>Function to be executed at the end of trackView.(option)</td>
-            </tr>
-            <tr>
-              <td>classes</td>
-              <td>ClassNames</td>
-              <td>Change the default class name.(option)</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </template>
-    <!-- slide-12 -->
-    <template id="slide-12">
-      <div class="slider-12-section">
-        <h1>Convert video to image（Bonus）</h1>
-        <div class="default-font-text">
-          Don’t have the images for the background animation?<br />No worry!!<br />By
-          following, You can convert the video to the images.
-        </div>
-        <pre><code class='shell'>$ brew install ffmpeg</code></pre>
-        <pre><code class='shell'>$ ffmpeg -i {filename}.mp4 -vcodec mjpeg image_%03d.jpg</code></pre>
-      </div>
-    </template>
-    <!-- slide-13 -->
-    <template id="slide-13">
-      <div class="slider-13-section">
-        <h1>Thank you</h1>
-        <div class="default-font-text">That's it. Please try it.</div>
-        <div class="default-font-text">
-          If you like it, Please give me a star on
-          <a
-            class="github-link"
-            href="https://github.com/nagatapote/scroll-movie"
-            >GitHub</a
-          >
-          :)
-        </div>
-      </div>
-    </template>
-    <!-- slide-all -->
-    <template id="slide-all">
-      <div class="slider-all-section">
-        <div class="default-font-text">
-          Developed by
-          <a class="twitter-link" href="https://twitter.com/pote_nagata"
-            >@pote</a
-          >
-        </div>
-      </div>
-    </template>
     <script>
-      const tracks = [
-        {
-          html: document.getElementById("slide-1").innerHTML,
-          timing: {
-            start: 0,
-            end: 1500,
-          },
-          buttonLabel: "Top",
-        },
-        {
-          html: document.getElementById("slide-2").innerHTML,
-          timing: {
-            start: 2500,
-            end: 4000,
-          },
-          buttonLabel: "Installation",
-        },
-        {
-          html: document.getElementById("slide-3").innerHTML,
-          timing: {
-            start: 5000,
-            end: 6500,
-          },
-        },
-        {
-          html: document.getElementById("slide-4").innerHTML,
-          timing: {
-            start: 7500,
-            end: 9000,
-          },
-          buttonLabel: "Tracks",
-        },
-        {
-          html: document.getElementById("slide-5").innerHTML,
-          timing: {
-            start: 10000,
-            end: 11500,
-          },
-          buttonLabel: "Images",
-        },
-        {
-          html: document.getElementById("slide-6").innerHTML,
-          timing: {
-            start: 12500,
-            end: 14000,
-          },
-        },
-        {
-          html: document.getElementById("slide-7").innerHTML,
-          timing: {
-            start: 15000,
-            end: 16500,
-          },
-        },
-        {
-          html: document.getElementById("slide-8").innerHTML,
-          timing: {
-            start: 17500,
-            end: 19000,
-          },
-          buttonLabel: "Internal link",
-        },
-        {
-          html: document.getElementById("slide-9").innerHTML,
-          timing: {
-            start: 20000,
-            end: 21500,
-          },
-          buttonLabel: "Animation",
-          animation: {
-            start: "original-css-start",
-            end: "original-css-end",
-          },
-        },
-        {
-          html: document.getElementById("slide-10").innerHTML,
-          timing: {
-            start: 22500,
-            end: 24000,
-          },
-          buttonLabel: "Props",
-        },
-        {
-          html: document.getElementById("slide-11").innerHTML,
-          timing: {
-            start: 25000,
-            end: 26500,
-          },
-        },
-        {
-          html: document.getElementById("slide-12").innerHTML,
-          timing: {
-            start: 27500,
-            end: 29000,
-          },
-          buttonLabel: "Bonus",
-        },
-        {
-          html: document.getElementById("slide-13").innerHTML,
-          timing: {
-            start: 30000,
-            end: 31440,
-          },
-          buttonLabel: "End",
-        },
-        {
-          html: document.getElementById("slide-all").innerHTML,
-          timing: {
-            start: 0,
-            end: 31440,
-          },
-        },
-      ];
       ScrollMovie("#app", {
         classes: {},
-        tracks: tracks,
         getImage: (index) => {
           const pad = `${index}`.padStart(3, "0");
           return `images/image_${pad}.jpg`;
