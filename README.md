@@ -235,6 +235,6 @@ onTrackEnter: (targetElement) => {
 };
 ```
 
-## Thank you
+## Contributors
 
-That's it. Please try it.
+[@pote](https://twitter.com/pote_nagata)
